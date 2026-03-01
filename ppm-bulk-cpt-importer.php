@@ -3,16 +3,17 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.0.10
+ * Version: 1.0.11
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
+ * Update URI: https://github.com/Purple-Pig-Marketing/ppm-bulk-cpt-importer
  */
 
 if (!defined('ABSPATH')) exit;
 
 /* -------------------------------------------------------------------------- */
-/* SAFE GITHUB UPDATE CHECKER LOADER                                          */
+/* SAFE GITHUB UPDATE CHECKER                                                 */
 /* -------------------------------------------------------------------------- */
 
 $ppm_update_checker_path = __DIR__ . '/plugin-update-checker/plugin-update-checker.php';
@@ -32,6 +33,25 @@ if (file_exists($ppm_update_checker_path)) {
         $ppm_update_checker->setAuthentication('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');
     }
 }
+
+/* -------------------------------------------------------------------------- */
+/* CUSTOM PLUGIN ICON                                                         */
+/* -------------------------------------------------------------------------- */
+
+add_action('admin_head', function () {
+
+    $screen = get_current_screen();
+    if (!$screen || $screen->id !== 'plugins') return;
+
+    $icon_url = plugins_url('assets/ppm-plugin-icon.png', __FILE__);
+    $plugin_slug = plugin_basename(__FILE__);
+
+    echo "<style>
+        tr[data-plugin='{$plugin_slug}'] .plugin-icon img {
+            content: url('{$icon_url}');
+        }
+    </style>";
+});
 
 /* -------------------------------------------------------------------------- */
 /* ADMIN MENU                                                                 */
