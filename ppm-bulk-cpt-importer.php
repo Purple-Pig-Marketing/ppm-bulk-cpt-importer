@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.0.11
+ * Version: 1.0.12
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -192,6 +192,105 @@ function ppm_detect_destination($column) {
 }
 
 /* -------------------------------------------------------------------------- */
+/* ACF HELPERS                                                                */
+/* -------------------------------------------------------------------------- */
+
+function ppm_prepare_csv_value($value) {
+    if (!is_string($value)) {
+        return $value;
+    }
+
+    // Remove UTF-8 BOM if present
+    $value = preg_replace('/^\xEF\xBB\xBF/', '', $value);
+
+    // Trim whitespace/newlines
+    $value = trim($value);
+
+    // Strip wrapping quotes only if the whole string is wrapped
+    if (strlen($value) >= 2) {
+        $first = substr($value, 0, 1);
+        $last  = substr($value, -1);
+
+        if (($first === '"' && $last === '"') || ($first === "'" && $last === "'")) {
+            $value = substr($value, 1, -1);
+            $value = trim($value);
+        }
+    }
+
+    return $value;
+}
+
+function ppm_collect_acf_fields_recursive($fields, &$map) {
+    if (!is_array($fields)) return;
+
+    foreach ($fields as $field) {
+        if (!is_array($field)) continue;
+
+        if (!empty($field['name']) && !empty($field['key'])) {
+            $map[$field['name']] = $field['key'];
+        }
+
+        if (!empty($field['sub_fields']) && is_array($field['sub_fields'])) {
+            ppm_collect_acf_fields_recursive($field['sub_fields'], $map);
+        }
+    }
+}
+
+function ppm_get_acf_field_key_map($cpt_slug) {
+    static $cache = [];
+
+    if (isset($cache[$cpt_slug])) {
+        return $cache[$cpt_slug];
+    }
+
+    $map = [];
+
+    if (!function_exists('acf_get_field_groups') || !function_exists('acf_get_fields')) {
+        $cache[$cpt_slug] = $map;
+        return $map;
+    }
+
+    $groups = acf_get_field_groups(['post_type' => $cpt_slug]);
+
+    if (!is_array($groups) || empty($groups)) {
+        $groups = acf_get_field_groups();
+    }
+
+    if (is_array($groups)) {
+        foreach ($groups as $group) {
+            $fields = acf_get_fields($group);
+            ppm_collect_acf_fields_recursive($fields, $map);
+        }
+    }
+
+    $cache[$cpt_slug] = $map;
+    return $map;
+}
+
+function ppm_update_acf_or_meta($post_id, $cpt_slug, $key, $value) {
+    $value = ppm_prepare_csv_value($value);
+
+    if (function_exists('update_field')) {
+        $field_key_map = ppm_get_acf_field_key_map($cpt_slug);
+
+        if (!empty($field_key_map[$key])) {
+            update_field($field_key_map[$key], $value, $post_id);
+            return;
+        }
+
+        // Fallback: try by field name
+        $updated = update_field($key, $value, $post_id);
+
+        if ($updated !== false) {
+            return;
+        }
+    }
+
+    // Final fallback
+    update_post_meta($post_id, $key, $value);
+}
+
+/* -------------------------------------------------------------------------- */
 /* SHORTCODES                                                                 */
 /* -------------------------------------------------------------------------- */
 
@@ -200,6 +299,7 @@ add_shortcode('ppm_acf_image', function ($atts) {
         'field' => '',
         'class' => '',
         'alt'   => '',
+        'style' => '',
     ], $atts);
 
     if (!$atts['field']) return '';
@@ -210,11 +310,12 @@ add_shortcode('ppm_acf_image', function ($atts) {
 
     if (!$url) return '';
 
-    $url = esc_url($url);
-    $alt = esc_attr($atts['alt']);
+    $url   = esc_url($url);
+    $alt   = esc_attr($atts['alt']);
     $class = esc_attr($atts['class']);
+    $style = esc_attr($atts['style']);
 
-    return "<img src=\"$url\" class=\"$class\" alt=\"$alt\">";
+    return "<img src=\"$url\" class=\"$class\" alt=\"$alt\" style=\"$style\">";
 });
 
 /* -------------------------------------------------------------------------- */
@@ -222,6 +323,12 @@ add_shortcode('ppm_acf_image', function ($atts) {
 /* -------------------------------------------------------------------------- */
 
 function ppm_run_import($token, $cpt_slug) {
+
+    // Force ACF field groups to initialize in this admin context
+    if (function_exists('acf_get_field_groups')) {
+        acf_get_field_groups();
+    }
+
     $payload = get_transient("ppm_import_$token");
     delete_transient("ppm_import_$token");
 
@@ -230,52 +337,84 @@ function ppm_run_import($token, $cpt_slug) {
         return;
     }
 
-    $created = $updated = $skipped = 0;
+    $created = 0;
+    $updated = 0;
+    $skipped = 0;
 
     foreach ($payload['rows'] as $row) {
-        $row = array_combine($payload['header'], $row);
-        if (empty($row['post_slug'])) { $skipped++; continue; }
+        if (!is_array($row)) {
+            $skipped++;
+            continue;
+        }
 
-        $existing = get_page_by_path($row['post_slug'], OBJECT, $cpt_slug);
+        if (count($row) < count($payload['header'])) {
+            $row = array_pad($row, count($payload['header']), '');
+        }
+
+        $row = array_combine($payload['header'], $row);
+
+        if ($row === false || empty($row['post_slug'])) {
+            $skipped++;
+            continue;
+        }
+
+        $post_slug = ppm_prepare_csv_value($row['post_slug']);
+        $post_title = isset($row['post_title']) ? ppm_prepare_csv_value($row['post_title']) : '';
+        $post_status = !empty($row['post_status']) ? ppm_prepare_csv_value($row['post_status']) : 'publish';
+
+        $existing = get_page_by_path($post_slug, OBJECT, $cpt_slug);
 
         $post_args = [
             'post_type'   => $cpt_slug,
-            'post_title'  => $row['post_title'],
-            'post_name'   => $row['post_slug'],
-            'post_status' => $row['post_status'] ?: 'publish'
+            'post_title'  => $post_title,
+            'post_name'   => $post_slug,
+            'post_status' => $post_status,
         ];
 
         $post_id = $existing
             ? wp_update_post(array_merge($post_args, ['ID' => $existing->ID]), true)
             : wp_insert_post($post_args, true);
 
-        if (is_wp_error($post_id)) { $skipped++; continue; }
+        if (is_wp_error($post_id)) {
+            $skipped++;
+            continue;
+        }
 
-        $existing ? $updated++ : $created++;
+        if ($existing) {
+            $updated++;
+        } else {
+            $created++;
+        }
 
         foreach ($row as $key => $value) {
-            if ($value === '' || in_array($key, ['post_title','post_slug','post_status'], true)) continue;
+            if (in_array($key, ['post_title', 'post_slug', 'post_status'], true)) {
+                continue;
+            }
+
+            $value = ppm_prepare_csv_value($value);
+
+            if ($value === '') {
+                continue;
+            }
 
             if ($key === 'yoast_title') {
                 update_post_meta($post_id, '_yoast_wpseo_title', $value);
                 continue;
             }
+
             if ($key === 'yoast_meta_description') {
                 update_post_meta($post_id, '_yoast_wpseo_metadesc', $value);
                 continue;
             }
+
             if ($key === 'yoast_focus_keyphrase') {
                 update_post_meta($post_id, '_yoast_wpseo_focuskw', $value);
                 continue;
             }
 
-            if (function_exists('update_field')) {
-                update_field($key, $value, $post_id);
-            } else {
-                update_post_meta($post_id, $key, $value);
-            }
+            ppm_update_acf_or_meta($post_id, $cpt_slug, $key, $value);
         }
     }
 
-    echo "<div class='updated'><p><strong>Import complete.</strong> Created: $created | Updated: $updated | Skipped: $skipped</p></div>";
+    echo "<div class='updated'><p><strong>Import complete.</strong> Created: {$created} | Updated: {$updated} | Skipped: {$skipped}</p></div>";
 }
