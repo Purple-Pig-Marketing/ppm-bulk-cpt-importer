@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.0.12
+ * Version: 1.0.13
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -80,6 +80,12 @@ add_action('admin_init', function () {
 });
 
 /* -------------------------------------------------------------------------- */
+/* EXPORT HANDLER                                                             */
+/* -------------------------------------------------------------------------- */
+
+add_action('admin_post_ppm_export_cpt_csv', 'ppm_export_cpt_csv');
+
+/* -------------------------------------------------------------------------- */
 /* MAIN PAGE                                                                  */
 /* -------------------------------------------------------------------------- */
 
@@ -109,6 +115,42 @@ function ppm_bulk_import_page() {
 
             <p>
                 <input type="submit" name="preview_csv" class="button button-primary" value="Preview Import">
+            </p>
+        </form>
+
+        <hr style="margin: 30px 0;">
+
+        <h2>Export Existing CPT Pages</h2>
+        <p>
+            Exports every page in the selected CPT using the exact CSV column structure
+            expected by this plugin's importer.
+        </p>
+
+        <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+            <?php wp_nonce_field('ppm_export_cpt_csv'); ?>
+            <input type="hidden" name="action" value="ppm_export_cpt_csv">
+
+            <p>
+                <label><strong>CPT Slug</strong></label><br>
+                <input type="text" name="cpt_slug" required>
+            </p>
+
+            <p>
+                <label><strong>Source Field Structure</strong></label><br>
+                <select name="field_profile">
+                    <option value="auto" selected>Auto-detect per page (recommended)</option>
+                    <option value="standard">Standard PPM importer fields only</option>
+                    <option value="legacy">Legacy heading/section fields only</option>
+                </select>
+            </p>
+
+            <p class="description">
+                Auto-detect uses the standard importer field when it contains a value,
+                then falls back to the legacy field used by older city pages.
+            </p>
+
+            <p>
+                <input type="submit" class="button button-secondary" value="Export Existing Pages">
             </p>
         </form>
     </div>
@@ -317,6 +359,181 @@ add_shortcode('ppm_acf_image', function ($atts) {
 
     return "<img src=\"$url\" class=\"$class\" alt=\"$alt\" style=\"$style\">";
 });
+
+/* -------------------------------------------------------------------------- */
+/* EXPORT HELPERS                                                             */
+/* -------------------------------------------------------------------------- */
+
+function ppm_export_get_field_value($post_id, $field_name) {
+    if (function_exists('get_field')) {
+        $value = get_field($field_name, $post_id, false);
+
+        if ($value !== null && $value !== false && $value !== '') {
+            return $value;
+        }
+    }
+
+    return get_post_meta($post_id, $field_name, true);
+}
+
+function ppm_export_value_is_populated($value) {
+    if (is_array($value)) {
+        return !empty($value);
+    }
+
+    return $value !== null && $value !== false && $value !== '';
+}
+
+function ppm_export_image_url($value) {
+    if (is_array($value)) {
+        if (!empty($value['url'])) {
+            return esc_url_raw($value['url']);
+        }
+
+        if (!empty($value['ID'])) {
+            $url = wp_get_attachment_url((int) $value['ID']);
+            return $url ? esc_url_raw($url) : '';
+        }
+
+        if (!empty($value['id'])) {
+            $url = wp_get_attachment_url((int) $value['id']);
+            return $url ? esc_url_raw($url) : '';
+        }
+
+        return '';
+    }
+
+    if (is_numeric($value)) {
+        $url = wp_get_attachment_url((int) $value);
+        return $url ? esc_url_raw($url) : '';
+    }
+
+    return is_string($value) ? esc_url_raw($value) : '';
+}
+
+function ppm_export_pick_field($post_id, $standard_field, $legacy_field, $profile = 'auto', $is_image = false) {
+    $profile = in_array($profile, ['auto', 'standard', 'legacy'], true)
+        ? $profile
+        : 'auto';
+
+    if ($profile === 'standard') {
+        $value = ppm_export_get_field_value($post_id, $standard_field);
+    } elseif ($profile === 'legacy') {
+        $value = ppm_export_get_field_value($post_id, $legacy_field);
+    } else {
+        $standard_value = ppm_export_get_field_value($post_id, $standard_field);
+
+        if (ppm_export_value_is_populated($standard_value)) {
+            $value = $standard_value;
+        } else {
+            $value = ppm_export_get_field_value($post_id, $legacy_field);
+        }
+    }
+
+    return $is_image ? ppm_export_image_url($value) : $value;
+}
+
+/* -------------------------------------------------------------------------- */
+/* EXPORT                                                                     */
+/* -------------------------------------------------------------------------- */
+
+function ppm_export_cpt_csv() {
+    if (!current_user_can('manage_options')) {
+        wp_die('You do not have permission to export this data.');
+    }
+
+    check_admin_referer('ppm_export_cpt_csv');
+
+    $cpt_slug = isset($_POST['cpt_slug'])
+        ? sanitize_key(wp_unslash($_POST['cpt_slug']))
+        : '';
+
+    $profile = isset($_POST['field_profile'])
+        ? sanitize_key(wp_unslash($_POST['field_profile']))
+        : 'auto';
+
+    if (!in_array($profile, ['auto', 'standard', 'legacy'], true)) {
+        $profile = 'auto';
+    }
+
+    if (!$cpt_slug || !post_type_exists($cpt_slug)) {
+        wp_die('Invalid CPT slug.');
+    }
+
+    $posts = get_posts([
+        'post_type'        => $cpt_slug,
+        'post_status'      => ['publish', 'draft', 'pending', 'private', 'future'],
+        'posts_per_page'   => -1,
+        'orderby'          => 'title',
+        'order'            => 'ASC',
+        'suppress_filters' => false,
+    ]);
+
+    $headers = [
+        'post_title','post_slug','post_status',
+        'section_1_title','section_1_paragraph','section_1_image',
+        'section_2_title','section_2_paragraph','section_2_image',
+        'section_3_title','section_3_paragraph','section_3_image',
+        'section_4_title','section_4_paragraph','section_4_image',
+        'yoast_title','yoast_meta_description','yoast_focus_keyphrase'
+    ];
+
+    while (ob_get_level()) {
+        ob_end_clean();
+    }
+
+    $filename = sprintf(
+        'ppm-cpt-export-%s-%s.csv',
+        sanitize_file_name($cpt_slug),
+        gmdate('Y-m-d')
+    );
+
+    nocache_headers();
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename="' . $filename . '"');
+
+    $output = fopen('php://output', 'w');
+
+    if ($output === false) {
+        wp_die('Could not open the CSV output stream.');
+    }
+
+    fwrite($output, "\xEF\xBB\xBF");
+    fputcsv($output, $headers);
+
+    foreach ($posts as $post) {
+        $row = [
+            $post->post_title,
+            $post->post_name,
+            $post->post_status,
+
+            ppm_export_pick_field($post->ID, 'section_1_title', 'heading_1', $profile),
+            ppm_export_pick_field($post->ID, 'section_1_paragraph', 'section_1', $profile),
+            ppm_export_pick_field($post->ID, 'section_1_image', 'image_1', $profile, true),
+
+            ppm_export_pick_field($post->ID, 'section_2_title', 'heading_2', $profile),
+            ppm_export_pick_field($post->ID, 'section_2_paragraph', 'section_2', $profile),
+            ppm_export_pick_field($post->ID, 'section_2_image', 'image_2', $profile, true),
+
+            ppm_export_pick_field($post->ID, 'section_3_title', 'heading_3', $profile),
+            ppm_export_pick_field($post->ID, 'section_3_paragraph', 'section_3', $profile),
+            ppm_export_pick_field($post->ID, 'section_3_image', 'image_3', $profile, true),
+
+            ppm_export_pick_field($post->ID, 'section_4_title', 'heading_4', $profile),
+            ppm_export_pick_field($post->ID, 'section_4_paragraph', 'section_4', $profile),
+            ppm_export_pick_field($post->ID, 'section_4_image', 'image_4', $profile, true),
+
+            get_post_meta($post->ID, '_yoast_wpseo_title', true),
+            get_post_meta($post->ID, '_yoast_wpseo_metadesc', true),
+            get_post_meta($post->ID, '_yoast_wpseo_focuskw', true),
+        ];
+
+        fputcsv($output, $row);
+    }
+
+    fclose($output);
+    exit;
+}
 
 /* -------------------------------------------------------------------------- */
 /* IMPORT                                                                     */
