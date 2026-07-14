@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.0.15
+ * Version: 1.0.16
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -54,6 +54,317 @@ add_action('admin_head', function () {
 });
 
 /* -------------------------------------------------------------------------- */
+/* BRANDED ADMIN ASSETS                                                       */
+/* -------------------------------------------------------------------------- */
+
+add_action('admin_enqueue_scripts', function ($hook_suffix) {
+    if ($hook_suffix !== 'toplevel_page_ppm-bulk-import') {
+        return;
+    }
+
+    $asset_base = plugin_dir_url(__FILE__) . 'assets/';
+
+    $css = <<<CSS
+@font-face {
+    font-family: 'PPM Neue Haas Text';
+    src: url('{$asset_base}fonts/Neue-Haas-Grotesk-Text-Pro.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'PPM Neue Haas Text';
+    src: url('{$asset_base}fonts/Neue-Haas-Grotesk-Text-Pro-Medium.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'PPM Neue Haas Display';
+    src: url('{$asset_base}fonts/NeueHaasDisplay-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'PPM Neue Haas Display';
+    src: url('{$asset_base}fonts/NeueHaasDisplay-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+body.toplevel_page_ppm-bulk-import {
+    background: #ebeef9;
+}
+body.toplevel_page_ppm-bulk-import #wpcontent {
+    padding-left: 0;
+}
+.ppm-admin-page,
+.ppm-admin-page * {
+    box-sizing: border-box;
+}
+.ppm-admin-page {
+    --ppm-cta: #5339dd;
+    --ppm-cta-dark: #432cc0;
+    --ppm-purple: #522b82;
+    --ppm-navy: #2c3d88;
+    --ppm-deep: #1b214f;
+    --ppm-text: #303030;
+    --ppm-border: #cfcfe4;
+    --ppm-bg: #ebeef9;
+    --ppm-card: #ffffff;
+    margin: 0;
+    min-height: calc(100vh - 32px);
+    color: var(--ppm-text);
+    font-family: 'PPM Neue Haas Text', Arial, sans-serif;
+}
+.ppm-admin-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 34px 40px 38px;
+    color: #fff;
+    background: linear-gradient(120deg, #522b82 0%, #3c328e 48%, #2c3d88 100%);
+}
+.ppm-admin-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: .13;
+    background-image: radial-gradient(circle at 20% 30%, #fff 0 1px, transparent 1.5px);
+    background-size: 20px 20px;
+    pointer-events: none;
+}
+.ppm-admin-hero-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    max-width: 1240px;
+}
+.ppm-admin-brand {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+.ppm-admin-logo {
+    width: 230px;
+    max-width: 34vw;
+    height: auto;
+    display: block;
+}
+.ppm-admin-heading h1 {
+    margin: 0 0 7px;
+    padding: 0;
+    color: #fff;
+    font: 900 38px/1.05 'PPM Neue Haas Display', Arial, sans-serif;
+    letter-spacing: -.02em;
+}
+.ppm-admin-heading p {
+    margin: 0;
+    max-width: 620px;
+    color: rgba(255,255,255,.86);
+    font-size: 16px;
+    line-height: 1.45;
+}
+.ppm-admin-version {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,.28);
+    border-radius: 999px;
+    background: rgba(255,255,255,.1);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+}
+.ppm-admin-content {
+    max-width: 1240px;
+    padding: 34px 40px 48px;
+}
+.ppm-admin-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+.ppm-admin-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 430px;
+    padding: 30px;
+    border: 1px solid var(--ppm-border);
+    border-radius: 14px;
+    background: var(--ppm-card);
+    box-shadow: 0 10px 28px rgba(27,33,79,.08);
+}
+.ppm-admin-card-icon {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    margin-bottom: 18px;
+    border-radius: 12px;
+    background: #e4e1ff;
+    color: var(--ppm-cta);
+    font-size: 23px;
+}
+.ppm-admin-card h2 {
+    margin: 0 0 9px;
+    color: #2f052d;
+    font: 700 27px/1.1 'PPM Neue Haas Display', Arial, sans-serif;
+}
+.ppm-admin-card > p {
+    margin: 0 0 24px;
+    color: #606074;
+    font-size: 15px;
+    line-height: 1.5;
+}
+.ppm-admin-form {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+.ppm-field {
+    margin: 0 0 20px;
+}
+.ppm-field label {
+    display: block;
+    margin: 0 0 8px;
+    color: #2f052d;
+    font-size: 14px;
+    font-weight: 600;
+}
+.ppm-admin-page input[type='text'],
+.ppm-admin-page input[type='file'],
+.ppm-admin-page select {
+    width: 100%;
+    min-height: 46px;
+    margin: 0;
+    padding: 9px 12px;
+    border: 1px solid var(--ppm-border);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--ppm-text);
+    font-family: inherit;
+    font-size: 15px;
+    box-shadow: none;
+}
+.ppm-admin-page input[type='text']:focus,
+.ppm-admin-page input[type='file']:focus,
+.ppm-admin-page select:focus {
+    border-color: var(--ppm-cta);
+    box-shadow: 0 0 0 2px rgba(83,57,221,.14);
+    outline: none;
+}
+.ppm-admin-page input[type='file'] {
+    padding: 8px;
+}
+.ppm-admin-page input[type='file']::file-selector-button {
+    margin-right: 12px;
+    padding: 8px 13px;
+    border: 0;
+    border-radius: 6px;
+    background: #ebeef9;
+    color: #2f052d;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+.ppm-description {
+    margin: -7px 0 20px;
+    color: #747488;
+    font-size: 13px;
+    line-height: 1.45;
+}
+.ppm-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 10px;
+}
+.ppm-admin-page .button.ppm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 9px 18px;
+    border: 1px solid var(--ppm-cta);
+    border-radius: 8px;
+    background: #fff;
+    color: #2f052d;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    box-shadow: none;
+    transition: background .18s ease, color .18s ease, border-color .18s ease, transform .18s ease;
+}
+.ppm-admin-page .button.ppm-btn:hover,
+.ppm-admin-page .button.ppm-btn:focus {
+    border-color: var(--ppm-cta);
+    background: var(--ppm-cta);
+    color: #fff;
+    transform: translateY(-1px);
+}
+.ppm-admin-page .button.ppm-btn-primary {
+    border-color: var(--ppm-cta);
+    background: var(--ppm-cta);
+    color: #fff;
+}
+.ppm-admin-page .button.ppm-btn-primary:hover,
+.ppm-admin-page .button.ppm-btn-primary:focus {
+    border-color: var(--ppm-cta-dark);
+    background: var(--ppm-cta-dark);
+}
+.ppm-admin-page .notice,
+.ppm-admin-page .updated,
+.ppm-admin-page .error {
+    margin: 24px 0 0;
+}
+.ppm-import-preview {
+    margin-top: 28px;
+    padding: 28px;
+    border: 1px solid var(--ppm-border);
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(27,33,79,.06);
+}
+.ppm-import-preview h2 {
+    margin: 0 0 18px;
+    color: #2f052d;
+    font: 700 25px/1.15 'PPM Neue Haas Display', Arial, sans-serif;
+}
+.ppm-import-preview .widefat {
+    border-color: var(--ppm-border);
+}
+.ppm-import-preview .widefat thead th {
+    background: #ebeef9;
+    color: #2f052d;
+    font-weight: 600;
+}
+@media (max-width: 900px) {
+    .ppm-admin-actions { grid-template-columns: 1fr; }
+    .ppm-admin-hero-inner { align-items: flex-start; flex-direction: column; }
+    .ppm-admin-card { min-height: auto; }
+}
+@media (max-width: 600px) {
+    .ppm-admin-hero, .ppm-admin-content { padding-left: 20px; padding-right: 20px; }
+    .ppm-admin-brand { align-items: flex-start; flex-direction: column; gap: 18px; }
+    .ppm-admin-logo { max-width: 240px; }
+    .ppm-admin-heading h1 { font-size: 31px; }
+}
+CSS;
+
+    wp_register_style('ppm-bulk-import-admin', false, [], '1.0.16');
+    wp_enqueue_style('ppm-bulk-import-admin');
+    wp_add_inline_style('ppm-bulk-import-admin', $css);
+});
+
+/* -------------------------------------------------------------------------- */
 /* ADMIN MENU                                                                 */
 /* -------------------------------------------------------------------------- */
 
@@ -90,82 +401,100 @@ add_action('admin_post_ppm_export_cpt_csv', 'ppm_export_cpt_csv');
 /* -------------------------------------------------------------------------- */
 
 function ppm_bulk_import_page() {
+    $logo_url = plugins_url('assets/ppm-wordmark.svg', __FILE__);
     ?>
-    <div class="wrap">
-        <h1>PPM Bulk CPT Import</h1>
+    <div class="wrap ppm-admin-page">
+        <header class="ppm-admin-hero">
+            <div class="ppm-admin-hero-inner">
+                <div class="ppm-admin-brand">
+                    <img class="ppm-admin-logo" src="<?php echo esc_url($logo_url); ?>" alt="Purple Pig Marketing">
+                    <div class="ppm-admin-heading">
+                        <h1>Bulk CPT Importer</h1>
+                        <p>Create, update, export, and standardize custom post type pages from one reliable CSV workflow.</p>
+                    </div>
+                </div>
+                <span class="ppm-admin-version">v1.0.16</span>
+            </div>
+        </header>
 
-        <p>
-            <a class="button button-secondary" href="?page=ppm-bulk-import&download_template=1">
-                Download CSV Template
-            </a>
-        </p>
+        <main class="ppm-admin-content">
+            <div class="ppm-admin-actions">
+                <section class="ppm-admin-card">
+                    <div class="ppm-admin-card-icon"><span class="dashicons dashicons-database-import"></span></div>
+                    <h2>Import CPT Pages</h2>
+                    <p>Preview your CSV mapping, then create new pages or update existing pages by post slug.</p>
 
-        <form method="post" enctype="multipart/form-data">
-            <?php wp_nonce_field('ppm_bulk_import'); ?>
+                    <form class="ppm-admin-form" method="post" enctype="multipart/form-data">
+                        <?php wp_nonce_field('ppm_bulk_import'); ?>
 
-            <p>
-                <label><strong>CPT Slug</strong></label><br>
-                <input type="text" name="cpt_slug" required value="<?php echo esc_attr($_POST['cpt_slug'] ?? ''); ?>">
-            </p>
+                        <div class="ppm-field">
+                            <label for="ppm-import-cpt-slug">CPT Slug</label>
+                            <input id="ppm-import-cpt-slug" type="text" name="cpt_slug" required value="<?php echo esc_attr($_POST['cpt_slug'] ?? ''); ?>" placeholder="Example: service-areas">
+                        </div>
 
-            <p>
-                <label><strong>CSV File</strong></label><br>
-                <input type="file" name="csv_file" accept=".csv" required>
-            </p>
+                        <div class="ppm-field">
+                            <label for="ppm-import-csv">CSV File</label>
+                            <input id="ppm-import-csv" type="file" name="csv_file" accept=".csv" required>
+                        </div>
 
-            <p>
-                <input type="submit" name="preview_csv" class="button button-primary" value="Preview Import">
-            </p>
-        </form>
+                        <div class="ppm-form-actions">
+                            <input type="submit" name="preview_csv" class="button ppm-btn ppm-btn-primary" value="Preview Import">
+                            <a class="button ppm-btn" href="?page=ppm-bulk-import&amp;download_template=1">Download CSV Template</a>
+                        </div>
+                    </form>
+                </section>
 
-        <hr style="margin: 30px 0;">
+                <section class="ppm-admin-card">
+                    <div class="ppm-admin-card-icon"><span class="dashicons dashicons-database-export"></span></div>
+                    <h2>Export Existing Pages</h2>
+                    <p>Export every page in a CPT using the exact CSV structure expected by the importer.</p>
 
-        <h2>Export Existing CPT Pages</h2>
-        <p>
-            Exports every page in the selected CPT using the exact CSV column structure
-            expected by this plugin's importer.
-        </p>
+                    <form class="ppm-admin-form" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                        <?php wp_nonce_field('ppm_export_cpt_csv'); ?>
+                        <input type="hidden" name="action" value="ppm_export_cpt_csv">
 
-        <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-            <?php wp_nonce_field('ppm_export_cpt_csv'); ?>
-            <input type="hidden" name="action" value="ppm_export_cpt_csv">
+                        <div class="ppm-field">
+                            <label for="ppm-export-cpt-slug">CPT Slug</label>
+                            <input id="ppm-export-cpt-slug" type="text" name="cpt_slug" required placeholder="Example: service-areas">
+                        </div>
 
-            <p>
-                <label><strong>CPT Slug</strong></label><br>
-                <input type="text" name="cpt_slug" required>
-            </p>
+                        <div class="ppm-field">
+                            <label for="ppm-field-profile">Source Field Structure</label>
+                            <select id="ppm-field-profile" name="field_profile">
+                                <option value="auto" selected>Auto-detect per page (recommended)</option>
+                                <option value="standard">Standard PPM importer fields only</option>
+                                <option value="legacy">Legacy heading/section fields only</option>
+                            </select>
+                        </div>
 
-            <p>
-                <label><strong>Source Field Structure</strong></label><br>
-                <select name="field_profile">
-                    <option value="auto" selected>Auto-detect per page (recommended)</option>
-                    <option value="standard">Standard PPM importer fields only</option>
-                    <option value="legacy">Legacy heading/section fields only</option>
-                </select>
-            </p>
+                        <p class="ppm-description">Auto-detect uses the standardized importer field when populated, then falls back to the legacy field used by older city pages.</p>
 
-            <p class="description">
-                Auto-detect uses the standard importer field when it contains a value,
-                then falls back to the legacy field used by older city pages.
-            </p>
-
-            <p>
-                <input type="submit" class="button button-secondary" value="Export Existing Pages">
-            </p>
-        </form>
-    </div>
+                        <div class="ppm-form-actions">
+                            <input type="submit" class="button ppm-btn" value="Export Existing Pages">
+                        </div>
+                    </form>
+                </section>
+            </div>
     <?php
 
     if (isset($_POST['preview_csv']) && check_admin_referer('ppm_bulk_import')) {
+        echo '<div class="ppm-import-preview">';
         ppm_preview_import($_FILES['csv_file'], sanitize_text_field($_POST['cpt_slug']));
+        echo '</div>';
     }
 
     if (isset($_POST['run_import']) && check_admin_referer('ppm_bulk_import')) {
+        echo '<div class="ppm-import-preview">';
         ppm_run_import(
             sanitize_text_field($_POST['import_token']),
             sanitize_text_field($_POST['cpt_slug'])
         );
+        echo '</div>';
     }
+    ?>
+        </main>
+    </div>
+    <?php
 }
 
 /* -------------------------------------------------------------------------- */
