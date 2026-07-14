@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.0.14
+ * Version: 1.0.15
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -177,11 +177,12 @@ function ppm_download_template() {
     header('Content-Disposition: attachment; filename="ppm-cpt-import-template.csv"');
 
     echo implode(',', [
-        'post_title','post_slug','post_status',
-        'section_1_title','section_1_paragraph','section_1_image',
-        'section_2_title','section_2_paragraph','section_2_image',
-        'section_3_title','section_3_paragraph','section_3_image',
-        'section_4_title','section_4_paragraph','section_4_image',
+        'post_title','post_slug','post_status','city_name',
+        'section_1_title','section_1_sub_title','section_1_paragraph','section_1_button_text','section_1_button_url','section_1_image',
+        'section_2_title','section_2_sub_title','section_2_paragraph','section_2_button_text','section_2_button_url','section_2_image',
+        'section_3_title','section_3_sub_title','section_3_paragraph','section_3_button_text','section_3_button_url','section_3_image',
+        'section_4_title','section_4_sub_title','section_4_paragraph','section_4_button_text','section_4_button_url','section_4_image',
+        'city_featured_image',
         'yoast_title','yoast_meta_description','yoast_focus_keyphrase'
     ]);
     exit;
@@ -319,7 +320,14 @@ function ppm_collect_acf_fields_recursive($fields, &$map) {
     foreach ($fields as $field) {
         if (!is_array($field)) continue;
 
-        if (!empty($field['name']) && !empty($field['key'])) {
+        // Keep the first matching field name from the location-matched groups.
+        // This prevents a duplicate field name in an unrelated group from
+        // replacing the correct key later in the scan.
+        if (
+            !empty($field['name']) &&
+            !empty($field['key']) &&
+            empty($map[$field['name']])
+        ) {
             $map[$field['name']] = $field['key'];
         }
 
@@ -329,58 +337,76 @@ function ppm_collect_acf_fields_recursive($fields, &$map) {
     }
 }
 
-function ppm_get_acf_field_key_map($cpt_slug) {
+function ppm_get_acf_field_key_map($post_id, $cpt_slug) {
     static $cache = [];
 
-    if (isset($cache[$cpt_slug])) {
-        return $cache[$cpt_slug];
+    $cache_key = $cpt_slug . ':' . (int) $post_id;
+
+    if (isset($cache[$cache_key])) {
+        return $cache[$cache_key];
     }
 
     $map = [];
 
     if (!function_exists('acf_get_field_groups') || !function_exists('acf_get_fields')) {
-        $cache[$cpt_slug] = $map;
+        $cache[$cache_key] = $map;
         return $map;
     }
 
-    $groups = acf_get_field_groups(['post_type' => $cpt_slug]);
+    // First use only groups whose location rules match this actual post.
+    $groups = acf_get_field_groups(['post_id' => $post_id]);
 
+    // Fallback for admin/import contexts where ACF cannot resolve post_id.
     if (!is_array($groups) || empty($groups)) {
-        $groups = acf_get_field_groups();
+        $groups = acf_get_field_groups(['post_type' => $cpt_slug]);
     }
 
     if (is_array($groups)) {
         foreach ($groups as $group) {
+            if (isset($group['active']) && !$group['active']) {
+                continue;
+            }
+
             $fields = acf_get_fields($group);
             ppm_collect_acf_fields_recursive($fields, $map);
         }
     }
 
-    $cache[$cpt_slug] = $map;
+    $cache[$cache_key] = $map;
     return $map;
 }
 
 function ppm_update_acf_or_meta($post_id, $cpt_slug, $key, $value) {
     $value = ppm_prepare_csv_value($value);
+    $field_key = '';
 
-    if (function_exists('update_field')) {
-        $field_key_map = ppm_get_acf_field_key_map($cpt_slug);
+    if (function_exists('get_field_object')) {
+        // Ask ACF to resolve the field in the context of the actual post first.
+        $field_object = get_field_object($key, $post_id, false, false);
 
-        if (!empty($field_key_map[$key])) {
-            update_field($field_key_map[$key], $value, $post_id);
-            return;
-        }
-
-        // Fallback: try by field name
-        $updated = update_field($key, $value, $post_id);
-
-        if ($updated !== false) {
-            return;
+        if (
+            is_array($field_object) &&
+            !empty($field_object['key']) &&
+            !empty($field_object['name']) &&
+            $field_object['name'] === $key
+        ) {
+            $field_key = $field_object['key'];
         }
     }
 
-    // Final fallback
+    if ($field_key === '') {
+        $field_key_map = ppm_get_acf_field_key_map($post_id, $cpt_slug);
+        $field_key = !empty($field_key_map[$key]) ? $field_key_map[$key] : '';
+    }
+
+    // Save the actual value directly under the field name.
     update_post_meta($post_id, $key, $value);
+
+    // Save ACF's hidden field-name-to-field-key reference explicitly. This is
+    // what lets ACF and Elementor consistently resolve imported values.
+    if ($field_key !== '') {
+        update_post_meta($post_id, '_' . $key, $field_key);
+    }
 }
 
 /* -------------------------------------------------------------------------- */
@@ -521,11 +547,12 @@ function ppm_export_cpt_csv() {
     ]);
 
     $headers = [
-        'post_title','post_slug','post_status',
-        'section_1_title','section_1_paragraph','section_1_image',
-        'section_2_title','section_2_paragraph','section_2_image',
-        'section_3_title','section_3_paragraph','section_3_image',
-        'section_4_title','section_4_paragraph','section_4_image',
+        'post_title','post_slug','post_status','city_name',
+        'section_1_title','section_1_sub_title','section_1_paragraph','section_1_button_text','section_1_button_url','section_1_image',
+        'section_2_title','section_2_sub_title','section_2_paragraph','section_2_button_text','section_2_button_url','section_2_image',
+        'section_3_title','section_3_sub_title','section_3_paragraph','section_3_button_text','section_3_button_url','section_3_image',
+        'section_4_title','section_4_sub_title','section_4_paragraph','section_4_button_text','section_4_button_url','section_4_image',
+        'city_featured_image',
         'yoast_title','yoast_meta_description','yoast_focus_keyphrase'
     ];
 
@@ -557,22 +584,37 @@ function ppm_export_cpt_csv() {
             $post->post_title,
             $post->post_name,
             $post->post_status,
+            ppm_export_get_field_value($post->ID, 'city_name'),
 
             ppm_export_pick_field($post->ID, 'section_1_title', 'heading_1', $profile),
+            ppm_export_get_field_value($post->ID, 'section_1_sub_title'),
             ppm_export_pick_field($post->ID, 'section_1_paragraph', 'section_1', $profile),
+            ppm_export_get_field_value($post->ID, 'section_1_button_text'),
+            ppm_export_get_field_value($post->ID, 'section_1_button_url'),
             ppm_export_pick_field($post->ID, 'section_1_image', 'image_1', $profile, true),
 
             ppm_export_pick_field($post->ID, 'section_2_title', 'heading_2', $profile),
+            ppm_export_get_field_value($post->ID, 'section_2_sub_title'),
             ppm_export_pick_field($post->ID, 'section_2_paragraph', 'section_2', $profile),
+            ppm_export_get_field_value($post->ID, 'section_2_button_text'),
+            ppm_export_get_field_value($post->ID, 'section_2_button_url'),
             ppm_export_pick_field($post->ID, 'section_2_image', 'image_2', $profile, true),
 
             ppm_export_pick_field($post->ID, 'section_3_title', 'heading_3', $profile),
+            ppm_export_get_field_value($post->ID, 'section_3_sub_title'),
             ppm_export_pick_field($post->ID, 'section_3_paragraph', 'section_3', $profile),
+            ppm_export_get_field_value($post->ID, 'section_3_button_text'),
+            ppm_export_get_field_value($post->ID, 'section_3_button_url'),
             ppm_export_pick_field($post->ID, 'section_3_image', 'image_3', $profile, true),
 
             ppm_export_pick_field($post->ID, 'section_4_title', 'heading_4', $profile),
+            ppm_export_get_field_value($post->ID, 'section_4_sub_title'),
             ppm_export_pick_field($post->ID, 'section_4_paragraph', 'section_4', $profile),
+            ppm_export_get_field_value($post->ID, 'section_4_button_text'),
+            ppm_export_get_field_value($post->ID, 'section_4_button_url'),
             ppm_export_pick_field($post->ID, 'section_4_image', 'image_4', $profile, true),
+
+            ppm_export_image_url(ppm_export_get_field_value($post->ID, 'city_featured_image')),
 
             get_post_meta($post->ID, '_yoast_wpseo_title', true),
             get_post_meta($post->ID, '_yoast_wpseo_metadesc', true),
