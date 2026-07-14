@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.0.13
+ * Version: 1.0.14
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -191,10 +191,61 @@ function ppm_download_template() {
 /* PREVIEW                                                                    */
 /* -------------------------------------------------------------------------- */
 
+function ppm_parse_csv_file($file_path) {
+    $handle = fopen($file_path, 'r');
+
+    if ($handle === false) {
+        return new WP_Error('ppm_csv_open_failed', 'Could not open the uploaded CSV file.');
+    }
+
+    $header = fgetcsv($handle);
+
+    if ($header === false || !is_array($header)) {
+        fclose($handle);
+        return new WP_Error('ppm_csv_missing_header', 'The CSV file does not contain a valid header row.');
+    }
+
+    // Normalize every header, including removal of the UTF-8 BOM from post_title.
+    $header = array_map('ppm_prepare_csv_value', $header);
+
+    $rows = [];
+
+    // fgetcsv must read directly from the stream so quoted WYSIWYG content may
+    // safely contain commas, quotes, and line breaks without splitting a page
+    // into multiple broken rows.
+    while (($row = fgetcsv($handle)) !== false) {
+        if ($row === [null] || $row === []) {
+            continue;
+        }
+
+        $rows[] = $row;
+    }
+
+    fclose($handle);
+
+    return compact('header', 'rows');
+}
+
 function ppm_preview_import($file, $cpt_slug) {
-    $lines  = file($file['tmp_name'], FILE_IGNORE_NEW_LINES);
-    $rows   = array_map('str_getcsv', $lines);
-    $header = array_map('trim', array_shift($rows));
+    if (empty($file['tmp_name']) || !is_uploaded_file($file['tmp_name'])) {
+        echo "<div class='error'><p>CSV upload failed.</p></div>";
+        return;
+    }
+
+    $payload = ppm_parse_csv_file($file['tmp_name']);
+
+    if (is_wp_error($payload)) {
+        echo "<div class='error'><p>" . esc_html($payload->get_error_message()) . "</p></div>";
+        return;
+    }
+
+    $header = $payload['header'];
+    $rows   = $payload['rows'];
+
+    if (!in_array('post_slug', $header, true)) {
+        echo "<div class='error'><p>The CSV is missing the required post_slug column.</p></div>";
+        return;
+    }
 
     $token = wp_generate_uuid4();
     set_transient("ppm_import_$token", compact('header','rows'), 1800);
@@ -583,10 +634,18 @@ function ppm_run_import($token, $cpt_slug) {
 
         $post_args = [
             'post_type'   => $cpt_slug,
-            'post_title'  => $post_title,
             'post_name'   => $post_slug,
             'post_status' => $post_status,
         ];
+
+        // Never erase an existing title because of a malformed or missing CSV
+        // value. New posts still require a title.
+        if ($post_title !== '') {
+            $post_args['post_title'] = $post_title;
+        } elseif (!$existing) {
+            $skipped++;
+            continue;
+        }
 
         $post_id = $existing
             ? wp_update_post(array_merge($post_args, ['ID' => $existing->ID]), true)
