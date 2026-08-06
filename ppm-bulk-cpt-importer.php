@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.0.16
+ * Version: 1.0.17
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -29,8 +29,6 @@ if (file_exists($ppm_update_checker_path)) {
             __FILE__,
             'ppm-bulk-cpt-importer'
         );
-
-        $ppm_update_checker->setAuthentication('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');
     }
 }
 
@@ -738,6 +736,58 @@ function ppm_update_acf_or_meta($post_id, $cpt_slug, $key, $value) {
     }
 }
 
+/**
+ * Resolve an image URL to a media library attachment ID.
+ *
+ * The CSV carries plain URLs because attachment IDs differ from site to site.
+ * Elementor's background controls only accept dynamic tags that return a media
+ * object, so a URL string cannot drive a background on its own. Converting the
+ * URL to a real attachment is what lets the featured-image tag do that job.
+ *
+ * Returns 0 when the URL is unusable or the sideload fails.
+ */
+function ppm_resolve_attachment_id($url, $post_id = 0) {
+    static $cache = [];
+
+    $url = trim((string) $url);
+
+    if ($url === '' || !filter_var($url, FILTER_VALIDATE_URL)) {
+        return 0;
+    }
+
+    // Many rows in one import commonly share a hero image. Without this, each
+    // row would sideload its own duplicate copy of the same file.
+    if (isset($cache[$url])) {
+        return $cache[$url];
+    }
+
+    $attachment_id = (int) attachment_url_to_postid($url);
+
+    // A resized URL (…-1024x768.jpg) never matches; retry against the original.
+    if (!$attachment_id) {
+        $original = preg_replace('/-\d+x\d+(\.[A-Za-z0-9]+)$/', '$1', $url);
+
+        if ($original !== $url) {
+            $attachment_id = (int) attachment_url_to_postid($original);
+        }
+    }
+
+    if (!$attachment_id) {
+        if (!function_exists('media_sideload_image')) {
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+            require_once ABSPATH . 'wp-admin/includes/media.php';
+            require_once ABSPATH . 'wp-admin/includes/image.php';
+        }
+
+        $sideloaded = media_sideload_image($url, $post_id, null, 'id');
+        $attachment_id = is_wp_error($sideloaded) ? 0 : (int) $sideloaded;
+    }
+
+    $cache[$url] = $attachment_id;
+
+    return $attachment_id;
+}
+
 /* -------------------------------------------------------------------------- */
 /* SHORTCODES                                                                 */
 /* -------------------------------------------------------------------------- */
@@ -1056,6 +1106,28 @@ function ppm_run_import($token, $cpt_slug) {
 
             if ($key === 'yoast_focus_keyphrase') {
                 update_post_meta($post_id, '_yoast_wpseo_focuskw', $value);
+                continue;
+            }
+
+            // 'featured_image' is the older column name still present in the
+            // bundled CSV template; 'city_featured_image' is what the exporter
+            // writes. Both feed the same destination.
+            if ($key === 'city_featured_image' || $key === 'featured_image') {
+                // Keep the raw URL on the ACF field so the image shortcode and
+                // any URL-based markup keep working exactly as before.
+                if ($key === 'city_featured_image') {
+                    ppm_update_acf_or_meta($post_id, $cpt_slug, $key, $value);
+                }
+
+                // Also set the real WP featured image, which is what Elementor's
+                // post-featured-image dynamic tag reads to drive the hero
+                // background.
+                $attachment_id = ppm_resolve_attachment_id($value, $post_id);
+
+                if ($attachment_id) {
+                    set_post_thumbnail($post_id, $attachment_id);
+                }
+
                 continue;
             }
 
