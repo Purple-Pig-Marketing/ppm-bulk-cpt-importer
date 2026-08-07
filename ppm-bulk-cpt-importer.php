@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.0.17
+ * Version: 1.0.18
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -11,6 +11,47 @@
  */
 
 if (!defined('ABSPATH')) exit;
+
+/* -------------------------------------------------------------------------- */
+/* VERSION                                                                    */
+/* -------------------------------------------------------------------------- */
+
+// Read the version back out of the plugin header above so the admin badge and
+// the stylesheet cache-buster can never drift from the real version. Bumping
+// the header is the only edit a release needs.
+if (!defined('PPM_BULK_IMPORTER_VERSION')) {
+    $ppm_header_data = get_file_data(__FILE__, ['Version' => 'Version'], 'plugin');
+
+    define(
+        'PPM_BULK_IMPORTER_VERSION',
+        $ppm_header_data['Version'] !== '' ? $ppm_header_data['Version'] : '0.0.0'
+    );
+}
+
+/* -------------------------------------------------------------------------- */
+/* ADMIN NOTICE SUPPRESSION                                                   */
+/* -------------------------------------------------------------------------- */
+
+// Unrelated plugins inject promotional notices into every admin screen, which
+// lands them in the middle of this plugin's header layout. Strip them on this
+// one screen. The importer reports its own results inline from the page body
+// rather than through these hooks, so nothing of ours is lost.
+add_action('in_admin_header', function () {
+    if (!function_exists('get_current_screen')) {
+        return;
+    }
+
+    $screen = get_current_screen();
+
+    if (!$screen || $screen->id !== 'toplevel_page_ppm-bulk-import') {
+        return;
+    }
+
+    remove_all_actions('admin_notices');
+    remove_all_actions('all_admin_notices');
+    remove_all_actions('user_admin_notices');
+    remove_all_actions('network_admin_notices');
+}, PHP_INT_MAX);
 
 /* -------------------------------------------------------------------------- */
 /* SAFE GITHUB UPDATE CHECKER                                                 */
@@ -357,7 +398,7 @@ body.toplevel_page_ppm-bulk-import #wpcontent {
 }
 CSS;
 
-    wp_register_style('ppm-bulk-import-admin', false, [], '1.0.16');
+    wp_register_style('ppm-bulk-import-admin', false, [], PPM_BULK_IMPORTER_VERSION);
     wp_enqueue_style('ppm-bulk-import-admin');
     wp_add_inline_style('ppm-bulk-import-admin', $css);
 });
@@ -411,7 +452,7 @@ function ppm_bulk_import_page() {
                         <p>Create, update, export, and standardize custom post type pages from one reliable CSV workflow.</p>
                     </div>
                 </div>
-                <span class="ppm-admin-version">v1.0.16</span>
+                <span class="ppm-admin-version">v<?php echo esc_html(PPM_BULK_IMPORTER_VERSION); ?></span>
             </div>
         </header>
 
