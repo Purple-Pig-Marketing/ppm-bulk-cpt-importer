@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.4.1
+ * Version: 1.5.0
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -26,6 +26,17 @@ if (!defined('PPM_BULK_IMPORTER_VERSION')) {
         'PPM_BULK_IMPORTER_VERSION',
         $ppm_header_data['Version'] !== '' ? $ppm_header_data['Version'] : '0.0.0'
     );
+}
+
+/* -------------------------------------------------------------------------- */
+/* WP-CLI                                                                     */
+/* -------------------------------------------------------------------------- */
+
+// Loaded only under WP-CLI, so a normal page load never parses it. The commands
+// exist for fleet work: this plugin is already on every site, so one loop over
+// SSH can run the same command everywhere instead of fifty admin logins.
+if (defined('WP_CLI') && WP_CLI) {
+    require_once __DIR__ . '/includes/cli.php';
 }
 
 /* -------------------------------------------------------------------------- */
