@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.4.0
+ * Version: 1.4.1
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -554,19 +554,56 @@ function ppm_register_local_acf_groups() {
 
         $post_type = ppm_profile_post_type($profile);
 
-        // A site whose city CPT uses a different slug manages its own group;
-        // binding ours to a post type that does not exist would do nothing
-        // useful and would show an orphaned group in the ACF admin.
+        // Binding a group to a post type that does not exist on this site would
+        // do nothing useful and would show as orphaned in the ACF admin.
         if ($post_type === '' || !post_type_exists($post_type)) {
             continue;
         }
 
-        if (ppm_acf_group_in_database($profile['acf_group']['key'])) {
+        if (!ppm_should_register_acf_group($profile_key, $profile, $post_type)) {
             continue;
         }
 
         acf_add_local_field_group(ppm_build_acf_group($profile_key, $profile, $post_type));
     }
+}
+
+/**
+ * Whether this plugin may install its own field group onto a post type.
+ *
+ * Only onto a post type the plugin itself registered.
+ *
+ * A site that had city pages before it ever had this plugin already has a field
+ * group on that post type: its own key, but the same field names. Adding ours
+ * alongside it puts two groups with duplicate field names on one post type —
+ * every box twice in the editor, and an import that can rewrite the hidden
+ * `_fieldname` key references the site's existing Elementor bindings resolve
+ * through. That is the collision the importer's field keys were regenerated to
+ * escape, and re-creating it automatically on every update would be worse than
+ * the manual JSON import it replaced.
+ *
+ * A post type this plugin registers is new to the site, so nothing can already
+ * be bound to it. That is the only case where installing a group is safe
+ * without inspecting what the site already has.
+ *
+ * Sites that do want the group can opt in through the filter.
+ */
+function ppm_should_register_acf_group($profile_key, $profile, $post_type) {
+    $owns_post_type = !empty($profile['register_cpt']['post_type'])
+        && $profile['register_cpt']['post_type'] === $post_type;
+
+    // Never replace a group the site already stores under this key. ACF merges
+    // local over database, so registering would discard their edits.
+    if ($owns_post_type && ppm_acf_group_in_database($profile['acf_group']['key'])) {
+        $owns_post_type = false;
+    }
+
+    return (bool) apply_filters(
+        'ppm_register_acf_group',
+        $owns_post_type,
+        $profile_key,
+        $post_type
+    );
 }
 // init:6 rather than acf/init. ACF fires acf/init from its init:5 callback and
 // only registers the acf-field-group post type afterwards, so the database
