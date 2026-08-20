@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.5.0
+ * Version: 1.6.0
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -32,9 +32,14 @@ if (!defined('PPM_BULK_IMPORTER_VERSION')) {
 /* WP-CLI                                                                     */
 /* -------------------------------------------------------------------------- */
 
-// Loaded only under WP-CLI, so a normal page load never parses it. The commands
-// exist for fleet work: this plugin is already on every site, so one loop over
-// SSH can run the same command everywhere instead of fifty admin logins.
+// The export engine is shared by the admin download button and the WP-CLI
+// command, so the two cannot drift into producing different files.
+require_once __DIR__ . '/includes/export.php';
+
+// The commands themselves load only under WP-CLI, so a normal page load never
+// parses them. They exist for fleet work: this plugin is already on every site,
+// so one loop over SSH can run the same command everywhere instead of fifty
+// admin logins.
 if (defined('WP_CLI') && WP_CLI) {
     require_once __DIR__ . '/includes/cli.php';
 }
@@ -1277,9 +1282,42 @@ body.toplevel_page_ppm-bulk-import #wpcontent {
 .ppm-inline-notice-ok p {
     color: #1f5533;
 }
-.ppm-template-card {
+.ppm-template-card,
+.ppm-audit-card {
     margin-top: 24px;
     min-height: 0;
+}
+.ppm-audit-form {
+    max-width: 460px;
+}
+.ppm-audit-form .ppm-field {
+    margin-bottom: 14px;
+}
+.ppm-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 0 0 12px;
+    color: #2f052d;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.ppm-admin-page .ppm-checkbox input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+}
+.ppm-audit-note {
+    margin: 18px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--ppm-border);
+}
+.ppm-audit-note code {
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: #ebeef9;
+    font-size: 13px;
 }
 .ppm-template-list {
     display: flex;
@@ -1388,6 +1426,124 @@ add_action('admin_init', function () {
 /* -------------------------------------------------------------------------- */
 
 add_action('admin_post_ppm_export_cpt_csv', 'ppm_export_cpt_csv');
+
+/* -------------------------------------------------------------------------- */
+/* CONTENT AUDIT EXPORT                                                       */
+/* -------------------------------------------------------------------------- */
+
+add_action('admin_post_ppm_export_inventory', 'ppm_export_inventory_csv');
+
+/**
+ * Stream a content audit of any post type to the browser.
+ *
+ * The same export the WP-CLI command writes to a file, sent as a download
+ * instead, so a site can be audited without a terminal.
+ */
+function ppm_export_inventory_csv() {
+    if (!current_user_can('manage_options')) {
+        wp_die('You do not have permission to export this data.');
+    }
+
+    check_admin_referer('ppm_export_inventory');
+
+    $post_type = isset($_POST['post_type'])
+        ? sanitize_key(wp_unslash($_POST['post_type']))
+        : '';
+
+    if (!$post_type || !post_type_exists($post_type)) {
+        wp_die('Choose a post type that exists on this site.');
+    }
+
+    $include_content = !empty($_POST['include_content']);
+
+    // Reading the body text of every page is the slow part, so give the request
+    // room. Managed hosts often disallow this; there is nothing to do if so,
+    // which is why the form warns that large sites may need the CLI command.
+    if (function_exists('set_time_limit')) {
+        @set_time_limit(0);
+    }
+
+    while (ob_get_level()) {
+        ob_end_clean();
+    }
+
+    $filename = sprintf(
+        'ppm-content-audit-%s-%s.csv',
+        sanitize_file_name($post_type),
+        gmdate('Y-m-d')
+    );
+
+    nocache_headers();
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename="' . $filename . '"');
+
+    $output = fopen('php://output', 'w');
+
+    if ($output === false) {
+        wp_die('Could not open the CSV output stream.');
+    }
+
+    ppm_stream_export($output, [
+        'post_type'       => $post_type,
+        'include_content' => $include_content,
+        // Smaller batches than the CLI default: each one is flushed to the
+        // browser, which keeps the download visibly progressing rather than
+        // looking stalled on a site with thousands of pages.
+        'batch'           => 100,
+        'progress'        => function () {
+            flush();
+        },
+    ]);
+
+    fclose($output);
+    exit;
+}
+
+function ppm_render_content_audit_card() {
+    $post_types = ppm_exportable_post_types();
+
+    if (empty($post_types)) {
+        return;
+    }
+
+    $selected = isset($post_types['page']) ? 'page' : key($post_types);
+    ?>
+    <section class="ppm-admin-card ppm-audit-card">
+        <div class="ppm-admin-card-icon"><span class="dashicons dashicons-search"></span></div>
+        <h2>Content Audit</h2>
+        <p>Download a spreadsheet of every page on this site &mdash; address, status, which editor built it, SEO fields, and the words on the page. Search it to find outdated copy without opening pages one by one.</p>
+
+        <form class="ppm-audit-form" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+            <?php wp_nonce_field('ppm_export_inventory'); ?>
+            <input type="hidden" name="action" value="ppm_export_inventory">
+
+            <div class="ppm-field">
+                <label for="ppm-audit-post-type">What to export</label>
+                <select id="ppm-audit-post-type" name="post_type">
+                    <?php foreach ($post_types as $name => $label) : ?>
+                        <option value="<?php echo esc_attr($name); ?>" <?php selected($name, $selected); ?>>
+                            <?php echo esc_html($label); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <label class="ppm-checkbox">
+                <input type="checkbox" name="include_content" value="1" checked>
+                <span>Include the text of each page</span>
+            </label>
+
+            <p class="ppm-description">Elementor pages are read from the live layout, not the stored excerpt, so the text is what visitors actually see. Leaving this unticked is much faster and still lists every page.</p>
+
+            <div class="ppm-form-actions">
+                <input type="submit" class="button ppm-btn ppm-btn-primary" value="Download Content Audit">
+            </div>
+        </form>
+
+        <p class="ppm-description ppm-audit-note">On a very large site the download may time out. If that happens, the same export runs without a time limit from the command line: <code>wp ppm export --post-type=page</code></p>
+    </section>
+    <?php
+}
 
 /* -------------------------------------------------------------------------- */
 /* ELEMENTOR TEMPLATE LIBRARY                                                 */
@@ -1789,6 +1945,7 @@ function ppm_bulk_import_page() {
             </div>
 
             <?php ppm_render_template_library($profile_key, $profile); ?>
+            <?php ppm_render_content_audit_card(); ?>
     <?php
 
     if (isset($_POST['preview_csv']) && check_admin_referer('ppm_bulk_import')) {
