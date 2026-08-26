@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.6.1
+ * Version: 1.7.0
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -122,7 +122,7 @@ function ppm_get_content_profiles() {
                 [
                     'file'        => 'ppc-landing-page.json',
                     'label'       => 'PPC landing page layout',
-                    'description' => 'Not bundled yet. Build the layout once in Elementor against the PPC fields, export it, and commit the JSON as templates/elementor/ppc-landing-page.json — every client site then gets it from a plugin update.',
+                    'description' => 'Multi-step form, proof bar, gallery, comparison table, FAQ and sticky mobile CTA. Brand colours are bound to this site\'s Elementor global palette, so buttons and icons adopt your colours on install. Anything that must be replaced by hand is marked [[LIKE THIS]] — search the page for double brackets before publishing.',
                 ],
             ],
             'description'       => 'Standalone paid-traffic landing pages. Imported noindexed and on the Elementor canvas template so they never compete with the organic city pages for the same queries.',
