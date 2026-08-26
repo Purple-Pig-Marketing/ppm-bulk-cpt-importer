@@ -1,0 +1,3991 @@
+{
+ "version": "0.4",
+ "title": "PPC Landing Page",
+ "type": "page",
+ "content": [
+  {
+   "id": "1a03a5",
+   "elType": "section",
+   "settings": {
+    "structure": "10",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "0",
+     "bottom": "0",
+     "left": "0",
+     "isLinked": false
+    },
+    "margin": {
+     "unit": "px",
+     "top": "0",
+     "right": "0",
+     "bottom": "0",
+     "left": "0",
+     "isLinked": false
+    },
+    "css_classes": "ud-assets"
+   },
+   "elements": [
+    {
+     "id": "1a026e",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100.0,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "1a0137",
+       "elType": "widget",
+       "widgetType": "html",
+       "settings": {
+        "html": "\n<style id=\"ud-lp-css\">\n/* ---- [[BUSINESS NAME]] conversion LP ---- */\n\n/* ---- header: matches the site treatment (blue bar, white logo panel, red rule) ---- */\n.ud-header{box-shadow:0 3px 16px rgba(0,0,0,.16)}\n.ud-header .elementor-container{max-width:1340px!important}\n.ud-hdr{display:flex;align-items:center;gap:20px;min-height:92px}\n.ud-hdr__logo{flex:0 0 auto;background:#fff;border-radius:14px;padding:8px 14px;\n  display:flex;align-items:center;box-shadow:0 3px 12px rgba(0,0,0,.18)}\n.ud-hdr__logo img{display:block;width:186px;height:auto}\n.ud-hdr__tag{flex:1 1 auto;color:#fff;font-size:23px;font-weight:800;line-height:1.2}\n.ud-hdr__actions{flex:0 0 auto;display:flex;align-items:center;gap:12px}\n.ud-hdr__call,.ud-hdr__cta{display:inline-flex;align-items:center;justify-content:center;\n  padding:15px 24px;border-radius:6px;font-size:16px;font-weight:800;letter-spacing:.3px;\n  text-decoration:none;white-space:nowrap;transition:background .15s,transform .15s}\n.ud-hdr__call{background:#8C292F;color:#fff}\n.ud-hdr__call:hover{background:#690202;color:#fff}\n.ud-hdr__cta{background:#141414;color:#fff}\n.ud-hdr__cta:hover{background:#000;color:#fff}\n\n/* ---- hero ---- */\n.ud-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}\n.ud-badges span{font-size:12.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;\n  color:#8C292F;background:rgba(140,41,47,.09);border:1px solid rgba(140,41,47,.22);\n  padding:6px 11px;border-radius:100px}\n.ud-badges--light span{color:#fff;background:rgba(255,255,255,.14);\n  border-color:rgba(255,255,255,.34)}\n.ud-hero .elementor-star-rating{--e-star-rating-gap:2px}\n\n/* ---- form card ---- */\n.ud-formcard{scroll-margin-top:110px}\n#ud-form,#ud-form-bottom{scroll-margin-top:150px}\n.ud-form-foot{margin:12px 0 0;text-align:center;font-size:15px;color:#6B6969}\n.ud-form-foot .ud-tel{color:#1C1C1C;font-weight:800;text-decoration:none}\n\n/* ---- step indicator: slim brand progress bar + \"STEP n OF 3\" ---- */\n.ud-form .elementor-progress-wrapper{height:8px;border-radius:100px;background:#E2E0E0;\n  overflow:hidden;margin:0 0 4px}\n.ud-form .elementor-progress-bar{background:#8C292F;height:8px;border-radius:100px;\n  transition:width .25s ease}\n.ud-form .elementor-progress-percentage,\n.ud-form .elementor-progress-text{display:none!important}\n.ud-steplabel{font-size:12.5px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;\n  color:#6B6969;margin:0 0 8px}\n\n/* ---- step 1/2 answer cards: tappable, one per row, never overlapping ---- */\n.ud-form .elementor-field-group > .elementor-field-label{display:block;width:100%;\n  margin:0 0 10px;font-size:17px;font-weight:800;color:#1C1C1C;line-height:1.3}\n.ud-form .elementor-field-group{margin-bottom:9px!important}\n/* step 2 asks three questions - keep it inside the fold, no scrolling */\n.ud-form .elementor-field-group > .elementor-field-label{margin:0 0 5px!important;\n  font-size:14.5px!important}\n.ud-cards{gap:7px!important}\n.ud-cards--compact > .elementor-field-option > label{padding:7px 12px!important;\n  min-height:34px!important;font-size:14.2px!important}\n.ud-form .e-form__step:not(:first-of-type) .e-form__buttons{margin-top:10px!important}\n.ud-form .elementor-field-group:last-of-type{margin-bottom:0}\n\n.ud-form .e-form__buttons{margin-top:14px;gap:10px}\n.ud-form .e-form__buttons__wrapper{gap:10px}\n\n/* ---- generic bands ---- */\n.ud-proofbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;\n  color:#fff;font-size:15.5px;text-align:center}\n.ud-proofbar strong{color:#fff}\n.ud-proofbar__stars{color:#F5A623;letter-spacing:2px;font-size:17px}\n.ud-proofbar__q{opacity:.82;font-style:italic}\n.ud-step-n{width:38px;height:38px;border-radius:100px;background:#8C292F;color:#fff;\n  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px}\n.ud-step-n--light{background:#fff;color:#2D7B9C}\n.ud-band--invert .elementor-widget-text-editor a{color:#fff;text-decoration:underline}\n.ud-split{margin-bottom:26px}\n.ud-gallery .gallery-item{padding:7px!important}\n.ud-gallery .gallery-item img{width:100%!important;height:auto!important;aspect-ratio:4/3;\n  object-fit:cover;border-radius:10px;display:block;border:0!important;\n  box-shadow:0 4px 16px rgba(0,0,0,.13)}\n.ud-gallery .gallery-icon{margin:0!important}\n\n/* ---- before / after ---- */\n.ud-ba{margin-bottom:30px}\n.ud-ba .elementor-widget-image img{width:100%;aspect-ratio:4/3;object-fit:cover;\n  border-radius:10px;display:block}\n.ud-ba__tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:1.2px;\n  text-transform:uppercase;padding:5px 12px;border-radius:4px;margin:0 0 10px}\n.ud-ba__tag--b{background:#EDEDED;color:#555}\n.ud-ba__tag--a{background:#8C292F;color:#fff}\n\n/* ---- service area ---- */\n.ud-areas{display:flex;flex-wrap:wrap;gap:9px}\n.ud-areas span{font-size:15px;font-weight:600;color:#1C1C1C;background:#fff;border:1px solid #E2E0E0;\n  padding:9px 15px;border-radius:100px}\n.ud-areas__note{margin:14px 0 0;font-size:16px;color:#3F3F3F}\n\n/* ---- final CTA + footer ---- */\n.ud-finalcta__sub{margin:0;text-align:center;color:rgba(255,255,255,.86);font-size:18px}\n.ud-tel--big{color:#fff;font-weight:800;font-size:22px;text-decoration:none}\n.ud-finalcta__card .ud-formcard{max-width:660px;margin-left:auto;margin-right:auto;float:none}\n.ud-foot{text-align:center;color:rgba(255,255,255,.72);font-size:14.5px;line-height:1.7}\n.ud-foot p{margin:4px 0}\n.ud-foot__logo{width:150px;filter:brightness(0) invert(1);opacity:.85;margin-bottom:10px}\n.ud-foot a{color:#fff;text-decoration:none}\n.ud-foot__legal{margin-top:10px;opacity:.6;font-size:13px}\n\n/* ---- sticky mobile action bar ---- */\n.ud-mobilebar{display:none}\n@media(max-width:1024px){\n  .ud-hdr__tag{display:none}\n  .ud-formcard{margin-top:24px}\n}\n@media(max-width:767px){\n  .ud-mobilebar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:9999;\n    box-shadow:0 -3px 16px rgba(0,0,0,.2)}\n  .ud-mobilebar a{flex:1;text-align:center;padding:15px 8px;font-weight:800;font-size:16.5px;\n    text-decoration:none;color:#fff}\n  .ud-mobilebar__call{background:#1C1C1C}\n  .ud-mobilebar__cta{background:#8C292F}\n  body{padding-bottom:58px}\n  .ud-hdr{min-height:68px;gap:10px}\n  .ud-hdr__logo{padding:5px 9px;border-radius:10px}\n  .ud-hdr__logo img{width:118px}\n  .ud-hdr__cta{display:none}\n  .ud-hdr__actions{margin-left:auto}\n  .ud-hdr__call{padding:11px 15px;font-size:14.5px}\n  .ud-hero-copy{padding-top:20px!important}\n  .ud-cards--inline .elementor-field-option{flex:1 1 100%}\n}\n/* =========================================================================\n   OVERRIDES - verified against the live DOM, not guessed.\n   Two things caught me out here, both recorded in BUILD-NOTES:\n   1. A form field's css_classes lands ON .elementor-field-subgroup itself,\n      so \".ud-cards .elementor-field-subgroup\" matches NOTHING. Use \".ud-cards\".\n   2. The testimonial widget uses single-dash classes\n      (.elementor-testimonial-name), not BEM (__name).\n   ========================================================================= */\n\n/* header buttons: theme colors bare anchors red at high specificity, so CALL\n   rendered red-on-red (invisible) and REQUEST ESTIMATE red-on-black */\n.ud-header .ud-hdr__call,\n.ud-header .ud-hdr__call:link,\n.ud-header .ud-hdr__call:visited,\n.ud-header .ud-hdr__call:hover,\n.ud-header .ud-hdr__cta,\n.ud-header .ud-hdr__cta:link,\n.ud-header .ud-hdr__cta:visited,\n.ud-header .ud-hdr__cta:hover{color:#fff!important;text-decoration:none!important}\n\n/* answer cards - .ud-cards IS the subgroup */\n.ud-cards{display:flex!important;flex-direction:column!important;gap:10px!important;\n  width:100%!important;margin:0!important;padding:0!important;align-items:stretch!important}\n.ud-cards > .elementor-field-option{display:block!important;position:relative!important;\n  width:100%!important;max-width:100%!important;margin:0!important;padding:0!important;\n  float:none!important;flex:0 0 auto!important}\n.ud-cards > .elementor-field-option > input[type=radio]{position:absolute!important;top:0!important;\n  left:0!important;width:100%!important;height:100%!important;margin:0!important;padding:0!important;\n  opacity:0!important;z-index:2!important;cursor:pointer!important;appearance:none!important;\n  -webkit-appearance:none!important}\n.ud-cards > .elementor-field-option > label{display:flex!important;position:relative!important;\n  align-items:center!important;gap:12px!important;width:100%!important;margin:0!important;\n  padding:15px 17px!important;border:2px solid #E2E0E0;border-radius:10px;background:#fff;\n  cursor:pointer;font-size:16.5px;font-weight:600;color:#1C1C1C;min-height:54px;line-height:1.3;\n  float:none!important;box-sizing:border-box!important;\n  transition:border-color .15s,background .15s,box-shadow .15s}\n.ud-cards > .elementor-field-option > label::before{content:attr(data-ud-icon);font-size:21px;\n  line-height:1;flex:0 0 auto}\n.ud-cards > .elementor-field-option > label:hover{border-color:#8C292F;background:rgba(140,41,47,.03)}\n.ud-cards > .elementor-field-option > input:checked + label{border-color:#8C292F;\n  background:rgba(140,41,47,.07);box-shadow:0 0 0 3px rgba(140,41,47,.13)}\n.ud-cards > .elementor-field-option > input:focus-visible + label{outline:3px solid #2D7B9C;\n  outline-offset:2px}\n.ud-cards--compact > .elementor-field-option > label{padding:12px 15px!important;min-height:46px;\n  font-size:15.5px}\n.ud-cards--inline{flex-direction:row!important;flex-wrap:wrap!important}\n.ud-cards--inline > .elementor-field-option{width:auto!important;flex:1 1 28%!important}\n.ud-form .elementor-field-group{margin-bottom:9px!important}\n/* step 2 asks three questions - keep it inside the fold, no scrolling */\n.ud-form .elementor-field-group > .elementor-field-label{margin:0 0 5px!important;\n  font-size:14.5px!important}\n.ud-cards{gap:7px!important}\n.ud-cards--compact > .elementor-field-option > label{padding:7px 12px!important;\n  min-height:34px!important;font-size:14.2px!important}\n.ud-form .e-form__step:not(:first-of-type) .e-form__buttons{margin-top:10px!important}\n\n/* step indicator: Elementor's own bar is hidden. Its DOM is\n     .e-form__indicators > .e-form__indicators__indicator__progress > .__progress__meter\n   with no inline width, and Elementor resets it on every step change - so we\n   render .ud-bar ourselves and nothing competes for it. */\n.ud-form .e-form__indicators{display:none!important}\n.ud-bar{display:flex!important;gap:6px;margin:0 0 10px;padding:0;list-style:none}\n.ud-bar > span{flex:1 1 0;display:block;height:8px;border-radius:100px;\n  background:#E2E0E0;transition:background .25s ease}\n.ud-bar > span.on{background:#8C292F}\n\n/* the reassurance line has done its job by step 2 - reclaim the space */\n.ud-formcard[data-ud-step]:not([data-ud-step=\"1\"]) .ud-form-sub{display:none!important}\n\n/* Step 1 auto-advances on tap, so its Next button is moved off-screen rather than\n   display:none - it must stay clickable for the programmatic advance. Scoped to the\n   first step only, so it can never get stuck hiding steps 2 and 3. */\n.ud-form .e-form__step:first-of-type .e-form__buttons{position:absolute!important;\n  left:-9999px!important;width:1px!important;height:1px!important;overflow:hidden!important}\n.ud-form .e-form__step:not(:first-of-type) .e-form__buttons{display:flex!important;\n  flex-direction:row!important;flex-wrap:nowrap!important;gap:10px!important;\n  margin-top:12px!important;padding:0!important}\n.ud-form .e-form__buttons__wrapper{display:flex!important;flex-direction:row!important;\n  gap:10px!important;width:100%!important;margin:0!important;padding:0!important}\n.ud-form .e-form__buttons__wrapper__button{margin:0!important;padding:13px 20px!important;\n  font-size:16px!important}\n/* Back is secondary - it should not compete with Continue */\n.ud-form .e-form__buttons__wrapper__button-previous{flex:0 0 auto!important;\n  background:transparent!important;color:#6B6969!important;\n  border:1px solid #E2E0E0!important;font-weight:600!important;padding:13px 18px!important}\n.ud-form .e-form__buttons__wrapper__button-previous:hover{background:#F4F4F4!important;\n  color:#1C1C1C!important}\n.ud-form .e-form__buttons__wrapper__button-next{flex:1 1 auto!important}\n.ud-form .e-form__buttons__wrapper{gap:10px}\n\n/* testimonials: single-dash classes + Elementor's placeholder.png avatar */\n.ud-testi .elementor-testimonial-image{display:none!important}\n.ud-testi .elementor-testimonial-meta{padding:0!important;margin-top:14px!important}\n.ud-testi .elementor-testimonial-meta-inner{display:block!important;\n  justify-content:flex-start!important}\n.ud-testi .elementor-testimonial-name{display:block!important;font-size:17px!important;\n  font-weight:800!important;text-transform:none!important;letter-spacing:0!important;\n  line-height:1.3!important;color:#1C1C1C!important;margin:0!important}\n.ud-testi .elementor-testimonial-job{display:block!important;font-size:13.5px!important;\n  font-weight:600!important;text-transform:none!important;letter-spacing:.2px!important;\n  line-height:1.4!important;color:#6B6969!important;margin:2px 0 0!important}\n.ud-testi .elementor-testimonial-content{font-size:16px!important;line-height:1.7!important;\n  color:#3F3F3F!important;text-align:left!important}\n\n/* review cards were flat - give each a gold star row */\n.ud-testi .elementor-testimonial-wrapper::before{content:\"★★★★★\";\n  display:block;color:#F5A623;font-size:19px;letter-spacing:3px;line-height:1;margin:0 0 12px}\n\n/* split: plain side by side, text one side, image the other */\n.ud-split .elementor-widget-image{width:100%!important}\n.ud-split .elementor-widget-image img{width:auto!important;max-width:100%!important;\n  height:auto!important;max-height:430px!important;object-fit:contain!important;\n  margin-left:auto!important;margin-right:auto!important;border-radius:10px;display:block}\n</style>\n\n<script id=\"ud-lp-js\">\n(function(){\n  \"use strict\";\n  var PRESELECT = \"New hardwood floors\";\n  var TOTAL = 3;\n  var ICONS = {\"New hardwood floors\":\"\\ud83e\\udeb5\",\n               \"Refinish my existing floors\":\"\\u2728\",\n               \"Repair a damaged floor\":\"\\ud83d\\udd27\"};\n\n  window.dataLayer = window.dataLayer || [];\n  function push(ev, extra){\n    var o = {event: ev, form_id: \"ud_estimate\"};\n    if (extra) { for (var k in extra) o[k] = extra[k]; }\n    window.dataLayer.push(o);\n  }\n  // Two copies of the form on the page (hero + final CTA). A step event must fire\n  // once per page, not once per copy, or the drop-off read is doubled.\n  var firedSteps = {};\n  function pushStepOnce(step, where){\n    if (firedSteps[step]) return;\n    firedSteps[step] = true;\n    push(\"form_step_\" + step, {step: step, form_location: where});\n  }\n\n  function decorate(root){\n    root.querySelectorAll(\".ud-cards--service .elementor-field-option label\").forEach(function(l){\n      var t = (l.textContent||\"\").trim();\n      if (ICONS[t]) l.setAttribute(\"data-ud-icon\", ICONS[t]);\n    });\n  }\n\n  // Never force the keyboard up on mobile.\n  function killAutofocus(root){\n    if (window.innerWidth > 767) return;\n    root.querySelectorAll(\"input,textarea,select\").forEach(function(i){\n      i.removeAttribute(\"autofocus\");\n    });\n  }\n\n  // Elementor renders one .e-form__step per step and marks the inactive ones\n  // .elementor-hidden. There are NO .e-form__indicators__indicator elements, and\n  // the progress element carries no inline width - so we drive the bar ourselves.\n  function currentStep(form){\n    var steps = form.querySelectorAll(\".e-form__step\");\n    for (var i = 0; i < steps.length; i++){\n      if (!steps[i].classList.contains(\"elementor-hidden\")) return i + 1;\n    }\n    return 1;\n  }\n\n  function paintStep(form){\n    var s = currentStep(form);\n    // paintStep writes classes/attributes INSIDE the form, which the MutationObserver\n    // below is watching. Without this guard it re-enters itself and locks the tab.\n    // Elementor re-renders the form after its own init, which wipes anything we\n    // injected earlier. So repaint whenever our nodes are missing, not just on\n    // a step change.\n    var missing = !form.querySelector(\".ud-steplabel\") || !form.querySelector(\".ud-bar\");\n    if (form.__udPainting || (form.__udLastStep === s && !missing)) return s;\n    form.__udPainting = true;\n    form.__udLastStep = s;\n    form.setAttribute(\"data-ud-step\", s);\n    var lab = form.querySelector(\".ud-steplabel\");\n    if (!lab){\n      lab = document.createElement(\"p\");\n      lab.className = \"ud-steplabel\";\n      var anchor = form.querySelector(\".elementor-progress-wrapper\") ||\n                   form.querySelector(\".e-form__indicators\");\n      if (anchor && anchor.parentNode) anchor.parentNode.insertBefore(lab, anchor);\n    }\n    if (lab) lab.textContent = \"Step \" + s + \" of \" + TOTAL;\n    // Elementor rewrites its own indicator width on every step change, so we hide\n    // it and render our own bar. Nothing else touches this element.\n    var bar = form.querySelector(\".ud-bar\");\n    if (!bar && lab && lab.parentNode){\n      bar = document.createElement(\"div\");\n      bar.className = \"ud-bar\";\n      bar.innerHTML = \"<span></span><span></span><span></span>\";\n      lab.parentNode.insertBefore(bar, lab.nextSibling);\n    }\n    // Segments, not a scaling fill: a class toggle cannot be clamped by a\n    // competing width rule, which both width:% and scaleX() were.\n    if (bar){\n      for (var b = 0; b < bar.children.length; b++){\n        bar.children[b].className = (b < s) ? \"on\" : \"\";\n      }\n    }\n    var cardEl = form.closest(\".ud-formcard\");\n    if (cardEl) cardEl.setAttribute(\"data-ud-step\", s);\n    form.__udPainting = false;\n    // Elementor ships \"Next\"/\"Previous\" regardless of the step field settings.\n    form.querySelectorAll(\".e-form__buttons__wrapper__button-next\").forEach(function(b){\n      if (b.textContent.trim() === \"Next\") b.textContent = \"Continue\";\n    });\n    form.querySelectorAll(\".e-form__buttons__wrapper__button-previous\").forEach(function(b){\n      if (b.textContent.trim() === \"Previous\") b.textContent = \"Back\";\n    });\n    return s;\n  }\n\n  function init(form){\n    if (form.__udInit) return;\n    form.__udInit = true;\n    var where = form.closest(\".ud-finalcta\") ? \"final_cta\" : \"hero\";\n    form.classList.add(\"ud-form\");\n    decorate(form);\n    killAutofocus(form);\n    paintStep(form);\n\n    // Pre-select why they came, but let them change it.\n    if (PRESELECT){\n      var pre = Array.prototype.filter.call(\n        form.querySelectorAll(\".ud-cards--service input[type=radio]\"),\n        function(r){ return r.value === PRESELECT; })[0];\n      if (pre && !pre.checked) pre.checked = true;\n    }\n\n    pushStepOnce(1, where);\n\n    // Tapping a step-1 card advances immediately - no Next button on step 1.\n    form.addEventListener(\"change\", function(e){\n      var r = e.target;\n      if (!r || r.type !== \"radio\") return;\n      var group = r.closest(\".ud-cards\");\n      if (group && group.classList.contains(\"ud-autoadvance\")){\n        var next = form.querySelector(\".e-form__buttons__wrapper__button-next\") ||\n                   form.querySelector(\".elementor-button[type=button].e-form__buttons__wrapper__button-next\");\n        if (next) setTimeout(function(){ next.click(); }, 200);\n      }\n    });\n\n    // Report step changes (covers Next, Back and browser navigation).\n    var obs = new MutationObserver(function(){\n      pushStepOnce(paintStep(form), where);\n    });\n    obs.observe(form, {subtree:true, attributes:true, attributeFilter:[\"class\"]});\n  }\n\n  function boot(){\n    document.querySelectorAll(\"form.elementor-form\").forEach(function(f){\n      init(f);\n      paintStep(f);   // re-runs cheaply; rebuilds anything Elementor removed\n    });\n    window.addEventListener(\"resize\", function(){\n      document.querySelectorAll(\"form.elementor-form\").forEach(paintStep);\n    });\n    document.querySelectorAll(\".ud-cta-scroll\").forEach(function(a){\n      if (a.__udBound) return;          // boot() runs up to 3x - do not stack listeners\n      a.__udBound = true;\n      a.addEventListener(\"click\", function(ev){\n        // Header CTA targets the BOTTOM form: jumping up-page to a form already on\n        // screen reads as a broken click.\n        var toBottom = a.classList.contains(\"ud-hdr__cta\");\n        push(\"cta_click\", {location: toBottom ? \"header_to_bottom_form\" : \"scroll_to_form\"});\n        // Prefer the browser's native hash jump - more reliable than scrollIntoView,\n        // honours scroll-margin-top, and works without JS.\n        var hash = (a.getAttribute(\"href\") || \"\").replace(/^#/, \"\");\n        if (hash && document.getElementById(hash)) return;\n        var card = document.querySelector(\".ud-formcard\");\n        if (!card) return;\n        ev.preventDefault();\n        card.scrollIntoView({behavior:\"smooth\", block:\"start\"});\n      });\n    });\n    document.querySelectorAll(\".ud-tel\").forEach(function(a){\n      if (a.__udTelBound) return;\n      a.__udTelBound = true;\n      a.addEventListener(\"click\", function(){\n        push(\"click_to_call\", {location: a.getAttribute(\"data-ud-tel\") || \"unknown\"});\n      });\n    });\n  }\n\n  // This script is inline in the body, so DOMContentLoaded has usually already\n  // fired by the time it runs - binding to it alone would leave the step label\n  // and progress bar unrendered until Elementor's init fired.\n  if (document.readyState === \"loading\") document.addEventListener(\"DOMContentLoaded\", boot);\n  else boot();\n  if (window.jQuery){\n    jQuery(document).on(\"submit_success\", function(){ push(\"form_submit\", {step: TOTAL}); });\n    jQuery(window).on(\"elementor/frontend/init\", function(){\n      setTimeout(boot, 400); setTimeout(boot, 1200);\n    });\n  }\n})();\n</script>\n"
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  },
+  {
+   "id": "1a074a",
+   "elType": "section",
+   "settings": {
+    "structure": "10",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "background_background": "classic",
+    "background_color": "#2D7B9C",
+    "border_border": "solid",
+    "border_width": {
+     "unit": "px",
+     "top": "0",
+     "right": "0",
+     "bottom": "4",
+     "left": "0",
+     "isLinked": false
+    },
+    "border_color": "#8C292F",
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "22",
+     "bottom": "0",
+     "left": "22",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "0",
+     "right": "10",
+     "bottom": "0",
+     "left": "10",
+     "isLinked": false
+    },
+    "sticky": "top",
+    "sticky_on": [
+     "desktop",
+     "tablet",
+     "mobile"
+    ],
+    "sticky_offset": 0,
+    "z_index": 99,
+    "css_classes": "ud-header",
+    "__globals__": {
+     "border_color": "globals/colors?id=accent"
+    }
+   },
+   "elements": [
+    {
+     "id": "1a0613",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100.0,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "1a04dc",
+       "elType": "widget",
+       "widgetType": "html",
+       "settings": {
+        "html": "<div class=\"ud-hdr\">  <a class=\"ud-hdr__logo\" href=\"#ud-form\">    <img src=\"[[REPLACE THIS URL]]\" alt=\"[[BUSINESS NAME]]\">  </a>  <div class=\"ud-hdr__tag\">Oklahoma's Premier Flooring Specialists</div>  <div class=\"ud-hdr__actions\">    <a class=\"ud-hdr__call ud-tel\" data-ud-tel=\"header\" href=\"tel:+1[[PHONE]]\">CALL [[PHONE]]</a>    <a class=\"ud-hdr__cta ud-cta-scroll\" href=\"#ud-form-bottom\">REQUEST ESTIMATE</a>  </div></div>"
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  },
+  {
+   "id": "1a294e",
+   "elType": "section",
+   "settings": {
+    "structure": "20",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "padding": {
+     "unit": "px",
+     "top": "54",
+     "right": "22",
+     "bottom": "60",
+     "left": "22",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "26",
+     "right": "12",
+     "bottom": "28",
+     "left": "12",
+     "isLinked": false
+    },
+    "background_background": "classic",
+    "background_image": {
+     "url": "https://urbandesignsflooring.com/wp-content/uploads/2024/03/Urban-Designs-Flooring-Oklahoma-City-Oklahoma-Premier-Flooring-Company-8.jpg",
+     "id": 14361
+    },
+    "background_position": "center center",
+    "background_repeat": "no-repeat",
+    "background_size": "cover",
+    "background_overlay_background": "classic",
+    "background_overlay_color": "#111417",
+    "background_overlay_opacity": {
+     "unit": "px",
+     "size": 0.68
+    },
+    "reverse_order_mobile": "reverse-mobile",
+    "css_classes": "ud-hero",
+    "_element_id": "ud-form"
+   },
+   "elements": [
+    {
+     "id": "1a1239",
+     "elType": "column",
+     "settings": {
+      "_column_size": 55,
+      "_inline_size": 55.0,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "40",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      },
+      "padding_mobile": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      },
+      "css_classes": "ud-hero-copy"
+     },
+     "elements": [
+      {
+       "id": "1a0881",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "New Hardwood Floors, Installed Right in Oklahoma City",
+        "header_size": "h1",
+        "title_color": "#FFFFFF",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 46
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 30
+        },
+        "typography_font_weight": "700",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.1
+        },
+        "_margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "10",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a09b8",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "settings": {
+        "editor": "<p style=\"margin:0\">Premium hardwood, engineered and custom installs by OKC&rsquo;s flooring specialists. Free in-home estimate, honest pricing, no surprises.</p>",
+        "text_color": "rgba(255,255,255,0.92)",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 19
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 18
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.55
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a0e94",
+       "elType": "widget",
+       "widgetType": "icon-list",
+       "settings": {
+        "icon_list": [
+         {
+          "text": "Free in-home estimate and written quote",
+          "selected_icon": {
+           "value": "fas fa-check",
+           "library": "fa-solid"
+          },
+          "_id": "1a0aef"
+         },
+         {
+          "text": "Licensed, insured, OKC-based crews",
+          "selected_icon": {
+           "value": "fas fa-check",
+           "library": "fa-solid"
+          },
+          "_id": "1a0c26"
+         },
+         {
+          "text": "Furniture moved, old flooring hauled away",
+          "selected_icon": {
+           "value": "fas fa-check",
+           "library": "fa-solid"
+          },
+          "_id": "1a0d5d"
+         }
+        ],
+        "space_between": {
+         "unit": "px",
+         "size": 12
+        },
+        "icon_color": "#FFD9A0",
+        "icon_size": {
+         "unit": "px",
+         "size": 16
+        },
+        "text_color": "#FFFFFF",
+        "icon_typography_typography": "custom",
+        "text_indent": {
+         "unit": "px",
+         "size": 10
+        },
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 17
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.5
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a0fcb",
+       "elType": "widget",
+       "widgetType": "star-rating",
+       "settings": {
+        "rating": "4.9",
+        "rating_scale": "5",
+        "unmarked_star_style": "solid",
+        "stars_color": "#F5A623",
+        "stars_unmarked_color": "rgba(255,255,255,0.35)",
+        "title": "4.9 out of 5 &middot; 123 Google reviews",
+        "star_style": "star_fontawesome",
+        "icon_size": {
+         "unit": "px",
+         "size": 20
+        },
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 15
+        },
+        "typography_font_weight": "600",
+        "title_color": "#FFFFFF"
+       },
+       "elements": []
+      },
+      {
+       "id": "1a1102",
+       "elType": "widget",
+       "widgetType": "html",
+       "settings": {
+        "html": "<div class=\"ud-badges ud-badges--light\"><span>Licensed</span><span>Insured</span><span>OKC-based crews</span><span>Free in-home estimate</span></div>"
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    },
+    {
+     "id": "1a2817",
+     "elType": "column",
+     "settings": {
+      "_column_size": 45,
+      "_inline_size": 45.0,
+      "background_background": "classic",
+      "background_color": "#FFFFFF",
+      "border_border": "solid",
+      "border_width": {
+       "unit": "px",
+       "top": "1",
+       "right": "1",
+       "bottom": "1",
+       "left": "1",
+       "isLinked": false
+      },
+      "border_color": "#E2E0E0",
+      "border_radius": {
+       "unit": "px",
+       "top": "12",
+       "right": "12",
+       "bottom": "12",
+       "left": "12",
+       "isLinked": true
+      },
+      "box_shadow_box_shadow_type": "yes",
+      "box_shadow_box_shadow": {
+       "horizontal": 0,
+       "vertical": 18,
+       "blur": 48,
+       "spread": -12,
+       "color": "rgba(0,0,0,0.22)"
+      },
+      "padding": {
+       "unit": "px",
+       "top": "26",
+       "right": "26",
+       "bottom": "24",
+       "left": "26",
+       "isLinked": false
+      },
+      "padding_mobile": {
+       "unit": "px",
+       "top": "20",
+       "right": "18",
+       "bottom": "20",
+       "left": "18",
+       "isLinked": false
+      },
+      "css_classes": "ud-formcard"
+     },
+     "elements": [
+      {
+       "id": "1a1370",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "Get your free estimate",
+        "header_size": "h2",
+        "title_color": "#1C1C1C",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 24
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 21
+        },
+        "typography_font_weight": "700",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.2
+        },
+        "_margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "2",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a14a7",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "settings": {
+        "editor": "<p style=\"margin:0\">Takes 30 seconds &middot; No obligation</p>",
+        "text_color": "#6B6969",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 14
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 15
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65
+        },
+        "_css_classes": "ud-form-sub"
+       },
+       "elements": []
+      },
+      {
+       "id": "1a25a9",
+       "elType": "widget",
+       "widgetType": "form",
+       "settings": {
+        "form_name": "UD LP - Hardwood Installation OKC",
+        "form_fields": [
+         {
+          "custom_id": "step_one",
+          "field_type": "step",
+          "field_label": "What you need",
+          "step_next_button": "",
+          "step_previous_button": "",
+          "_id": "1a15de",
+          "width": "100"
+         },
+         {
+          "custom_id": "service",
+          "field_type": "radio",
+          "field_label": "What do you need?",
+          "field_options": "New hardwood floors\nRefinish my existing floors\nRepair a damaged floor",
+          "required": "true",
+          "css_classes": "ud-cards ud-cards--service ud-autoadvance",
+          "_id": "1a1715",
+          "width": "100"
+         },
+         {
+          "custom_id": "step_two",
+          "field_type": "step",
+          "field_label": "Your space",
+          "step_next_button": "Continue",
+          "step_previous_button": "Back",
+          "_id": "1a184c",
+          "width": "100"
+         },
+         {
+          "custom_id": "area",
+          "field_type": "radio",
+          "field_label": "Roughly how much area?",
+          "field_options": "Under 500 sq ft\n500-1,000 sq ft\n1,000-2,000 sq ft\nOver 2,000 sq ft\nNot sure",
+          "required": "true",
+          "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
+          "_id": "1a1983",
+          "width": "100"
+         },
+         {
+          "custom_id": "timeline",
+          "field_type": "radio",
+          "field_label": "When are you hoping to start?",
+          "field_options": "As soon as possible\nWithin a month\n1-3 months\nJust planning",
+          "required": "true",
+          "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
+          "_id": "1a1aba",
+          "width": "100"
+         },
+         {
+          "custom_id": "property",
+          "field_type": "radio",
+          "field_label": "Property type",
+          "field_options": "Home\nRental\nBusiness",
+          "required": "true",
+          "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
+          "_id": "1a1bf1",
+          "width": "100"
+         },
+         {
+          "custom_id": "step_three",
+          "field_type": "step",
+          "field_label": "Your details",
+          "step_next_button": "Continue",
+          "step_previous_button": "Back",
+          "_id": "1a1d28",
+          "width": "100"
+         },
+         {
+          "custom_id": "first_name",
+          "field_type": "text",
+          "field_label": "First name",
+          "placeholder": "First name",
+          "required": "true",
+          "width": "50",
+          "_id": "1a1e5f"
+         },
+         {
+          "custom_id": "zip",
+          "field_type": "text",
+          "field_label": "ZIP code",
+          "placeholder": "ZIP code",
+          "required": "true",
+          "width": "50",
+          "_id": "1a1f96"
+         },
+         {
+          "custom_id": "phone",
+          "field_type": "tel",
+          "field_label": "Phone",
+          "placeholder": "Phone number",
+          "required": "true",
+          "width": "100",
+          "_id": "1a20cd"
+         },
+         {
+          "custom_id": "email",
+          "field_type": "email",
+          "field_label": "Email",
+          "placeholder": "Email address",
+          "required": "true",
+          "width": "100",
+          "_id": "1a2204"
+         },
+         {
+          "custom_id": "preselect",
+          "field_type": "hidden",
+          "field_label": "Preselected",
+          "field_value": "New hardwood floors",
+          "width": "100",
+          "_id": "1a233b"
+         },
+         {
+          "custom_id": "source_page",
+          "field_type": "hidden",
+          "field_label": "Source page",
+          "field_value": "[page_url]",
+          "width": "100",
+          "_id": "1a2472"
+         }
+        ],
+        "step_type": "progress_bar",
+        "step_previous_button_text": "Back",
+        "step_next_button_text": "Continue",
+        "button_text": "Get My Free Estimate",
+        "button_size": "lg",
+        "button_width": "100",
+        "button_background_color": "#8C292F",
+        "button_background_hover_color": "#690202",
+        "button_text_color": "#FFFFFF",
+        "button_border_radius": {
+         "unit": "px",
+         "top": "6",
+         "right": "6",
+         "bottom": "6",
+         "left": "6",
+         "isLinked": true
+        },
+        "button_typography_typography": "custom",
+        "button_typography_font_size": {
+         "unit": "px",
+         "size": 18
+        },
+        "button_typography_font_weight": "700",
+        "label_color": "#1C1C1C",
+        "field_typography_typography": "custom",
+        "field_typography_font_size": {
+         "unit": "px",
+         "size": 16
+        },
+        "label_typography_typography": "custom",
+        "label_typography_font_size": {
+         "unit": "px",
+         "size": 17
+        },
+        "label_typography_font_weight": "700",
+        "field_border_color": "#E2E0E0",
+        "field_border_radius": {
+         "unit": "px",
+         "top": "6",
+         "right": "6",
+         "bottom": "6",
+         "left": "6",
+         "isLinked": true
+        },
+        "row_gap": {
+         "unit": "px",
+         "size": 16
+        },
+        "submit_actions": [
+         "email",
+         "redirect"
+        ],
+        "redirect_to": "[[REPLACE THIS URL]]",
+        "email_subject": "New estimate request - UD LP - Hardwood Installation OKC",
+        "email_content": "[all-fields]",
+        "email_from_name": "[[BUSINESS NAME]]",
+        "email_reply_to": "[field id=\"email\"]",
+        "success_message": "Thanks! We'll call within one business day.",
+        "_css_classes": "ud-form",
+        "__globals__": {
+         "button_background_color": "globals/colors?id=accent",
+         "button_background_hover_color": "globals/colors?id=primary"
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a26e0",
+       "elType": "widget",
+       "widgetType": "html",
+       "settings": {
+        "html": "<p class=\"ud-form-foot\">or call <a href=\"tel:+1[[PHONE]]\" class=\"ud-tel\" data-ud-tel=\"form-card\">[[PHONE]]</a></p>"
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  },
+  {
+   "id": "1a2cf3",
+   "elType": "section",
+   "settings": {
+    "structure": "10",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "background_background": "classic",
+    "background_color": "#1C1C1C",
+    "padding": {
+     "unit": "px",
+     "top": "14",
+     "right": "22",
+     "bottom": "14",
+     "left": "22",
+     "isLinked": false
+    },
+    "css_classes": "ud-proofbar-wrap"
+   },
+   "elements": [
+    {
+     "id": "1a2bbc",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100.0
+     },
+     "elements": [
+      {
+       "id": "1a2a85",
+       "elType": "widget",
+       "widgetType": "html",
+       "settings": {
+        "html": "<div class=\"ud-proofbar\"><span class=\"ud-proofbar__stars\">&#9733;&#9733;&#9733;&#9733;&#9733;</span><strong>4.9</strong> from <strong>123</strong> Google reviews<span class=\"ud-proofbar__q\">&ldquo;Installation very quick, billed for amount quoted, flawless transaction.&rdquo; Jin Jin</span></div>"
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  },
+  {
+   "id": "1a343d",
+   "elType": "section",
+   "settings": {
+    "structure": "10",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "background_background": "classic",
+    "background_color": "#FFFFFF",
+    "padding": {
+     "unit": "px",
+     "top": "58",
+     "right": "22",
+     "bottom": "58",
+     "left": "22",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "36",
+     "right": "12",
+     "bottom": "36",
+     "left": "12",
+     "isLinked": false
+    },
+    "css_classes": ""
+   },
+   "elements": [
+    {
+     "id": "1a3306",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100.0,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "1a2e2a",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "See our work",
+        "header_size": "h2",
+        "title_color": "#1C1C1C",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 34
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 23
+        },
+        "typography_font_weight": "700",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.2
+        },
+        "align": "center",
+        "_margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "4",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a2f61",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "settings": {
+        "editor": "<p style=\"margin:0;text-align:center\">Real [[BUSINESS NAME]] installations across the OKC metro.</p>",
+        "text_color": "#6B6969",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 17
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 16
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a3098",
+       "elType": "widget",
+       "widgetType": "image-gallery",
+       "settings": {
+        "wp_gallery": [
+         {
+          "id": 14347,
+          "url": ""
+         },
+         {
+          "id": 14344,
+          "url": ""
+         },
+         {
+          "id": 14333,
+          "url": ""
+         },
+         {
+          "id": 14328,
+          "url": ""
+         }
+        ],
+        "gallery_columns": 4,
+        "gallery_columns_mobile": 2,
+        "_css_classes": "ud-gallery",
+        "gallery_link": "file",
+        "open_lightbox": "yes",
+        "image_size": "large",
+        "gallery_rounded_corners": "yes",
+        "image_border_radius": {
+         "unit": "px",
+         "top": "8",
+         "right": "8",
+         "bottom": "8",
+         "left": "8",
+         "isLinked": true
+        },
+        "gallery_spacing": {
+         "unit": "px",
+         "size": 12
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a31cf",
+       "elType": "widget",
+       "widgetType": "html",
+       "settings": {
+        "html": "<!-- CAPTIONS: add wood species + neighborhood per image, e.g. \"White oak, Nichols Hills\". See build notes. -->"
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  },
+  {
+   "id": "1a48e4",
+   "elType": "section",
+   "settings": {
+    "structure": "10",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "background_background": "classic",
+    "background_color": "#2D7B9C",
+    "padding": {
+     "unit": "px",
+     "top": "58",
+     "right": "22",
+     "bottom": "58",
+     "left": "22",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "36",
+     "right": "12",
+     "bottom": "36",
+     "left": "12",
+     "isLinked": false
+    },
+    "css_classes": "ud-band--invert"
+   },
+   "elements": [
+    {
+     "id": "1a47ad",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100.0,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "1a3574",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "How it works",
+        "header_size": "h2",
+        "title_color": "#FFFFFF",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 34
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 23
+        },
+        "typography_font_weight": "700",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.2
+        },
+        "align": "center",
+        "_margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "4",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a36ab",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "settings": {
+        "editor": "<p style=\"margin:0;text-align:center\">Most homes are finished in three to five days.</p>",
+        "text_color": "rgba(255,255,255,0.88)",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 17
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 16
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a4676",
+       "elType": "section",
+       "settings": {
+        "structure": "30",
+        "content_width": {
+         "unit": "px",
+         "size": 1240,
+         "sizes": []
+        },
+        "css_classes": "ud-threeup",
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        },
+        "margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "-8",
+         "bottom": "0",
+         "left": "-8",
+         "isLinked": false
+        }
+       },
+       "elements": [
+        {
+         "id": "1a3b87",
+         "elType": "column",
+         "settings": {
+          "_column_size": 33,
+          "_inline_size": 33.0,
+          "background_background": "classic",
+          "background_color": "rgba(255,255,255,0.10)",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "rgba(255,255,255,0.26)",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "1a37e2",
+           "elType": "widget",
+           "widgetType": "html",
+           "settings": {
+            "html": "<div class=\"ud-step-n ud-step-n--light\">1</div>"
+           },
+           "elements": []
+          },
+          {
+           "id": "1a3919",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Free estimate",
+            "header_size": "h3",
+            "title_color": "#FFFFFF",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 19
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.2
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "4",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1a3a50",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p style=\"margin:0\">We measure your space and give you a written quote. No charge, no pressure.</p>",
+            "text_color": "rgba(255,255,255,0.90)",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 15
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "1a4063",
+         "elType": "column",
+         "settings": {
+          "_column_size": 33,
+          "_inline_size": 33.0,
+          "background_background": "classic",
+          "background_color": "rgba(255,255,255,0.10)",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "rgba(255,255,255,0.26)",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "1a3cbe",
+           "elType": "widget",
+           "widgetType": "html",
+           "settings": {
+            "html": "<div class=\"ud-step-n ud-step-n--light\">2</div>"
+           },
+           "elements": []
+          },
+          {
+           "id": "1a3df5",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Choose your floor",
+            "header_size": "h3",
+            "title_color": "#FFFFFF",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 19
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.2
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "4",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1a3f2c",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p style=\"margin:0\">We bring samples to you, so you see the wood in your own light.</p>",
+            "text_color": "rgba(255,255,255,0.90)",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 15
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "1a453f",
+         "elType": "column",
+         "settings": {
+          "_column_size": 33,
+          "_inline_size": 33.0,
+          "background_background": "classic",
+          "background_color": "rgba(255,255,255,0.10)",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "rgba(255,255,255,0.26)",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "1a419a",
+           "elType": "widget",
+           "widgetType": "html",
+           "settings": {
+            "html": "<div class=\"ud-step-n ud-step-n--light\">3</div>"
+           },
+           "elements": []
+          },
+          {
+           "id": "1a42d1",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Installed and finished",
+            "header_size": "h3",
+            "title_color": "#FFFFFF",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 19
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.2
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "4",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1a4408",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p style=\"margin:0\">Most homes are done in 3&ndash;5 days, cleaned up and ready to walk on.</p>",
+            "text_color": "rgba(255,255,255,0.90)",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 15
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  },
+  {
+   "id": "1a69b1",
+   "elType": "section",
+   "settings": {
+    "structure": "10",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "background_background": "classic",
+    "background_color": "#FFFFFF",
+    "padding": {
+     "unit": "px",
+     "top": "58",
+     "right": "22",
+     "bottom": "58",
+     "left": "22",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "36",
+     "right": "12",
+     "bottom": "36",
+     "left": "12",
+     "isLinked": false
+    },
+    "css_classes": ""
+   },
+   "elements": [
+    {
+     "id": "1a687a",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100.0,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "1a4a1b",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "What&rsquo;s included",
+        "header_size": "h2",
+        "title_color": "#1C1C1C",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 34
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 23
+        },
+        "typography_font_weight": "700",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.2
+        },
+        "align": "center",
+        "_margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "4",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a4b52",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "settings": {
+        "editor": "<p style=\"margin:0;text-align:center\">So there is nothing to argue about later.</p>",
+        "text_color": "#6B6969",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 17
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 16
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a5165",
+       "elType": "section",
+       "settings": {
+        "structure": "20",
+        "content_width": {
+         "unit": "px",
+         "size": 1240,
+         "sizes": []
+        },
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        },
+        "reverse_order_mobile": "",
+        "css_classes": "ud-split"
+       },
+       "elements": [
+        {
+         "id": "1a4ef7",
+         "elType": "column",
+         "settings": {
+          "_column_size": 50,
+          "_inline_size": 50.0,
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": false
+          },
+          "content_position": "center"
+         },
+         "elements": [
+          {
+           "id": "1a4dc0",
+           "elType": "widget",
+           "widgetType": "image",
+           "settings": {
+            "image": {
+             "url": "https://urbandesignsflooring.com/wp-content/uploads/2024/03/cjku.jpg",
+             "id": 14344
+            },
+            "image_size": "large",
+            "border_radius": {
+             "unit": "px",
+             "top": "10",
+             "right": "10",
+             "bottom": "10",
+             "left": "10",
+             "isLinked": true
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "1a502e",
+         "elType": "column",
+         "settings": {
+          "_column_size": 50,
+          "_inline_size": 50.0,
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "0",
+           "left": "30",
+           "isLinked": false
+          },
+          "padding_mobile": {
+           "unit": "px",
+           "top": "18",
+           "right": "0",
+           "bottom": "0",
+           "left": "0",
+           "isLinked": false
+          },
+          "content_position": "center"
+         },
+         "elements": [
+          {
+           "id": "1a4c89",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p style=\"margin:0\">Every quote we write covers the whole job, not just the boards. The list below is what is included as standard, and what we price separately so you are never surprised by a second invoice.</p>",
+            "text_color": "#3F3F3F",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 17
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 16
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      },
+      {
+       "id": "1a6743",
+       "elType": "section",
+       "settings": {
+        "structure": "20",
+        "content_width": {
+         "unit": "px",
+         "size": 1240,
+         "sizes": []
+        },
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        },
+        "margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "-8",
+         "bottom": "0",
+         "left": "-8",
+         "isLinked": false
+        }
+       },
+       "elements": [
+        {
+         "id": "1a5c54",
+         "elType": "column",
+         "settings": {
+          "_column_size": 50,
+          "_inline_size": 50.0,
+          "background_background": "classic",
+          "background_color": "#FFFFFF",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "#E2E0E0",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "1a529c",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Included in your quote",
+            "header_size": "h3",
+            "title_color": "#1C1C1C",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 20
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 22
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.2
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "6",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1a5b1d",
+           "elType": "widget",
+           "widgetType": "icon-list",
+           "settings": {
+            "icon_list": [
+             {
+              "text": "Subfloor preparation and levelling",
+              "selected_icon": {
+               "value": "fas fa-check",
+               "library": "fa-solid"
+              },
+              "_id": "1a53d3"
+             },
+             {
+              "text": "Moisture testing before install",
+              "selected_icon": {
+               "value": "fas fa-check",
+               "library": "fa-solid"
+              },
+              "_id": "1a550a"
+             },
+             {
+              "text": "Moving your furniture",
+              "selected_icon": {
+               "value": "fas fa-check",
+               "library": "fa-solid"
+              },
+              "_id": "1a5641"
+             },
+             {
+              "text": "Removal and disposal of old flooring",
+              "selected_icon": {
+               "value": "fas fa-check",
+               "library": "fa-solid"
+              },
+              "_id": "1a5778"
+             },
+             {
+              "text": "Trim, transitions and thresholds",
+              "selected_icon": {
+               "value": "fas fa-check",
+               "library": "fa-solid"
+              },
+              "_id": "1a58af"
+             },
+             {
+              "text": "Full clean-up when we leave",
+              "selected_icon": {
+               "value": "fas fa-check",
+               "library": "fa-solid"
+              },
+              "_id": "1a59e6"
+             }
+            ],
+            "space_between": {
+             "unit": "px",
+             "size": 10
+            },
+            "icon_color": "#2E7D32",
+            "icon_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "text_color": "#1C1C1C",
+            "icon_typography_typography": "custom",
+            "text_indent": {
+             "unit": "px",
+             "size": 10
+            },
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.5
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "1a660c",
+         "elType": "column",
+         "settings": {
+          "_column_size": 50,
+          "_inline_size": 50.0,
+          "background_background": "classic",
+          "background_color": "#FFFFFF",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "#E2E0E0",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "1a5d8b",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Not included (quoted separately)",
+            "header_size": "h3",
+            "title_color": "#1C1C1C",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 20
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 22
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.2
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "6",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1a64d5",
+           "elType": "widget",
+           "widgetType": "icon-list",
+           "settings": {
+            "icon_list": [
+             {
+              "text": "Subfloor replacement if rot or damage is found",
+              "selected_icon": {
+               "value": "fas fa-times",
+               "library": "fa-solid"
+              },
+              "_id": "1a5ec2"
+             },
+             {
+              "text": "Structural or joist repair",
+              "selected_icon": {
+               "value": "fas fa-times",
+               "library": "fa-solid"
+              },
+              "_id": "1a5ff9"
+             },
+             {
+              "text": "Moving pianos, safes or gun safes",
+              "selected_icon": {
+               "value": "fas fa-times",
+               "library": "fa-solid"
+              },
+              "_id": "1a6130"
+             },
+             {
+              "text": "Painting or baseboard replacement",
+              "selected_icon": {
+               "value": "fas fa-times",
+               "library": "fa-solid"
+              },
+              "_id": "1a6267"
+             },
+             {
+              "text": "Appliance disconnect and reconnect",
+              "selected_icon": {
+               "value": "fas fa-times",
+               "library": "fa-solid"
+              },
+              "_id": "1a639e"
+             }
+            ],
+            "space_between": {
+             "unit": "px",
+             "size": 10
+            },
+            "icon_color": "#6B6969",
+            "icon_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "text_color": "#1C1C1C",
+            "icon_typography_typography": "custom",
+            "text_indent": {
+             "unit": "px",
+             "size": 10
+            },
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.5
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  },
+  {
+   "id": "1a8e23",
+   "elType": "section",
+   "settings": {
+    "structure": "10",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "background_background": "classic",
+    "background_color": "#F4F4F4",
+    "padding": {
+     "unit": "px",
+     "top": "58",
+     "right": "22",
+     "bottom": "58",
+     "left": "22",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "36",
+     "right": "12",
+     "bottom": "36",
+     "left": "12",
+     "isLinked": false
+    },
+    "css_classes": ""
+   },
+   "elements": [
+    {
+     "id": "1a8cec",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100.0,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "1a6ae8",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "What affects the price",
+        "header_size": "h2",
+        "title_color": "#1C1C1C",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 34
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 23
+        },
+        "typography_font_weight": "700",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.2
+        },
+        "align": "center",
+        "_margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "4",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a6c1f",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "settings": {
+        "editor": "<p style=\"margin:0;text-align:center;max-width:760px;margin-left:auto;margin-right:auto\">Every floor is priced on the room, not a rate card. These are the things that move the number up or down, and the reason we measure in person before quoting.</p>",
+        "text_color": "#3F3F3F",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 17
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 16
+        },
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.65
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a7bea",
+       "elType": "section",
+       "settings": {
+        "structure": "30",
+        "content_width": {
+         "unit": "px",
+         "size": 1240,
+         "sizes": []
+        },
+        "css_classes": "ud-threeup",
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        },
+        "margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "-8",
+         "bottom": "0",
+         "left": "-8",
+         "isLinked": false
+        }
+       },
+       "elements": [
+        {
+         "id": "1a70fb",
+         "elType": "column",
+         "settings": {
+          "_column_size": 33,
+          "_inline_size": 33.0,
+          "background_background": "classic",
+          "background_color": "#FFFFFF",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "#E2E0E0",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "1a6d56",
+           "elType": "widget",
+           "widgetType": "html",
+           "settings": {
+            "html": "<div class=\"ud-step-n\">&#10003;</div>"
+           },
+           "elements": []
+          },
+          {
+           "id": "1a6e8d",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Square footage and layout",
+            "header_size": "h3",
+            "title_color": "#1C1C1C",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 19
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.2
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "4",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1a6fc4",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p style=\"margin:0\">Larger open runs cost less per square foot than several small rooms, closets and hallways.</p>",
+            "text_color": "#3F3F3F",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 15
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "1a75d7",
+         "elType": "column",
+         "settings": {
+          "_column_size": 33,
+          "_inline_size": 33.0,
+          "background_background": "classic",
+          "background_color": "#FFFFFF",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "#E2E0E0",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "1a7232",
+           "elType": "widget",
+           "widgetType": "html",
+           "settings": {
+            "html": "<div class=\"ud-step-n\">&#10003;</div>"
+           },
+           "elements": []
+          },
+          {
+           "id": "1a7369",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Species and grade",
+            "header_size": "h3",
+            "title_color": "#1C1C1C",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 19
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.2
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "4",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1a74a0",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p style=\"margin:0\">Red oak sits at the affordable end. White oak, hickory and wide-plank cost more per square foot.</p>",
+            "text_color": "#3F3F3F",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 15
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "1a7ab3",
+         "elType": "column",
+         "settings": {
+          "_column_size": 33,
+          "_inline_size": 33.0,
+          "background_background": "classic",
+          "background_color": "#FFFFFF",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "#E2E0E0",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "1a770e",
+           "elType": "widget",
+           "widgetType": "html",
+           "settings": {
+            "html": "<div class=\"ud-step-n\">&#10003;</div>"
+           },
+           "elements": []
+          },
+          {
+           "id": "1a7845",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Subfloor condition",
+            "header_size": "h3",
+            "title_color": "#1C1C1C",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 19
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.2
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "4",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1a797c",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p style=\"margin:0\">A flat, dry, sound subfloor installs straight through. Levelling or moisture issues add labor.</p>",
+            "text_color": "#3F3F3F",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 15
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      },
+      {
+       "id": "1a8bb5",
+       "elType": "section",
+       "settings": {
+        "structure": "30",
+        "content_width": {
+         "unit": "px",
+         "size": 1240,
+         "sizes": []
+        },
+        "css_classes": "ud-threeup",
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        },
+        "margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "-8",
+         "bottom": "0",
+         "left": "-8",
+         "isLinked": false
+        }
+       },
+       "elements": [
+        {
+         "id": "1a80c6",
+         "elType": "column",
+         "settings": {
+          "_column_size": 33,
+          "_inline_size": 33.0,
+          "background_background": "classic",
+          "background_color": "#FFFFFF",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "#E2E0E0",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "1a7d21",
+           "elType": "widget",
+           "widgetType": "html",
+           "settings": {
+            "html": "<div class=\"ud-step-n\">&#10003;</div>"
+           },
+           "elements": []
+          },
+          {
+           "id": "1a7e58",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Stairs and detail work",
+            "header_size": "h3",
+            "title_color": "#1C1C1C",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 19
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.2
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "4",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1a7f8f",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p style=\"margin:0\">Stair treads, risers, borders and inlays are priced per piece, because they are slow, skilled work.</p>",
+            "text_color": "#3F3F3F",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 15
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "1a85a2",
+         "elType": "column",
+         "settings": {
+          "_column_size": 33,
+          "_inline_size": 33.0,
+          "background_background": "classic",
+          "background_color": "#FFFFFF",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "#E2E0E0",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "1a81fd",
+           "elType": "widget",
+           "widgetType": "html",
+           "settings": {
+            "html": "<div class=\"ud-step-n\">&#10003;</div>"
+           },
+           "elements": []
+          },
+          {
+           "id": "1a8334",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Furniture and old flooring",
+            "header_size": "h3",
+            "title_color": "#1C1C1C",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 19
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.2
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "4",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1a846b",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p style=\"margin:0\">Included as standard. Tile or glued-down flooring takes longer to remove than carpet.</p>",
+            "text_color": "#3F3F3F",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 15
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "1a8a7e",
+         "elType": "column",
+         "settings": {
+          "_column_size": 33,
+          "_inline_size": 33.0,
+          "background_background": "classic",
+          "background_color": "#FFFFFF",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "#E2E0E0",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "1a86d9",
+           "elType": "widget",
+           "widgetType": "html",
+           "settings": {
+            "html": "<div class=\"ud-step-n\">&#10003;</div>"
+           },
+           "elements": []
+          },
+          {
+           "id": "1a8810",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Finish choice",
+            "header_size": "h3",
+            "title_color": "#1C1C1C",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 21
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 19
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.2
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "4",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1a8947",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p style=\"margin:0\">Prefinished goes down faster. Site-finished costs more and gives a seamless surface.</p>",
+            "text_color": "#3F3F3F",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 15
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65
+            }
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  },
+  {
+   "id": "1a9a49",
+   "elType": "section",
+   "settings": {
+    "structure": "10",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "background_background": "classic",
+    "background_color": "#FFFFFF",
+    "padding": {
+     "unit": "px",
+     "top": "58",
+     "right": "22",
+     "bottom": "58",
+     "left": "22",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "36",
+     "right": "12",
+     "bottom": "36",
+     "left": "12",
+     "isLinked": false
+    },
+    "css_classes": ""
+   },
+   "elements": [
+    {
+     "id": "1a9912",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100.0,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "1a8f5a",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "What OKC homeowners say",
+        "header_size": "h2",
+        "title_color": "#1C1C1C",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 34
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 23
+        },
+        "typography_font_weight": "700",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.2
+        },
+        "align": "center",
+        "_margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "4",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a97db",
+       "elType": "section",
+       "settings": {
+        "structure": "30",
+        "content_width": {
+         "unit": "px",
+         "size": 1240,
+         "sizes": []
+        },
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        },
+        "margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "-8",
+         "bottom": "0",
+         "left": "-8",
+         "isLinked": false
+        }
+       },
+       "elements": [
+        {
+         "id": "1a91c8",
+         "elType": "column",
+         "settings": {
+          "_column_size": 33,
+          "_inline_size": 33.0,
+          "background_background": "classic",
+          "background_color": "#FFFFFF",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "#E2E0E0",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          },
+          "css_classes": "ud-testi"
+         },
+         "elements": [
+          {
+           "id": "1a9091",
+           "elType": "widget",
+           "widgetType": "testimonial",
+           "settings": {
+            "testimonial_content": "Chris and Urban Design is by far the best contractor I have ever used in any trade. My floors are amazing and far exceed what I could have dreamed. Installation very quick, billed for amount quoted, flawless transaction.",
+            "testimonial_name": "Jin Jin",
+            "testimonial_job": "Google review",
+            "testimonial_image_position": "aside",
+            "text_color": "#3F3F3F",
+            "name_text_color": "#1C1C1C",
+            "job_text_color": "#6B6969",
+            "content_content_typography_typography": "custom",
+            "content_content_typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "content_content_typography_line_height": {
+             "unit": "em",
+             "size": 1.7
+            },
+            "content_name_typography_typography": "custom",
+            "content_name_typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "content_name_typography_font_weight": "700"
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "1a9436",
+         "elType": "column",
+         "settings": {
+          "_column_size": 33,
+          "_inline_size": 33.0,
+          "background_background": "classic",
+          "background_color": "#FFFFFF",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "#E2E0E0",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          },
+          "css_classes": "ud-testi"
+         },
+         "elements": [
+          {
+           "id": "1a92ff",
+           "elType": "widget",
+           "widgetType": "testimonial",
+           "settings": {
+            "testimonial_content": "These guys are great. They showed up on time, did a great job and didn&rsquo;t leave a mess behind when they were finished. I highly recommend them.",
+            "testimonial_name": "Wayne Falls",
+            "testimonial_job": "Google review",
+            "testimonial_image_position": "aside",
+            "text_color": "#3F3F3F",
+            "name_text_color": "#1C1C1C",
+            "job_text_color": "#6B6969",
+            "content_content_typography_typography": "custom",
+            "content_content_typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "content_content_typography_line_height": {
+             "unit": "em",
+             "size": 1.7
+            },
+            "content_name_typography_typography": "custom",
+            "content_name_typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "content_name_typography_font_weight": "700"
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "1a96a4",
+         "elType": "column",
+         "settings": {
+          "_column_size": 33,
+          "_inline_size": 33.0,
+          "background_background": "classic",
+          "background_color": "#FFFFFF",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "#E2E0E0",
+          "border_radius": {
+           "unit": "px",
+           "top": "10",
+           "right": "10",
+           "bottom": "10",
+           "left": "10",
+           "isLinked": true
+          },
+          "padding": {
+           "unit": "px",
+           "top": "24",
+           "right": "22",
+           "bottom": "24",
+           "left": "22",
+           "isLinked": false
+          },
+          "margin": {
+           "unit": "px",
+           "top": "0",
+           "right": "8",
+           "bottom": "16",
+           "left": "8",
+           "isLinked": false
+          },
+          "css_classes": "ud-testi"
+         },
+         "elements": [
+          {
+           "id": "1a956d",
+           "elType": "widget",
+           "widgetType": "testimonial",
+           "settings": {
+            "testimonial_content": "Great guys, excellent quality work. Can&rsquo;t beat the pricing for the craftsmanship they provide. Highly recommend. Five stars.",
+            "testimonial_name": "Eric Cooper",
+            "testimonial_job": "Google review",
+            "testimonial_image_position": "aside",
+            "text_color": "#3F3F3F",
+            "name_text_color": "#1C1C1C",
+            "job_text_color": "#6B6969",
+            "content_content_typography_typography": "custom",
+            "content_content_typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "content_content_typography_line_height": {
+             "unit": "em",
+             "size": 1.7
+            },
+            "content_name_typography_typography": "custom",
+            "content_name_typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "content_name_typography_font_weight": "700"
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  },
+  {
+   "id": "1a9f25",
+   "elType": "section",
+   "settings": {
+    "structure": "10",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "background_background": "classic",
+    "background_color": "#F4F4F4",
+    "padding": {
+     "unit": "px",
+     "top": "58",
+     "right": "22",
+     "bottom": "58",
+     "left": "22",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "36",
+     "right": "12",
+     "bottom": "36",
+     "left": "12",
+     "isLinked": false
+    },
+    "css_classes": ""
+   },
+   "elements": [
+    {
+     "id": "1a9dee",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100.0,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "1a9b80",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "Where we work",
+        "header_size": "h2",
+        "title_color": "#1C1C1C",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 34
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 23
+        },
+        "typography_font_weight": "700",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.2
+        },
+        "align": "center",
+        "_margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "4",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1a9cb7",
+       "elType": "widget",
+       "widgetType": "html",
+       "settings": {
+        "html": "<div class=\"ud-areas\"><span>Oklahoma City</span><span>Edmond</span><span>Norman</span><span>Moore</span><span>Yukon</span><span>Midwest City</span><span>Bethany</span><span>Mustang</span><span>Del City</span><span>Nichols Hills</span></div><p class=\"ud-areas__note\">Not sure if you are in range? <a href=\"tel:+1[[PHONE]]\" class=\"ud-tel\" data-ud-tel=\"service-area\">Call [[PHONE]]</a> and ask.</p>"
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  },
+  {
+   "id": "1aab4b",
+   "elType": "section",
+   "settings": {
+    "structure": "10",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "background_background": "classic",
+    "background_color": "#FFFFFF",
+    "padding": {
+     "unit": "px",
+     "top": "58",
+     "right": "22",
+     "bottom": "58",
+     "left": "22",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "36",
+     "right": "12",
+     "bottom": "36",
+     "left": "12",
+     "isLinked": false
+    },
+    "css_classes": ""
+   },
+   "elements": [
+    {
+     "id": "1aaa14",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100.0,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "1aa05c",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "Common questions",
+        "header_size": "h2",
+        "title_color": "#1C1C1C",
+        "typography_typography": "custom",
+        "typography_font_size": {
+         "unit": "px",
+         "size": 34
+        },
+        "typography_font_size_mobile": {
+         "unit": "px",
+         "size": 23
+        },
+        "typography_font_weight": "700",
+        "typography_line_height": {
+         "unit": "em",
+         "size": 1.2
+        },
+        "align": "center",
+        "_margin": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "8",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": []
+      },
+      {
+       "id": "1aa8dd",
+       "elType": "widget",
+       "widgetType": "accordion",
+       "settings": {
+        "tabs": [
+         {
+          "tab_title": "How long does hardwood installation take?",
+          "tab_content": "<p>Most OKC homes are finished in three to five days from the day we start, depending on square footage and whether the subfloor needs work. We give you a firm schedule with your written quote.</p>",
+          "_id": "1aa193"
+         },
+         {
+          "tab_title": "Do I need to move my furniture?",
+          "tab_content": "<p>No. Moving your furniture is included in the quote. The exceptions are pianos, safes and anything that needs a specialist. Tell us during the estimate and we will sort out a plan.</p>",
+          "_id": "1aa2ca"
+         },
+         {
+          "tab_title": "Solid or engineered: which is right for me?",
+          "tab_content": "<p>Solid hardwood can be refinished more times and suits most above-grade rooms. Engineered handles moisture and slab subfloors better, which matters in basements and over concrete. We will look at your subfloor and tell you honestly which one fits.</p>",
+          "_id": "1aa401"
+         },
+         {
+          "tab_title": "Can you install over my existing floor?",
+          "tab_content": "<p>Sometimes. Engineered floors can often go over a sound, flat existing floor, which saves removal cost. Over old tile or a floor with movement, it is usually a false economy. We check during the free estimate and tell you either way.</p>",
+          "_id": "1aa538"
+         },
+         {
+          "tab_title": "How much does it cost per square foot?",
+          "tab_content": "<p>It depends on species, grade, subfloor condition and detail work, so an honest number needs a look at the space. The in-home estimate is free and you get the price in writing before anything starts.</p>",
+          "_id": "1aa66f"
+         },
+         {
+          "tab_title": "Are you licensed and insured?",
+          "tab_content": "<p>Yes, licensed and insured, with OKC-based crews. We are happy to show you the paperwork.</p>",
+          "_id": "1aa7a6"
+         }
+        ],
+        "title_color": "#1C1C1C",
+        "tab_active_color": "#8C292F",
+        "content_color": "#3F3F3F",
+        "border_width": {
+         "unit": "px",
+         "size": 1
+        },
+        "border_color": "#E2E0E0",
+        "icon_color": "#8C292F",
+        "title_typography_typography": "custom",
+        "title_typography_font_size": {
+         "unit": "px",
+         "size": 18
+        },
+        "title_typography_font_weight": "700",
+        "content_typography_typography": "custom",
+        "content_typography_font_size": {
+         "unit": "px",
+         "size": 16
+        },
+        "content_typography_line_height": {
+         "unit": "em",
+         "size": 1.65
+        },
+        "__globals__": {
+         "tab_active_color": "globals/colors?id=accent",
+         "icon_color": "globals/colors?id=accent"
+        }
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  },
+  {
+   "id": "1ac9aa",
+   "elType": "section",
+   "settings": {
+    "structure": "10",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "background_background": "classic",
+    "background_color": "#1C1C1C",
+    "padding": {
+     "unit": "px",
+     "top": "56",
+     "right": "22",
+     "bottom": "62",
+     "left": "22",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "36",
+     "right": "12",
+     "bottom": "42",
+     "left": "12",
+     "isLinked": false
+    },
+    "css_classes": "ud-finalcta",
+    "_element_id": "ud-form-bottom"
+   },
+   "elements": [
+    {
+     "id": "1ac873",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100.0,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "1ab027",
+       "elType": "section",
+       "settings": {
+        "structure": "10",
+        "content_width": {
+         "unit": "px",
+         "size": 1240,
+         "sizes": []
+        },
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        }
+       },
+       "elements": [
+        {
+         "id": "1aaef0",
+         "elType": "column",
+         "settings": {
+          "_column_size": 100,
+          "_inline_size": 100.0,
+          "padding": {
+           "unit": "px",
+           "top": "0",
+           "right": "0",
+           "bottom": "18",
+           "left": "0",
+           "isLinked": false
+          }
+         },
+         "elements": [
+          {
+           "id": "1aac82",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Ready for new floors? Start with a free estimate.",
+            "header_size": "h2",
+            "title_color": "#FFFFFF",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 34
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 25
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.2
+            },
+            "align": "center",
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "8",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1aadb9",
+           "elType": "widget",
+           "widgetType": "html",
+           "settings": {
+            "html": "<p class=\"ud-finalcta__sub\">Or call <a href=\"tel:+1[[PHONE]]\" class=\"ud-tel ud-tel--big\" data-ud-tel=\"final-cta\">[[PHONE]]</a>. We answer.</p>"
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      },
+      {
+       "id": "1ac73c",
+       "elType": "section",
+       "settings": {
+        "structure": "10",
+        "content_width": {
+         "unit": "px",
+         "size": 1240,
+         "sizes": []
+        },
+        "padding": {
+         "unit": "px",
+         "top": "0",
+         "right": "0",
+         "bottom": "0",
+         "left": "0",
+         "isLinked": false
+        },
+        "css_classes": "ud-finalcta__card"
+       },
+       "elements": [
+        {
+         "id": "1ac605",
+         "elType": "column",
+         "settings": {
+          "_column_size": 100,
+          "_inline_size": 100.0,
+          "background_background": "classic",
+          "background_color": "#FFFFFF",
+          "border_border": "solid",
+          "border_width": {
+           "unit": "px",
+           "top": "1",
+           "right": "1",
+           "bottom": "1",
+           "left": "1",
+           "isLinked": false
+          },
+          "border_color": "#E2E0E0",
+          "border_radius": {
+           "unit": "px",
+           "top": "12",
+           "right": "12",
+           "bottom": "12",
+           "left": "12",
+           "isLinked": true
+          },
+          "box_shadow_box_shadow_type": "yes",
+          "box_shadow_box_shadow": {
+           "horizontal": 0,
+           "vertical": 18,
+           "blur": 48,
+           "spread": -12,
+           "color": "rgba(0,0,0,0.22)"
+          },
+          "padding": {
+           "unit": "px",
+           "top": "26",
+           "right": "26",
+           "bottom": "24",
+           "left": "26",
+           "isLinked": false
+          },
+          "padding_mobile": {
+           "unit": "px",
+           "top": "20",
+           "right": "18",
+           "bottom": "20",
+           "left": "18",
+           "isLinked": false
+          },
+          "css_classes": "ud-formcard"
+         },
+         "elements": [
+          {
+           "id": "1ab15e",
+           "elType": "widget",
+           "widgetType": "heading",
+           "settings": {
+            "title": "Start with a free estimate",
+            "header_size": "h2",
+            "title_color": "#1C1C1C",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 24
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 21
+            },
+            "typography_font_weight": "700",
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.2
+            },
+            "_margin": {
+             "unit": "px",
+             "top": "0",
+             "right": "0",
+             "bottom": "2",
+             "left": "0",
+             "isLinked": false
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1ab295",
+           "elType": "widget",
+           "widgetType": "text-editor",
+           "settings": {
+            "editor": "<p style=\"margin:0\">Takes 30 seconds &middot; No obligation</p>",
+            "text_color": "#6B6969",
+            "typography_typography": "custom",
+            "typography_font_size": {
+             "unit": "px",
+             "size": 14
+            },
+            "typography_font_size_mobile": {
+             "unit": "px",
+             "size": 15
+            },
+            "typography_line_height": {
+             "unit": "em",
+             "size": 1.65
+            },
+            "_css_classes": "ud-form-sub"
+           },
+           "elements": []
+          },
+          {
+           "id": "1ac397",
+           "elType": "widget",
+           "widgetType": "form",
+           "settings": {
+            "form_name": "UD LP - Hardwood Installation OKC (Bottom)",
+            "form_fields": [
+             {
+              "custom_id": "step_one",
+              "field_type": "step",
+              "field_label": "What you need",
+              "step_next_button": "",
+              "step_previous_button": "",
+              "_id": "1ab3cc",
+              "width": "100"
+             },
+             {
+              "custom_id": "service",
+              "field_type": "radio",
+              "field_label": "What do you need?",
+              "field_options": "New hardwood floors\nRefinish my existing floors\nRepair a damaged floor",
+              "required": "true",
+              "css_classes": "ud-cards ud-cards--service ud-autoadvance",
+              "_id": "1ab503",
+              "width": "100"
+             },
+             {
+              "custom_id": "step_two",
+              "field_type": "step",
+              "field_label": "Your space",
+              "step_next_button": "Continue",
+              "step_previous_button": "Back",
+              "_id": "1ab63a",
+              "width": "100"
+             },
+             {
+              "custom_id": "area",
+              "field_type": "radio",
+              "field_label": "Roughly how much area?",
+              "field_options": "Under 500 sq ft\n500-1,000 sq ft\n1,000-2,000 sq ft\nOver 2,000 sq ft\nNot sure",
+              "required": "true",
+              "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
+              "_id": "1ab771",
+              "width": "100"
+             },
+             {
+              "custom_id": "timeline",
+              "field_type": "radio",
+              "field_label": "When are you hoping to start?",
+              "field_options": "As soon as possible\nWithin a month\n1-3 months\nJust planning",
+              "required": "true",
+              "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
+              "_id": "1ab8a8",
+              "width": "100"
+             },
+             {
+              "custom_id": "property",
+              "field_type": "radio",
+              "field_label": "Property type",
+              "field_options": "Home\nRental\nBusiness",
+              "required": "true",
+              "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
+              "_id": "1ab9df",
+              "width": "100"
+             },
+             {
+              "custom_id": "step_three",
+              "field_type": "step",
+              "field_label": "Your details",
+              "step_next_button": "Continue",
+              "step_previous_button": "Back",
+              "_id": "1abb16",
+              "width": "100"
+             },
+             {
+              "custom_id": "first_name",
+              "field_type": "text",
+              "field_label": "First name",
+              "placeholder": "First name",
+              "required": "true",
+              "width": "50",
+              "_id": "1abc4d"
+             },
+             {
+              "custom_id": "zip",
+              "field_type": "text",
+              "field_label": "ZIP code",
+              "placeholder": "ZIP code",
+              "required": "true",
+              "width": "50",
+              "_id": "1abd84"
+             },
+             {
+              "custom_id": "phone",
+              "field_type": "tel",
+              "field_label": "Phone",
+              "placeholder": "Phone number",
+              "required": "true",
+              "width": "100",
+              "_id": "1abebb"
+             },
+             {
+              "custom_id": "email",
+              "field_type": "email",
+              "field_label": "Email",
+              "placeholder": "Email address",
+              "required": "true",
+              "width": "100",
+              "_id": "1abff2"
+             },
+             {
+              "custom_id": "preselect",
+              "field_type": "hidden",
+              "field_label": "Preselected",
+              "field_value": "New hardwood floors",
+              "width": "100",
+              "_id": "1ac129"
+             },
+             {
+              "custom_id": "source_page",
+              "field_type": "hidden",
+              "field_label": "Source page",
+              "field_value": "[page_url]",
+              "width": "100",
+              "_id": "1ac260"
+             }
+            ],
+            "step_type": "progress_bar",
+            "step_previous_button_text": "Back",
+            "step_next_button_text": "Continue",
+            "button_text": "Get My Free Estimate",
+            "button_size": "lg",
+            "button_width": "100",
+            "button_background_color": "#8C292F",
+            "button_background_hover_color": "#690202",
+            "button_text_color": "#FFFFFF",
+            "button_border_radius": {
+             "unit": "px",
+             "top": "6",
+             "right": "6",
+             "bottom": "6",
+             "left": "6",
+             "isLinked": true
+            },
+            "button_typography_typography": "custom",
+            "button_typography_font_size": {
+             "unit": "px",
+             "size": 18
+            },
+            "button_typography_font_weight": "700",
+            "label_color": "#1C1C1C",
+            "field_typography_typography": "custom",
+            "field_typography_font_size": {
+             "unit": "px",
+             "size": 16
+            },
+            "label_typography_typography": "custom",
+            "label_typography_font_size": {
+             "unit": "px",
+             "size": 17
+            },
+            "label_typography_font_weight": "700",
+            "field_border_color": "#E2E0E0",
+            "field_border_radius": {
+             "unit": "px",
+             "top": "6",
+             "right": "6",
+             "bottom": "6",
+             "left": "6",
+             "isLinked": true
+            },
+            "row_gap": {
+             "unit": "px",
+             "size": 16
+            },
+            "submit_actions": [
+             "email",
+             "redirect"
+            ],
+            "redirect_to": "[[REPLACE THIS URL]]",
+            "email_subject": "New estimate request - UD LP - Hardwood Installation OKC (Bottom)",
+            "email_content": "[all-fields]",
+            "email_from_name": "[[BUSINESS NAME]]",
+            "email_reply_to": "[field id=\"email\"]",
+            "success_message": "Thanks! We'll call within one business day.",
+            "_css_classes": "ud-form",
+            "__globals__": {
+             "button_background_color": "globals/colors?id=accent",
+             "button_background_hover_color": "globals/colors?id=primary"
+            }
+           },
+           "elements": []
+          },
+          {
+           "id": "1ac4ce",
+           "elType": "widget",
+           "widgetType": "html",
+           "settings": {
+            "html": "<p class=\"ud-form-foot\">or call <a href=\"tel:+1[[PHONE]]\" class=\"ud-tel\" data-ud-tel=\"form-card\">[[PHONE]]</a></p>"
+           },
+           "elements": []
+          }
+         ],
+         "isInner": false
+        }
+       ],
+       "isInner": true
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  },
+  {
+   "id": "1acd4f",
+   "elType": "section",
+   "settings": {
+    "structure": "10",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "background_background": "classic",
+    "background_color": "#141414",
+    "padding": {
+     "unit": "px",
+     "top": "34",
+     "right": "22",
+     "bottom": "34",
+     "left": "22",
+     "isLinked": false
+    },
+    "css_classes": "ud-footer"
+   },
+   "elements": [
+    {
+     "id": "1acc18",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100.0
+     },
+     "elements": [
+      {
+       "id": "1acae1",
+       "elType": "widget",
+       "widgetType": "html",
+       "settings": {
+        "html": "<div class=\"ud-foot\"><img src=\"[[REPLACE THIS URL]]\" alt=\"[[BUSINESS NAME]]\" class=\"ud-foot__logo\"><p><a href=\"tel:+1[[PHONE]]\" class=\"ud-tel\" data-ud-tel=\"footer\">[[PHONE]]</a></p><p>350 Vermont Ave #208, Oklahoma City, OK 73108</p><p class=\"ud-foot__area\">Serving Oklahoma City, Edmond, Norman, Moore, Yukon, Midwest City</p><p class=\"ud-foot__legal\"><a href=\"/privacy-policy/\">Privacy Policy</a></p></div>"
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  },
+  {
+   "id": "1ad0f4",
+   "elType": "section",
+   "settings": {
+    "structure": "10",
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "padding": {
+     "unit": "px",
+     "top": "0",
+     "right": "0",
+     "bottom": "0",
+     "left": "0",
+     "isLinked": false
+    },
+    "margin": {
+     "unit": "px",
+     "top": "0",
+     "right": "0",
+     "bottom": "0",
+     "left": "0",
+     "isLinked": false
+    },
+    "css_classes": "ud-mobilebar-wrap"
+   },
+   "elements": [
+    {
+     "id": "1acfbd",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100.0,
+      "padding": {
+       "unit": "px",
+       "top": "0",
+       "right": "0",
+       "bottom": "0",
+       "left": "0",
+       "isLinked": false
+      }
+     },
+     "elements": [
+      {
+       "id": "1ace86",
+       "elType": "widget",
+       "widgetType": "html",
+       "settings": {
+        "html": "<div class=\"ud-mobilebar\"><a href=\"tel:+1[[PHONE]]\" class=\"ud-mobilebar__call ud-tel\" data-ud-tel=\"sticky-bar\">&#9742; Call Now</a><a href=\"#ud-form\" class=\"ud-mobilebar__cta ud-cta-scroll\">Free Estimate</a></div>"
+       },
+       "elements": []
+      }
+     ],
+     "isInner": false
+    }
+   ],
+   "isInner": false
+  }
+ ],
+ "page_settings": {
+  "hide_title": "yes",
+  "template": "elementor_canvas",
+  "background_background": "classic",
+  "background_color": "#FFFFFF"
+ }
+}
