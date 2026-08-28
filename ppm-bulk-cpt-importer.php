@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.9.0
+ * Version: 1.9.1
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -1562,8 +1562,18 @@ function ppm_installed_template_id($profile_key, $file) {
     }
 
     $template_id = (int) $installed[$key];
+    $template    = get_post($template_id);
 
-    if (!get_post($template_id)) {
+    // get_post() returns a WP_Post for a trashed post too, so status is what
+    // decides this. Without the check, deleting a template leaves the screen
+    // offering to edit something that is in the trash, with no way to reinstall.
+    // The post type is checked as well: ids are reused after a permanent delete,
+    // and a stale one can land on an unrelated post.
+    $usable = $template
+        && $template->post_type === 'elementor_library'
+        && !in_array($template->post_status, ['trash', 'auto-draft'], true);
+
+    if (!$usable) {
         unset($installed[$key]);
         update_option('ppm_installed_templates', $installed);
 
@@ -1596,7 +1606,7 @@ function ppm_remember_installed_template($profile_key, $file, $template_id) {
  *
  * Returns a status slug for the redirect.
  */
-function ppm_install_bundled_template($profile_key, $profile, $file) {
+function ppm_install_bundled_template($profile_key, $profile, $file, $reinstall = false) {
     if (!ppm_find_profile_template($profile, $file)) {
         return 'missing';
     }
@@ -1605,7 +1615,7 @@ function ppm_install_bundled_template($profile_key, $profile, $file) {
         return 'no-elementor';
     }
 
-    if (ppm_installed_template_id($profile_key, $file)) {
+    if (!$reinstall && ppm_installed_template_id($profile_key, $file)) {
         return 'exists';
     }
 
@@ -1705,7 +1715,12 @@ function ppm_install_elementor_template() {
         ? sanitize_file_name(wp_unslash($_POST['template_file']))
         : '';
 
-    $status = ppm_install_bundled_template($profile_key, $profile, $file);
+    // Installing again leaves the previous copy alone rather than replacing it:
+    // it may have been edited, and Elementor keeps templates by id, so the pages
+    // already built from the old one keep working.
+    $reinstall = !empty($_POST['reinstall']);
+
+    $status = ppm_install_bundled_template($profile_key, $profile, $file, $reinstall);
 
     wp_safe_redirect(add_query_arg(
         [
@@ -1731,7 +1746,7 @@ function ppm_render_template_status_notice() {
     }
 
     $messages = [
-        'installed'    => ['ok', 'Template installed. It is now under Templates &rsaquo; Saved Templates, where its display conditions can be set.'],
+        'installed'    => ['ok', 'Template installed. It is now under Templates &rsaquo; Saved Templates, where its display conditions can be set. Installing again adds a second copy rather than replacing the first, so remove the older one once nothing needs it.'],
         'exists'       => ['ok', 'That template is already installed on this site.'],
         'missing'      => ['warn', 'That template is not bundled in this release of the plugin.'],
         'no-elementor' => ['warn', 'Elementor is not active, so there is nothing to install the template into.'],
@@ -1781,6 +1796,21 @@ function ppm_render_template_library($profile_key, $profile) {
                             <span class="ppm-template-state">Not bundled</span>
                         <?php elseif ($installed_id) : ?>
                             <a class="button ppm-btn" href="<?php echo esc_url((string) get_edit_post_link($installed_id)); ?>">Installed &mdash; Edit</a>
+
+                            <?php
+                            // A plugin update can ship a newer template while the
+                            // site still holds the copy installed from an older
+                            // one. Without this the screen would report it as
+                            // installed and never offer the new version.
+                            ?>
+                            <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                                <?php wp_nonce_field('ppm_install_elementor_template'); ?>
+                                <input type="hidden" name="action" value="ppm_install_elementor_template">
+                                <input type="hidden" name="ppm_profile" value="<?php echo esc_attr($profile_key); ?>">
+                                <input type="hidden" name="template_file" value="<?php echo esc_attr($template['file']); ?>">
+                                <input type="hidden" name="reinstall" value="1">
+                                <input type="submit" class="button ppm-btn" value="Install Again">
+                            </form>
                         <?php else : ?>
                             <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
                                 <?php wp_nonce_field('ppm_install_elementor_template'); ?>
