@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-label="Placeholder image">
+  <rect width="1200" height="800" fill="#e6e6ec"/>
+  <rect x="8" y="8" width="1184" height="784" fill="none" stroke="#c3c3d1" stroke-width="4" stroke-dasharray="24 16"/>
+  <g fill="#a9a9bd">
+    <path d="M390 300h420c13.3 0 24 10.7 24 24v168c0 13.3-10.7 24-24 24H390c-13.3 0-24-10.7-24-24V324c0-13.3 10.7-24 24-24zm0 32c-4.4 0-8 3.6-8 8v152c0 4.4 3.6 8 8 8h420c4.4 0 8-3.6 8-8V340c0-4.4-3.6-8-8-8H390z"/>
+    <circle cx="452" cy="382" r="26"/>
+    <path d="M398 486l104-104 74 74 62-56 164 86z"/>
+  </g>
+  <text x="600" y="580" fill="#8a8a9e" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="bold" letter-spacing="3" text-anchor="middle">PLACEHOLDER IMAGE</text>
+  <text x="600" y="626" fill="#a0a0b4" font-family="Arial, Helvetica, sans-serif" font-size="24" text-anchor="middle">Replace before publishing</text>
+</svg>
