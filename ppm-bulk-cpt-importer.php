@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.7.1
+ * Version: 1.8.0
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -26,6 +26,14 @@ if (!defined('PPM_BULK_IMPORTER_VERSION')) {
         'PPM_BULK_IMPORTER_VERSION',
         $ppm_header_data['Version'] !== '' ? $ppm_header_data['Version'] : '0.0.0'
     );
+}
+
+// Image slots in a bundled template carry this token rather than a photograph,
+// so installing one adds nothing to the media library and every slot arrives
+// visibly unfinished. It can only become a real URL at install time, because it
+// depends on where WordPress is installed.
+if (!defined('PPM_TEMPLATE_IMAGE_TOKEN')) {
+    define('PPM_TEMPLATE_IMAGE_TOKEN', '{{PPM_PLACEHOLDER_IMAGE}}');
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1643,7 +1651,20 @@ function ppm_install_bundled_template($profile_key, $profile, $file) {
         return 'failed';
     }
 
-    $result = $source->import_template(basename($path), $path);
+    $prepared = ppm_resolve_template_placeholders($path);
+
+    if ($prepared === '') {
+        return 'failed';
+    }
+
+    $result = $source->import_template(basename($path), $prepared);
+
+    // basename($path) above, not basename($prepared): Elementor decides how to
+    // read the file from the name it is given, and the temporary copy has no
+    // .json extension.
+    if ($prepared !== $path) {
+        @unlink($prepared);
+    }
 
     if (is_wp_error($result) || empty($result)) {
         return 'failed';
@@ -1659,6 +1680,43 @@ function ppm_install_bundled_template($profile_key, $profile, $file) {
     ppm_remember_installed_template($profile_key, $file, (int) $item['template_id']);
 
     return 'installed';
+}
+
+/**
+ * Point every placeholder image slot at this installation's bundled asset.
+ *
+ * Returns the path to hand Elementor: the original when there is nothing to
+ * resolve, a temporary copy otherwise, or '' when the file could not be read or
+ * written.
+ */
+function ppm_resolve_template_placeholders($path) {
+    $contents = file_get_contents($path);
+
+    if ($contents === false) {
+        return '';
+    }
+
+    if (strpos($contents, PPM_TEMPLATE_IMAGE_TOKEN) === false) {
+        return $path;
+    }
+
+    if (!function_exists('wp_tempnam')) {
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+    }
+
+    $contents = str_replace(
+        PPM_TEMPLATE_IMAGE_TOKEN,
+        esc_url_raw(plugins_url('assets/placeholder.svg', __FILE__)),
+        $contents
+    );
+
+    $temporary = wp_tempnam('ppm-template');
+
+    if (!$temporary || file_put_contents($temporary, $contents) === false) {
+        return '';
+    }
+
+    return $temporary;
 }
 
 add_action('admin_post_ppm_install_elementor_template', 'ppm_install_elementor_template');

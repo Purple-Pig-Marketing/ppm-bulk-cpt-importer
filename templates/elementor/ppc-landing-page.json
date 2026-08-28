@@ -129,7 +129,7 @@
       {
        "id": "7773f094",
        "settings": {
-        "html": "<div class=\"ud-hdr\">  <a class=\"ud-hdr__logo\" href=\"#ud-form\">    <img src=\"[[REPLACE THIS URL]]\" alt=\"[[BUSINESS NAME]]\">  </a>  <div class=\"ud-hdr__tag\">Oklahoma's Premier Flooring Specialists</div>  <div class=\"ud-hdr__actions\">    <a class=\"ud-hdr__call ud-tel\" data-ud-tel=\"header\" href=\"tel:+1[[PHONE]]\">CALL [[PHONE]]</a>    <a class=\"ud-hdr__cta ud-cta-scroll\" href=\"#ud-form-bottom\">REQUEST ESTIMATE</a>  </div></div>"
+        "html": "<div class=\"ud-hdr\">  <a class=\"ud-hdr__logo\" href=\"#ud-form\">    <img src=\"{{PPM_PLACEHOLDER_IMAGE}}\" alt=\"[[BUSINESS NAME]]\">  </a>  <div class=\"ud-hdr__tag\">Oklahoma's Premier Flooring Specialists</div>  <div class=\"ud-hdr__actions\">    <a class=\"ud-hdr__call ud-tel\" data-ud-tel=\"header\" href=\"tel:+1[[PHONE]]\">CALL [[PHONE]]</a>    <a class=\"ud-hdr__cta ud-cta-scroll\" href=\"#ud-form-bottom\">REQUEST ESTIMATE</a>  </div></div>"
        },
        "elements": [],
        "isInner": false,
@@ -171,8 +171,8 @@
     },
     "background_background": "classic",
     "background_image": {
-     "url": "https://urbandesignsflooring.com/wp-content/uploads/2024/03/Urban-Designs-Flooring-Oklahoma-City-Oklahoma-Premier-Flooring-Company-8.jpg",
-     "id": 14361
+     "url": "{{PPM_PLACEHOLDER_IMAGE}}",
+     "id": ""
     },
     "background_position": "center center",
     "background_repeat": "no-repeat",
@@ -822,36 +822,36 @@
        "settings": {
         "wp_gallery": [
          {
-          "id": 14350,
-          "url": "https://urbandesignsflooring.com/wp-content/uploads/2024/03/bfae.jpg"
+          "id": "",
+          "url": "{{PPM_PLACEHOLDER_IMAGE}}"
          },
          {
-          "id": 14235,
-          "url": "https://urbandesignsflooring.com/wp-content/uploads/2024/03/285467666_1658785244491942_5187946547009302469_n.jpg"
+          "id": "",
+          "url": "{{PPM_PLACEHOLDER_IMAGE}}"
          },
          {
-          "id": 14468,
-          "url": "https://urbandesignsflooring.com/wp-content/uploads/2024/03/Urban-Designs-Flooring-Homepage-Service-Boxes-3-1.jpg"
+          "id": "",
+          "url": "{{PPM_PLACEHOLDER_IMAGE}}"
          },
          {
-          "id": 14336,
-          "url": "https://urbandesignsflooring.com/wp-content/uploads/2024/03/hreg.jpg"
+          "id": "",
+          "url": "{{PPM_PLACEHOLDER_IMAGE}}"
          },
          {
-          "id": 14470,
-          "url": "https://urbandesignsflooring.com/wp-content/uploads/2024/03/Urban-Designs-Flooring-Homepage-Service-Boxes-5.jpg"
+          "id": "",
+          "url": "{{PPM_PLACEHOLDER_IMAGE}}"
          },
          {
-          "id": 14332,
-          "url": "https://urbandesignsflooring.com/wp-content/uploads/2024/03/mbkug.jpg"
+          "id": "",
+          "url": "{{PPM_PLACEHOLDER_IMAGE}}"
          },
          {
-          "id": 14318,
-          "url": "https://urbandesignsflooring.com/wp-content/uploads/2024/03/xhfj.jpg"
+          "id": "",
+          "url": "{{PPM_PLACEHOLDER_IMAGE}}"
          },
          {
-          "id": 14074,
-          "url": "https://urbandesignsflooring.com/wp-content/uploads/2020/05/3.jpg"
+          "id": "",
+          "url": "{{PPM_PLACEHOLDER_IMAGE}}"
          }
         ],
         "gallery_columns_mobile": 2,
@@ -1471,8 +1471,8 @@
            "id": "6e6beafd",
            "settings": {
             "image": {
-             "url": "https://urbandesignsflooring.com/wp-content/uploads/2026/08/hardwood-floor-installation.webp",
-             "id": 14587,
+             "url": "{{PPM_PLACEHOLDER_IMAGE}}",
+             "id": "",
              "alt": "",
              "source": "library",
              "size": ""
@@ -3894,7 +3894,7 @@
       {
        "id": "5b8806fc",
        "settings": {
-        "html": "<div class=\"ud-foot\"><img src=\"[[REPLACE THIS URL]]\" alt=\"[[BUSINESS NAME]]\" class=\"ud-foot__logo\"><p><a href=\"tel:+1[[PHONE]]\" class=\"ud-tel\" data-ud-tel=\"footer\">[[PHONE]]</a></p><p>350 Vermont Ave #208, Oklahoma City, OK 73108</p><p class=\"ud-foot__area\">Serving Oklahoma City, Edmond, Norman, Moore, Yukon, Midwest City</p><p class=\"ud-foot__legal\"><a href=\"/privacy-policy/\">Privacy Policy</a></p></div>"
+        "html": "<div class=\"ud-foot\"><img src=\"{{PPM_PLACEHOLDER_IMAGE}}\" alt=\"[[BUSINESS NAME]]\" class=\"ud-foot__logo\"><p><a href=\"tel:+1[[PHONE]]\" class=\"ud-tel\" data-ud-tel=\"footer\">[[PHONE]]</a></p><p>350 Vermont Ave #208, Oklahoma City, OK 73108</p><p class=\"ud-foot__area\">Serving Oklahoma City, Edmond, Norman, Moore, Yukon, Midwest City</p><p class=\"ud-foot__legal\"><a href=\"/privacy-policy/\">Privacy Policy</a></p></div>"
        },
        "elements": [],
        "isInner": false,
