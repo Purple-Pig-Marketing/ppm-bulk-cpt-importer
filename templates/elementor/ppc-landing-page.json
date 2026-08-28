@@ -240,6 +240,9 @@
          "bottom": "10",
          "left": "0",
          "isLinked": false
+        },
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"7c631ad\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_51ad38f4e2a0d%3Ahero_heading_1%22%7D\"]"
         }
        },
        "elements": [],
@@ -264,6 +267,9 @@
         "typography_line_height": {
          "unit": "em",
          "size": 1.55
+        },
+        "__dynamic__": {
+         "editor": "[elementor-tag id=\"214fce9\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_fdc821642f42f%3Ahero_text_1%22%7D\"]"
         }
        },
        "elements": [],
@@ -277,15 +283,24 @@
         "icon_list": [
          {
           "text": "Free in-home estimate and written quote",
-          "_id": "1a0aef"
+          "_id": "1a0aef",
+          "__dynamic__": {
+           "text": "[elementor-tag id=\"bcd4a73\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_77c057e4073b6%3Ahero_bullet_1%22%7D\"]"
+          }
          },
          {
           "text": "Licensed, insured, OKC-based crews",
-          "_id": "1a0c26"
+          "_id": "1a0c26",
+          "__dynamic__": {
+           "text": "[elementor-tag id=\"fd86d48\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_9d51bca23a744%3Ahero_bullet_2%22%7D\"]"
+          }
          },
          {
           "text": "Furniture moved, old flooring hauled away",
-          "_id": "1a0d5d"
+          "_id": "1a0d5d",
+          "__dynamic__": {
+           "text": "[elementor-tag id=\"1b13ab7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_a2dec8f8b5375%3Ahero_bullet_3%22%7D\"]"
+          }
          }
         ],
         "space_between": {
@@ -335,7 +350,10 @@
          "size": 15
         },
         "typography_font_weight": "600",
-        "title_color": "#FFFFFF"
+        "title_color": "#FFFFFF",
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"e44c0a8\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_4d766d18d3f1b%3Ahero_rating_caption_1%22%7D\"]"
+        }
        },
        "elements": [],
        "isInner": false,
@@ -434,6 +452,9 @@
          "bottom": "2",
          "left": "0",
          "isLinked": false
+        },
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"2f68659\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_4555d36934214%3Ahero_heading_2%22%7D\"]"
         }
        },
        "elements": [],
@@ -459,7 +480,10 @@
          "unit": "em",
          "size": 1.65
         },
-        "_css_classes": "ud-form-sub"
+        "_css_classes": "ud-form-sub",
+        "__dynamic__": {
+         "editor": "[elementor-tag id=\"322e9c3\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_69dca41670ab4%3Ahero_text_2%22%7D\"]"
+        }
        },
        "elements": [],
        "isInner": false,
@@ -486,7 +510,10 @@
           "field_options": "New hardwood floors\nRefinish my existing floors\nRepair a damaged floor",
           "required": "true",
           "css_classes": "ud-cards ud-cards--service ud-autoadvance",
-          "_id": "1a1715"
+          "_id": "1a1715",
+          "__dynamic__": {
+           "field_options": "[elementor-tag id=\"0d9c6f3\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_68e455187f79e%3Ahero_options_1%22%7D\"]"
+          }
          },
          {
           "custom_id": "step_two",
@@ -503,7 +530,10 @@
           "field_options": "Under 500 sq ft\n500-1,000 sq ft\n1,000-2,000 sq ft\nOver 2,000 sq ft\nNot sure",
           "required": "true",
           "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
-          "_id": "1a1983"
+          "_id": "1a1983",
+          "__dynamic__": {
+           "field_options": "[elementor-tag id=\"4051255\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_34efe02a62756%3Ahero_options_2%22%7D\"]"
+          }
          },
          {
           "custom_id": "timeline",
@@ -512,7 +542,10 @@
           "field_options": "As soon as possible\nWithin a month\n1-3 months\nJust planning",
           "required": "true",
           "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
-          "_id": "1a1aba"
+          "_id": "1a1aba",
+          "__dynamic__": {
+           "field_options": "[elementor-tag id=\"35af8c2\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_4003537c53ed6%3Ahero_options_3%22%7D\"]"
+          }
          },
          {
           "custom_id": "property",
@@ -521,7 +554,10 @@
           "field_options": "Home\nRental\nBusiness",
           "required": "true",
           "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
-          "_id": "1a1bf1"
+          "_id": "1a1bf1",
+          "__dynamic__": {
+           "field_options": "[elementor-tag id=\"dacf9f4\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_fd76bfed3e11f%3Ahero_options_4%22%7D\"]"
+          }
          },
          {
           "custom_id": "step_three",
@@ -786,6 +822,9 @@
          "bottom": "4",
          "left": "0",
          "isLinked": false
+        },
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"955f5fb\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_df898f5dc8f45%3Agallery_heading_1%22%7D\"]"
         }
        },
        "elements": [],
@@ -810,6 +849,9 @@
         "typography_line_height": {
          "unit": "em",
          "size": 1.65
+        },
+        "__dynamic__": {
+         "editor": "[elementor-tag id=\"20732f7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_8884cfe1a5cc4%3Agallery_text_1%22%7D\"]"
         }
        },
        "elements": [],
@@ -969,6 +1011,9 @@
          "bottom": "4",
          "left": "0",
          "isLinked": false
+        },
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"94c851e\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_3cfa40712e4ae%3Abody4_heading_1%22%7D\"]"
         }
        },
        "elements": [],
@@ -993,6 +1038,9 @@
         "typography_line_height": {
          "unit": "em",
          "size": 1.65
+        },
+        "__dynamic__": {
+         "editor": "[elementor-tag id=\"b762e9c\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_77f97d97177ae%3Abody4_text_1%22%7D\"]"
         }
        },
        "elements": [],
@@ -1109,6 +1157,9 @@
              "bottom": "4",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"a8882ce\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c010c60948343%3Abody4_heading_2%22%7D\"]"
             }
            },
            "elements": [],
@@ -1133,6 +1184,9 @@
             "typography_line_height": {
              "unit": "em",
              "size": 1.65
+            },
+            "__dynamic__": {
+             "editor": "[elementor-tag id=\"2d00f28\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_300b41d6f9b4a%3Abody4_text_2%22%7D\"]"
             }
            },
            "elements": [],
@@ -1224,6 +1278,9 @@
              "bottom": "4",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"b9807d7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_e88e80e5c692c%3Abody4_heading_3%22%7D\"]"
             }
            },
            "elements": [],
@@ -1248,6 +1305,9 @@
             "typography_line_height": {
              "unit": "em",
              "size": 1.65
+            },
+            "__dynamic__": {
+             "editor": "[elementor-tag id=\"5b89ae7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6c1dbd2899954%3Abody4_text_3%22%7D\"]"
             }
            },
            "elements": [],
@@ -1339,6 +1399,9 @@
              "bottom": "4",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"fd66b00\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_9991ef9eee714%3Abody4_heading_4%22%7D\"]"
             }
            },
            "elements": [],
@@ -1363,6 +1426,9 @@
             "typography_line_height": {
              "unit": "em",
              "size": 1.65
+            },
+            "__dynamic__": {
+             "editor": "[elementor-tag id=\"fc45140\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_3d5e51eb98cae%3Abody4_text_4%22%7D\"]"
             }
            },
            "elements": [],
@@ -1546,6 +1612,9 @@
              "bottom": "4",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"3ee3001\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_7133eba2a38e6%3Apoints_heading_1%22%7D\"]"
             }
            },
            "elements": [],
@@ -1570,6 +1639,9 @@
             "typography_line_height": {
              "unit": "em",
              "size": 1.65
+            },
+            "__dynamic__": {
+             "editor": "[elementor-tag id=\"9b0b109\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_4b1b6c4fc9ef4%3Apoints_text_1%22%7D\"]"
             }
            },
            "elements": [],
@@ -1683,6 +1755,9 @@
              "bottom": "6",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"b749846\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_ee8b47732df57%3Apoints_heading_2%22%7D\"]"
             }
            },
            "elements": [],
@@ -1696,27 +1771,45 @@
             "icon_list": [
              {
               "text": "Subfloor preparation and levelling",
-              "_id": "1a53d3"
+              "_id": "1a53d3",
+              "__dynamic__": {
+               "text": "[elementor-tag id=\"a0963f1\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_cd9d82db11fe4%3Apoints_bullet_1%22%7D\"]"
+              }
              },
              {
               "text": "Moisture testing before install",
-              "_id": "1a550a"
+              "_id": "1a550a",
+              "__dynamic__": {
+               "text": "[elementor-tag id=\"bc452a7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_0e8357886dc77%3Apoints_bullet_2%22%7D\"]"
+              }
              },
              {
               "text": "Moving your furniture",
-              "_id": "1a5641"
+              "_id": "1a5641",
+              "__dynamic__": {
+               "text": "[elementor-tag id=\"d03add7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_3a03fc6f6374f%3Apoints_bullet_3%22%7D\"]"
+              }
              },
              {
               "text": "Removal and disposal of old flooring",
-              "_id": "1a5778"
+              "_id": "1a5778",
+              "__dynamic__": {
+               "text": "[elementor-tag id=\"890f31d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_f2e2854397aa1%3Apoints_bullet_4%22%7D\"]"
+              }
              },
              {
               "text": "Trim, transitions and thresholds",
-              "_id": "1a58af"
+              "_id": "1a58af",
+              "__dynamic__": {
+               "text": "[elementor-tag id=\"69f1e07\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_acf7c6b49b935%3Apoints_bullet_5%22%7D\"]"
+              }
              },
              {
               "text": "Full clean-up when we leave",
-              "_id": "1a59e6"
+              "_id": "1a59e6",
+              "__dynamic__": {
+               "text": "[elementor-tag id=\"0145428\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6051145c50e62%3Apoints_bullet_6%22%7D\"]"
+              }
              }
             ],
             "space_between": {
@@ -1823,6 +1916,9 @@
              "bottom": "6",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"6b93556\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c875e2864bfb6%3Apoints_heading_3%22%7D\"]"
             }
            },
            "elements": [],
@@ -1840,7 +1936,10 @@
                "value": "fas fa-times",
                "library": "fa-solid"
               },
-              "_id": "1a5ec2"
+              "_id": "1a5ec2",
+              "__dynamic__": {
+               "text": "[elementor-tag id=\"3071ab7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6ea69cc098a3b%3Apoints_bullet_7%22%7D\"]"
+              }
              },
              {
               "text": "Structural or joist repair",
@@ -1848,7 +1947,10 @@
                "value": "fas fa-times",
                "library": "fa-solid"
               },
-              "_id": "1a5ff9"
+              "_id": "1a5ff9",
+              "__dynamic__": {
+               "text": "[elementor-tag id=\"88a9054\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_5d3672b98a8b5%3Apoints_bullet_8%22%7D\"]"
+              }
              },
              {
               "text": "Moving pianos, safes or gun safes",
@@ -1856,7 +1958,10 @@
                "value": "fas fa-times",
                "library": "fa-solid"
               },
-              "_id": "1a6130"
+              "_id": "1a6130",
+              "__dynamic__": {
+               "text": "[elementor-tag id=\"b543aa5\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_1a17e0dfe76a6%3Apoints_bullet_9%22%7D\"]"
+              }
              },
              {
               "text": "Painting or baseboard replacement",
@@ -1864,7 +1969,10 @@
                "value": "fas fa-times",
                "library": "fa-solid"
               },
-              "_id": "1a6267"
+              "_id": "1a6267",
+              "__dynamic__": {
+               "text": "[elementor-tag id=\"bed1e9d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_327a4ec5a70c1%3Apoints_bullet_10%22%7D\"]"
+              }
              },
              {
               "text": "Appliance disconnect and reconnect",
@@ -1872,7 +1980,10 @@
                "value": "fas fa-times",
                "library": "fa-solid"
               },
-              "_id": "1a639e"
+              "_id": "1a639e",
+              "__dynamic__": {
+               "text": "[elementor-tag id=\"d7b97c7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_1f0da4edcba97%3Apoints_bullet_11%22%7D\"]"
+              }
              }
             ],
             "space_between": {
@@ -1992,6 +2103,9 @@
          "bottom": "4",
          "left": "0",
          "isLinked": false
+        },
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"3b2fcd2\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_e9dd6e2f60a1e%3Abody5_heading_1%22%7D\"]"
         }
        },
        "elements": [],
@@ -2016,6 +2130,9 @@
         "typography_line_height": {
          "unit": "em",
          "size": 1.65
+        },
+        "__dynamic__": {
+         "editor": "[elementor-tag id=\"26246fb\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6c4e7fa7640c6%3Abody5_text_1%22%7D\"]"
         }
        },
        "elements": [],
@@ -2132,6 +2249,9 @@
              "bottom": "4",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"6a74889\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_7753800daa6de%3Abody5_heading_2%22%7D\"]"
             }
            },
            "elements": [],
@@ -2156,6 +2276,9 @@
             "typography_line_height": {
              "unit": "em",
              "size": 1.65
+            },
+            "__dynamic__": {
+             "editor": "[elementor-tag id=\"8ca7b8f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_90d821fba383b%3Abody5_text_2%22%7D\"]"
             }
            },
            "elements": [],
@@ -2247,6 +2370,9 @@
              "bottom": "4",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"ed55d0a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6764ed12587ac%3Abody5_heading_3%22%7D\"]"
             }
            },
            "elements": [],
@@ -2271,6 +2397,9 @@
             "typography_line_height": {
              "unit": "em",
              "size": 1.65
+            },
+            "__dynamic__": {
+             "editor": "[elementor-tag id=\"eb7ad01\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_da636d0338690%3Abody5_text_3%22%7D\"]"
             }
            },
            "elements": [],
@@ -2362,6 +2491,9 @@
              "bottom": "4",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"e0d61a8\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c9dcaf3341025%3Abody5_heading_4%22%7D\"]"
             }
            },
            "elements": [],
@@ -2386,6 +2518,9 @@
             "typography_line_height": {
              "unit": "em",
              "size": 1.65
+            },
+            "__dynamic__": {
+             "editor": "[elementor-tag id=\"34bf40d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_f7b89b2025b18%3Abody5_text_4%22%7D\"]"
             }
            },
            "elements": [],
@@ -2510,6 +2645,9 @@
              "bottom": "4",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"e8a89c2\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_850fba9209751%3Abody5_heading_5%22%7D\"]"
             }
            },
            "elements": [],
@@ -2534,6 +2672,9 @@
             "typography_line_height": {
              "unit": "em",
              "size": 1.65
+            },
+            "__dynamic__": {
+             "editor": "[elementor-tag id=\"4dec72a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_8711722f8ae5e%3Abody5_text_5%22%7D\"]"
             }
            },
            "elements": [],
@@ -2625,6 +2766,9 @@
              "bottom": "4",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"a806dbf\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_810215d54cddf%3Abody5_heading_6%22%7D\"]"
             }
            },
            "elements": [],
@@ -2649,6 +2793,9 @@
             "typography_line_height": {
              "unit": "em",
              "size": 1.65
+            },
+            "__dynamic__": {
+             "editor": "[elementor-tag id=\"1f70c2f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_86a1f5e089615%3Abody5_text_6%22%7D\"]"
             }
            },
            "elements": [],
@@ -2740,6 +2887,9 @@
              "bottom": "4",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"7daaca5\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c7f867e8b9d62%3Abody5_heading_7%22%7D\"]"
             }
            },
            "elements": [],
@@ -2764,6 +2914,9 @@
             "typography_line_height": {
              "unit": "em",
              "size": 1.65
+            },
+            "__dynamic__": {
+             "editor": "[elementor-tag id=\"99f13af\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_2e73b137c10f0%3Abody5_text_7%22%7D\"]"
             }
            },
            "elements": [],
@@ -2858,6 +3011,9 @@
          "bottom": "4",
          "left": "0",
          "isLinked": false
+        },
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"348dbf7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_64320de4ec933%3Atestimonials_heading_1%22%7D\"]"
         }
        },
        "elements": [],
@@ -2960,7 +3116,12 @@
              "unit": "px",
              "size": 16
             },
-            "content_name_typography_font_weight": "700"
+            "content_name_typography_font_weight": "700",
+            "__dynamic__": {
+             "testimonial_content": "[elementor-tag id=\"7446552\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_f8daf57a35eed%3Atestimonials_quote_1%22%7D\"]",
+             "testimonial_name": "[elementor-tag id=\"f1de2fb\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_534e412aa0bd6%3Atestimonials_name_1%22%7D\"]",
+             "testimonial_job": "[elementor-tag id=\"b37012a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_ae508b9b9754e%3Atestimonials_role_1%22%7D\"]"
+            }
            },
            "elements": [],
            "isInner": false,
@@ -3038,7 +3199,12 @@
              "unit": "px",
              "size": 16
             },
-            "content_name_typography_font_weight": "700"
+            "content_name_typography_font_weight": "700",
+            "__dynamic__": {
+             "testimonial_content": "[elementor-tag id=\"9683de3\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6c44954eaf336%3Atestimonials_quote_2%22%7D\"]",
+             "testimonial_name": "[elementor-tag id=\"2279cc2\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_de076a9378309%3Atestimonials_name_2%22%7D\"]",
+             "testimonial_job": "[elementor-tag id=\"beb1168\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_39c8dfa22bcff%3Atestimonials_role_2%22%7D\"]"
+            }
            },
            "elements": [],
            "isInner": false,
@@ -3116,7 +3282,12 @@
              "unit": "px",
              "size": 16
             },
-            "content_name_typography_font_weight": "700"
+            "content_name_typography_font_weight": "700",
+            "__dynamic__": {
+             "testimonial_content": "[elementor-tag id=\"8c463b0\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_dbee026cde7e1%3Atestimonials_quote_3%22%7D\"]",
+             "testimonial_name": "[elementor-tag id=\"28ac09f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c2a3d65ca13b2%3Atestimonials_name_3%22%7D\"]",
+             "testimonial_job": "[elementor-tag id=\"78e7c45\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6375ac6324332%3Atestimonials_role_3%22%7D\"]"
+            }
            },
            "elements": [],
            "isInner": false,
@@ -3210,6 +3381,9 @@
          "bottom": "4",
          "left": "0",
          "isLinked": false
+        },
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"4c37ec2\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c450d7c4e7e49%3Abody6_heading_1%22%7D\"]"
         }
        },
        "elements": [],
@@ -3306,6 +3480,9 @@
          "bottom": "8",
          "left": "0",
          "isLinked": false
+        },
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"6ffb996\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_18cfa98d3db21%3Afaq_heading_1%22%7D\"]"
         }
        },
        "elements": [],
@@ -3320,32 +3497,56 @@
          {
           "tab_title": "How long does hardwood installation take?",
           "tab_content": "<p>Most OKC homes are finished in three to five days from the day we start, depending on square footage and whether the subfloor needs work. We give you a firm schedule with your written quote.</p>",
-          "_id": "1aa193"
+          "_id": "1aa193",
+          "__dynamic__": {
+           "tab_title": "[elementor-tag id=\"03f4690\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_f68ac97c3f0c0%3Afaq_question_1%22%7D\"]",
+           "tab_content": "[elementor-tag id=\"66951e4\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_54d1262f790bf%3Afaq_answer_1%22%7D\"]"
+          }
          },
          {
           "tab_title": "Do I need to move my furniture?",
           "tab_content": "<p>No. Moving your furniture is included in the quote. The exceptions are pianos, safes and anything that needs a specialist. Tell us during the estimate and we will sort out a plan.</p>",
-          "_id": "1aa2ca"
+          "_id": "1aa2ca",
+          "__dynamic__": {
+           "tab_title": "[elementor-tag id=\"9909aaf\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_0deb5041a55f5%3Afaq_question_2%22%7D\"]",
+           "tab_content": "[elementor-tag id=\"bcb3687\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_aac99c9362f01%3Afaq_answer_2%22%7D\"]"
+          }
          },
          {
           "tab_title": "Solid or engineered: which is right for me?",
           "tab_content": "<p>Solid hardwood can be refinished more times and suits most above-grade rooms. Engineered handles moisture and slab subfloors better, which matters in basements and over concrete. We will look at your subfloor and tell you honestly which one fits.</p>",
-          "_id": "1aa401"
+          "_id": "1aa401",
+          "__dynamic__": {
+           "tab_title": "[elementor-tag id=\"0c9873a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_de759880ae82b%3Afaq_question_3%22%7D\"]",
+           "tab_content": "[elementor-tag id=\"6e13f57\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c6e9ef87452ac%3Afaq_answer_3%22%7D\"]"
+          }
          },
          {
           "tab_title": "Can you install over my existing floor?",
           "tab_content": "<p>Sometimes. Engineered floors can often go over a sound, flat existing floor, which saves removal cost. Over old tile or a floor with movement, it is usually a false economy. We check during the free estimate and tell you either way.</p>",
-          "_id": "1aa538"
+          "_id": "1aa538",
+          "__dynamic__": {
+           "tab_title": "[elementor-tag id=\"cc9d8ee\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_1fa3f0f42acb5%3Afaq_question_4%22%7D\"]",
+           "tab_content": "[elementor-tag id=\"8b8067a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_ce1167846c6e6%3Afaq_answer_4%22%7D\"]"
+          }
          },
          {
           "tab_title": "How much does it cost per square foot?",
           "tab_content": "<p>It depends on species, grade, subfloor condition and detail work, so an honest number needs a look at the space. The in-home estimate is free and you get the price in writing before anything starts.</p>",
-          "_id": "1aa66f"
+          "_id": "1aa66f",
+          "__dynamic__": {
+           "tab_title": "[elementor-tag id=\"1fbaba1\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_dfee4bb66d678%3Afaq_question_5%22%7D\"]",
+           "tab_content": "[elementor-tag id=\"e0eefe8\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_dde26ee803996%3Afaq_answer_5%22%7D\"]"
+          }
          },
          {
           "tab_title": "Are you licensed and insured?",
           "tab_content": "<p>Yes, licensed and insured, with OKC-based crews. We are happy to show you the paperwork.</p>",
-          "_id": "1aa7a6"
+          "_id": "1aa7a6",
+          "__dynamic__": {
+           "tab_title": "[elementor-tag id=\"8dce8c1\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_1e9eb44f69420%3Afaq_question_6%22%7D\"]",
+           "tab_content": "[elementor-tag id=\"cf0d3ee\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_4914c88903797%3Afaq_answer_6%22%7D\"]"
+          }
          }
         ],
         "title_color": "#1C1C1C",
@@ -3497,6 +3698,9 @@
              "bottom": "8",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"0b10b0e\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_bfa3690a9cc38%3Aclosing_heading_1%22%7D\"]"
             }
            },
            "elements": [],
@@ -3620,6 +3824,9 @@
              "bottom": "2",
              "left": "0",
              "isLinked": false
+            },
+            "__dynamic__": {
+             "title": "[elementor-tag id=\"c8fec0d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_ed3b9b4aecb62%3Aclosing_heading_2%22%7D\"]"
             }
            },
            "elements": [],
@@ -3645,7 +3852,10 @@
              "unit": "em",
              "size": 1.65
             },
-            "_css_classes": "ud-form-sub"
+            "_css_classes": "ud-form-sub",
+            "__dynamic__": {
+             "editor": "[elementor-tag id=\"b6cd3ff\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_9f1b48c1bd3ed%3Aclosing_text_1%22%7D\"]"
+            }
            },
            "elements": [],
            "isInner": false,
@@ -3672,7 +3882,10 @@
               "field_options": "New hardwood floors\nRefinish my existing floors\nRepair a damaged floor",
               "required": "true",
               "css_classes": "ud-cards ud-cards--service ud-autoadvance",
-              "_id": "1ab503"
+              "_id": "1ab503",
+              "__dynamic__": {
+               "field_options": "[elementor-tag id=\"c2f3065\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_dc67f89a04783%3Aclosing_options_1%22%7D\"]"
+              }
              },
              {
               "custom_id": "step_two",
@@ -3689,7 +3902,10 @@
               "field_options": "Under 500 sq ft\n500-1,000 sq ft\n1,000-2,000 sq ft\nOver 2,000 sq ft\nNot sure",
               "required": "true",
               "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
-              "_id": "1ab771"
+              "_id": "1ab771",
+              "__dynamic__": {
+               "field_options": "[elementor-tag id=\"3a5180e\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_90049b5761f28%3Aclosing_options_2%22%7D\"]"
+              }
              },
              {
               "custom_id": "timeline",
@@ -3698,7 +3914,10 @@
               "field_options": "As soon as possible\nWithin a month\n1-3 months\nJust planning",
               "required": "true",
               "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
-              "_id": "1ab8a8"
+              "_id": "1ab8a8",
+              "__dynamic__": {
+               "field_options": "[elementor-tag id=\"1dde20b\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_801308dc7a0e1%3Aclosing_options_3%22%7D\"]"
+              }
              },
              {
               "custom_id": "property",
@@ -3707,7 +3926,10 @@
               "field_options": "Home\nRental\nBusiness",
               "required": "true",
               "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
-              "_id": "1ab9df"
+              "_id": "1ab9df",
+              "__dynamic__": {
+               "field_options": "[elementor-tag id=\"eef8a8f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_0ee5ae7bff3b2%3Aclosing_options_4%22%7D\"]"
+              }
              },
              {
               "custom_id": "step_three",

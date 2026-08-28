@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.8.1
+ * Version: 1.9.0
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -245,81 +245,35 @@ function ppm_assign_city_field_keys($columns) {
 /**
  * The PPC landing page column set.
  *
- * Flat and numbered for the same reason the city sections are: the importer
- * maps one CSV column to one field name and has no repeater support, so a
- * repeater here would mean a second import path to maintain.
+ * The body of it is generated: includes/ppc-fields.php is built by
+ * tools/wire-template.py from the text slots in the bundled Elementor template,
+ * and every one of those slots is bound to its field by an ACF dynamic tag.
  *
- * Wide by design. Blank cells are skipped on import, so an unused slot costs
- * nothing, while a missing slot means editing the field group mid-campaign.
+ * That direction matters. Writing the fields by hand and the template
+ * separately is how they drift: the first version of this list was invented
+ * before anyone had seen the template, and it had three testimonials where the
+ * page has three, four FAQ pairs where the page has six, and no fields at all
+ * for the icon-list bullets — which are among the most conversion-relevant
+ * lines on the page. Deriving the fields from the page makes that class of gap
+ * impossible.
+ *
+ * Post fields, the featured image and the SEO columns are not template slots,
+ * so they are declared here.
  */
 function ppm_ppc_columns() {
     $columns = [
         ['name' => 'post_title',  'source' => 'post', 'post_field' => 'post_title'],
         ['name' => 'post_slug',   'source' => 'post', 'post_field' => 'post_name'],
         ['name' => 'post_status', 'source' => 'post', 'post_field' => 'post_status'],
-
-        ['name' => 'hero_eyebrow'],
-        ['name' => 'hero_headline'],
-        ['name' => 'hero_subheadline'],
-        ['name' => 'hero_image', 'image' => true],
-        ['name' => 'hero_cta_text'],
-        ['name' => 'hero_cta_url', 'field_type' => 'url'],
-        // Held separately from the CTA so a call-tracking number can be swapped
-        // per campaign without touching the form CTA.
-        ['name' => 'hero_phone'],
-
-        ['name' => 'offer_headline'],
-        ['name' => 'offer_details',    'field_type' => 'wysiwyg'],
-        ['name' => 'offer_disclaimer', 'field_type' => 'wysiwyg'],
-        ['name' => 'offer_expires'],
-        ['name' => 'offer_promo_code'],
     ];
 
-    for ($i = 1; $i <= 4; $i++) {
-        $columns[] = ['name' => "benefit_{$i}_title"];
-        $columns[] = ['name' => "benefit_{$i}_text", 'field_type' => 'wysiwyg'];
+    $generated = require __DIR__ . '/includes/ppc-fields.php';
+
+    if (is_array($generated)) {
+        $columns = array_merge($columns, $generated);
     }
 
-    for ($i = 1; $i <= 3; $i++) {
-        $columns[] = ['name' => "process_{$i}_title"];
-        $columns[] = ['name' => "process_{$i}_text", 'field_type' => 'wysiwyg'];
-    }
-
-    $columns[] = ['name' => 'proof_rating'];
-    $columns[] = ['name' => 'proof_review_count'];
-
-    for ($i = 1; $i <= 3; $i++) {
-        $columns[] = ['name' => "testimonial_{$i}_quote", 'field_type' => 'wysiwyg'];
-        $columns[] = ['name' => "testimonial_{$i}_name"];
-        $columns[] = ['name' => "testimonial_{$i}_location"];
-    }
-
-    for ($i = 1; $i <= 3; $i++) {
-        $columns[] = ['name' => "badge_{$i}_image", 'image' => true];
-    }
-
-    $columns[] = ['name' => 'form_heading'];
-    $columns[] = ['name' => 'form_subheading'];
-    // Google Ads wants a reachable privacy statement on the landing page; the
-    // canvas template has no theme footer to inherit one from.
-    $columns[] = ['name' => 'form_privacy_text', 'field_type' => 'wysiwyg'];
-    $columns[] = ['name' => 'form_shortcode'];
-
-    for ($i = 1; $i <= 4; $i++) {
-        $columns[] = ['name' => "faq_{$i}_question"];
-        $columns[] = ['name' => "faq_{$i}_answer", 'field_type' => 'wysiwyg'];
-    }
-
-    $columns[] = ['name' => 'final_cta_headline'];
-    $columns[] = ['name' => 'final_cta_text', 'field_type' => 'wysiwyg'];
-    $columns[] = ['name' => 'final_cta_button_text'];
-    $columns[] = ['name' => 'final_cta_button_url', 'field_type' => 'url'];
-
-    $columns[] = ['name' => 'tracking_conversion_label'];
-    $columns[] = ['name' => 'tracking_event_name'];
-    $columns[] = ['name' => 'tracking_call_number'];
-
-    $columns[] = ['name' => 'ppc_featured_image', 'image' => true, 'featured_image' => true];
+    $columns[] = ['name' => 'ppc_featured_image', 'image' => true, 'featured_image' => true, 'label' => 'Featured Image'];
 
     // No focus keyphrase: the page is noindexed, so there is nothing to rank.
     // The title still shows in the browser tab and on any shared link.
@@ -367,6 +321,10 @@ function ppm_normalize_columns($columns) {
             'field_key'      => '',
             'field_type'     => '',
             'label'          => '',
+            // Shown under the field in the editor. The generated set uses this
+            // to carry the copy that slot held on the source build, so whoever
+            // fills it in can see what belongs there.
+            'instructions'   => '',
         ]);
     }
 
@@ -712,7 +670,7 @@ function ppm_build_acf_field($profile_key, $column) {
         'name'              => $column['name'],
         'aria-label'        => '',
         'type'              => $type,
-        'instructions'      => '',
+        'instructions'      => $column['instructions'],
         'required'          => 0,
         'conditional_logic' => 0,
         'wrapper'           => ['width' => '', 'class' => '', 'id' => ''],
@@ -733,6 +691,18 @@ function ppm_build_acf_field($profile_key, $column) {
         return $field + [
             'allow_in_bindings' => 0,
             'placeholder'       => '',
+        ];
+    }
+
+    // One option per line, which is how Elementor's form widget reads a choice
+    // list, so the field and the control it feeds agree on the format.
+    if ($type === 'textarea') {
+        return $field + [
+            'allow_in_bindings' => 1,
+            'placeholder'       => '',
+            'maxlength'         => '',
+            'rows'              => 5,
+            'new_lines'         => '',
         ];
     }
 
