@@ -129,7 +129,7 @@
       {
        "id": "7773f094",
        "settings": {
-        "html": "<div class=\"ud-hdr\">  <a class=\"ud-hdr__logo\" href=\"#ud-form\">    <img src=\"{{PPM_PLACEHOLDER_IMAGE}}\" alt=\"[[BUSINESS NAME]]\">  </a>  <div class=\"ud-hdr__tag\">Oklahoma's Premier Flooring Specialists</div>  <div class=\"ud-hdr__actions\">    <a class=\"ud-hdr__call ud-tel\" data-ud-tel=\"header\" href=\"tel:+1[[PHONE]]\">CALL [[PHONE]]</a>    <a class=\"ud-hdr__cta ud-cta-scroll\" href=\"#ud-form-bottom\">REQUEST ESTIMATE</a>  </div></div>"
+        "html": "<div class=\"ud-hdr\">  <a class=\"ud-hdr__logo\" href=\"#ud-form\">    <img src=\"{{PPM_SITE_LOGO}}\" alt=\"[[BUSINESS NAME]]\">  </a>  <div class=\"ud-hdr__tag\">{{PPM_SITE_TAGLINE}}</div>  <div class=\"ud-hdr__actions\">    <a class=\"ud-hdr__call ud-tel\" data-ud-tel=\"header\" href=\"tel:+1[[PHONE]]\">CALL [[PHONE]]</a>    <a class=\"ud-hdr__cta ud-cta-scroll\" href=\"#ud-form-bottom\">REQUEST ESTIMATE</a>  </div></div>"
        },
        "elements": [],
        "isInner": false,
@@ -363,7 +363,7 @@
       {
        "id": "78e6139b",
        "settings": {
-        "html": "<div class=\"ud-badges ud-badges--light\"><span>Licensed</span><span>Insured</span><span>OKC-based crews</span><span>Free in-home estimate</span></div>"
+        "html": "<div class=\"ud-badges ud-badges--light\"><span>Licensed</span><span>Insured</span><span>[[LOCAL]] crews</span><span>Free in-home estimate</span></div>"
        },
        "elements": [],
        "isInner": false,
@@ -493,7 +493,7 @@
       {
        "id": "47d6237e",
        "settings": {
-        "form_name": "UD LP - Hardwood Installation OKC",
+        "form_name": "PPC Landing Page",
         "form_fields": [
          {
           "custom_id": "step_one",
@@ -736,7 +736,7 @@
       {
        "id": "68676cb0",
        "settings": {
-        "html": "<div class=\"ud-proofbar\"><span class=\"ud-proofbar__stars\">&#9733;&#9733;&#9733;&#9733;&#9733;</span><strong>4.9</strong> from <strong>123</strong> Google reviews<span class=\"ud-proofbar__q\">&ldquo;Installation very quick, billed for amount quoted, flawless transaction.&rdquo; Jin Jin</span></div>"
+        "html": "<div class=\"ud-proofbar\"><span class=\"ud-proofbar__stars\">&#9733;&#9733;&#9733;&#9733;&#9733;</span><strong>[[RATING]]</strong> from <strong>[[REVIEWS]]</strong> Google reviews<span class=\"ud-proofbar__q\">[[REVIEW QUOTE]] Jin Jin</span></div>"
        },
        "elements": [],
        "isInner": false,
@@ -3394,7 +3394,7 @@
       {
        "id": "933fb4b",
        "settings": {
-        "html": "<div class=\"ud-areas\"><span>Oklahoma City</span><span>Edmond</span><span>Norman</span><span>Moore</span><span>Yukon</span><span>Midwest City</span><span>Bethany</span><span>Mustang</span><span>Del City</span><span>Nichols Hills</span></div><p class=\"ud-areas__note\">Not sure if you are in range? <a href=\"tel:+1[[PHONE]]\" class=\"ud-tel\" data-ud-tel=\"service-area\">Call [[PHONE]]</a> and ask.</p>"
+        "html": "<div class=\"ud-areas\"><span>[[CITY]]</span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><p class=\"ud-areas__note\">Not sure if you are in range? <a href=\"tel:+1[[PHONE]]\" class=\"ud-tel\" data-ud-tel=\"service-area\">Call [[PHONE]]</a> and ask.</p>"
        },
        "elements": [],
        "isInner": false,
@@ -3865,7 +3865,7 @@
           {
            "id": "2d2ce881",
            "settings": {
-            "form_name": "UD LP - Hardwood Installation OKC (Bottom)",
+            "form_name": "PPC Landing Page (Bottom)",
             "form_fields": [
              {
               "custom_id": "step_one",
@@ -4116,7 +4116,7 @@
       {
        "id": "5b8806fc",
        "settings": {
-        "html": "<div class=\"ud-foot\"><img src=\"{{PPM_PLACEHOLDER_IMAGE}}\" alt=\"[[BUSINESS NAME]]\" class=\"ud-foot__logo\"><p><a href=\"tel:+1[[PHONE]]\" class=\"ud-tel\" data-ud-tel=\"footer\">[[PHONE]]</a></p><p>350 Vermont Ave #208, Oklahoma City, OK 73108</p><p class=\"ud-foot__area\">Serving Oklahoma City, Edmond, Norman, Moore, Yukon, Midwest City</p><p class=\"ud-foot__legal\"><a href=\"/privacy-policy/\">Privacy Policy</a></p></div>"
+        "html": "<div class=\"ud-foot\"><img src=\"{{PPM_PLACEHOLDER_IMAGE}}\" alt=\"[[BUSINESS NAME]]\" class=\"ud-foot__logo\"><p><a href=\"tel:+1[[PHONE]]\" class=\"ud-tel\" data-ud-tel=\"footer\">[[PHONE]]</a></p><p>[[ADDRESS]]</p><p class=\"ud-foot__area\">[[SERVING: list the cities]]</p><p class=\"ud-foot__legal\"><a href=\"/privacy-policy/\">Privacy Policy</a></p></div>"
        },
        "elements": [],
        "isInner": false,

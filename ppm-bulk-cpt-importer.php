@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.9.2
+ * Version: 1.10.0
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -1685,6 +1685,29 @@ function ppm_install_bundled_template($profile_key, $profile, $file, $reinstall 
  * resolve, a temporary copy otherwise, or '' when the file could not be read or
  * written.
  */
+function ppm_template_tokens() {
+    $logo_id  = (int) get_theme_mod('custom_logo');
+    $logo_url = $logo_id ? wp_get_attachment_image_url($logo_id, 'full') : '';
+
+    return [
+        PPM_TEMPLATE_IMAGE_TOKEN => esc_url_raw(plugins_url('assets/placeholder.svg', __FILE__)),
+
+        // Three things a template needs that WordPress already knows. Anything
+        // else a landing page needs about the business — its address, its review
+        // count, the towns it serves — has no reliable source, so those stay as
+        // [[MARKERS]] for a human.
+        '{{PPM_SITE_NAME}}'    => esc_html(get_bloginfo('name')),
+        '{{PPM_SITE_TAGLINE}}' => esc_html(get_bloginfo('description')),
+
+        // Falls back to the grey placeholder rather than an empty src, because
+        // Elementor renders an image with no URL as nothing at all — a missing
+        // logo would read as a design with no logo rather than one to set.
+        '{{PPM_SITE_LOGO}}'    => $logo_url
+            ? esc_url_raw($logo_url)
+            : esc_url_raw(plugins_url('assets/placeholder.svg', __FILE__)),
+    ];
+}
+
 function ppm_resolve_template_placeholders($path) {
     $contents = file_get_contents($path);
 
@@ -1692,7 +1715,17 @@ function ppm_resolve_template_placeholders($path) {
         return '';
     }
 
-    if (strpos($contents, PPM_TEMPLATE_IMAGE_TOKEN) === false) {
+    $tokens = ppm_template_tokens();
+    $found  = false;
+
+    foreach (array_keys($tokens) as $token) {
+        if (strpos($contents, $token) !== false) {
+            $found = true;
+            break;
+        }
+    }
+
+    if (!$found) {
         return $path;
     }
 
@@ -1700,11 +1733,13 @@ function ppm_resolve_template_placeholders($path) {
         require_once ABSPATH . 'wp-admin/includes/file.php';
     }
 
-    $contents = str_replace(
-        PPM_TEMPLATE_IMAGE_TOKEN,
-        esc_url_raw(plugins_url('assets/placeholder.svg', __FILE__)),
-        $contents
-    );
+    // The values land inside JSON strings, so anything that would need escaping
+    // there has to be encoded first. A business name containing a quote would
+    // otherwise produce a file Elementor cannot parse.
+    foreach ($tokens as $token => $value) {
+        $encoded = trim(wp_json_encode((string) $value), '"');
+        $contents = str_replace($token, $encoded, $contents);
+    }
 
     $temporary = wp_tempnam('ppm-template');
 
