@@ -231,7 +231,7 @@ function ppm_collect_setting_text($settings, &$parts) {
  *
  * Elementor's own widgets name their content controls consistently (title,
  * editor, description, tab_content and so on), and third-party widgets follow
- * the same convention, so matching on the name generalises well. The suffix
+ * the same convention, so matching on the name generalizes well. The suffix
  * exclusions matter because names like title_color and text_shadow_type would
  * otherwise pull hex codes and CSS keywords into the page copy.
  */
@@ -247,7 +247,7 @@ function ppm_is_text_setting($key, $value) {
     }
 
     static $content = '/(^|_)(title|text|editor|description|content|caption|heading|subtitle|label|quote|question|answer|message|testimonial|before|after)($|_)/';
-    static $styling = '/_(color|colour|size|type|align|alignment|position|width|height|spacing|style|family|weight|transform|decoration|shadow|radius|border|background|bg|animation|delay|duration|id|class|key|url|link|target|source|tag|icon|image|selected|blur|opacity|offset|order|gap|columns|rows|effect|direction|repeat|attachment|mode|ratio|speed)$/';
+    static $styling = '/_(color|color|colour|size|type|align|alignment|position|width|height|spacing|style|family|weight|transform|decoration|shadow|radius|border|background|bg|animation|delay|duration|id|class|key|url|link|target|source|tag|icon|image|selected|blur|opacity|offset|order|gap|columns|rows|effect|direction|repeat|attachment|mode|ratio|speed)$/';
 
     if (!preg_match($content, $key) || preg_match($styling, $key)) {
         return false;
