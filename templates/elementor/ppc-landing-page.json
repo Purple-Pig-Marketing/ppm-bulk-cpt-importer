@@ -772,7 +772,8 @@
      "left": "12",
      "isLinked": false
     },
-    "jet_parallax_layout_list": []
+    "jet_parallax_layout_list": [],
+    "css_classes": "ppm-section-gallery"
    },
    "elements": [
     {
@@ -936,6 +937,149 @@
    ],
    "isInner": false,
    "elType": "section"
+  },
+  {
+   "id": "4585576",
+   "elType": "section",
+   "isInner": false,
+   "settings": {
+    "content_width": {
+     "unit": "px",
+     "size": 1240,
+     "sizes": []
+    },
+    "background_background": "classic",
+    "background_color": "#FFFFFF",
+    "padding": {
+     "unit": "px",
+     "top": "58",
+     "right": "22",
+     "bottom": "58",
+     "left": "22",
+     "isLinked": false
+    },
+    "padding_mobile": {
+     "unit": "px",
+     "top": "36",
+     "right": "12",
+     "bottom": "36",
+     "left": "12",
+     "isLinked": false
+    },
+    "jet_parallax_layout_list": [],
+    "css_classes": "ppm-section-beforeafter"
+   },
+   "elements": [
+    {
+     "id": "3207db5",
+     "elType": "column",
+     "settings": {
+      "_column_size": 100,
+      "_inline_size": 100
+     },
+     "elements": [
+      {
+       "id": "6d03ab2",
+       "elType": "widget",
+       "widgetType": "heading",
+       "settings": {
+        "title": "Before and after",
+        "header_size": "h2",
+        "align": "center",
+        "__dynamic__": {
+         "title": "[elementor-tag id=\"2eb1463\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_a95ec403beb1c%3Abeforeafter_heading%22%7D\"]"
+        }
+       },
+       "elements": [],
+       "isInner": false
+      },
+      {
+       "id": "e0a09a7",
+       "elType": "widget",
+       "widgetType": "text-editor",
+       "settings": {
+        "editor": "<p style=\"text-align:center;margin:0\">Real repairs, photographed before we started and after we finished.</p>",
+        "__dynamic__": {
+         "editor": "[elementor-tag id=\"3dd17f0\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_9b7d0baea1814%3Abeforeafter_text%22%7D\"]"
+        }
+       },
+       "elements": [],
+       "isInner": false
+      },
+      {
+       "id": "442450d",
+       "elType": "section",
+       "isInner": true,
+       "settings": {
+        "gap": "extended",
+        "structure": "20"
+       },
+       "elements": [
+        {
+         "id": "d00ff48",
+         "elType": "column",
+         "settings": {
+          "_column_size": 50,
+          "_inline_size": 50
+         },
+         "elements": [
+          {
+           "id": "086e091",
+           "elType": "widget",
+           "widgetType": "shortcode",
+           "settings": {
+            "shortcode": "[ppm_before_after before=\"beforeafter_1_before\" after=\"beforeafter_1_after\" before_label=\"Before\" after_label=\"After\"]"
+           },
+           "elements": [],
+           "isInner": false
+          }
+         ],
+         "isInner": false
+        },
+        {
+         "id": "0e15f4d",
+         "elType": "column",
+         "settings": {
+          "_column_size": 50,
+          "_inline_size": 50
+         },
+         "elements": [
+          {
+           "id": "4124443",
+           "elType": "widget",
+           "widgetType": "shortcode",
+           "settings": {
+            "shortcode": "[ppm_before_after before=\"beforeafter_2_before\" after=\"beforeafter_2_after\" before_label=\"Before\" after_label=\"After\"]"
+           },
+           "elements": [],
+           "isInner": false
+          }
+         ],
+         "isInner": false
+        }
+       ]
+      },
+      {
+       "id": "50dc94b",
+       "elType": "widget",
+       "widgetType": "button",
+       "settings": {
+        "text": "See more of our work",
+        "link": {
+         "url": "[[GALLERY URL]]",
+         "is_external": "",
+         "nofollow": ""
+        },
+        "align": "center",
+        "size": "md"
+       },
+       "elements": [],
+       "isInner": false
+      }
+     ],
+     "isInner": false
+    }
+   ]
   },
   {
    "id": "44020ab1",

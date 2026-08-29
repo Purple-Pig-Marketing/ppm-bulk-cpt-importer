@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.12.0
+ * Version: 1.13.0
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -43,6 +43,7 @@ if (!defined('PPM_TEMPLATE_IMAGE_TOKEN')) {
 // The export engine is shared by the admin download button and the WP-CLI
 // command, so the two cannot drift into producing different files.
 require_once __DIR__ . '/includes/export.php';
+require_once __DIR__ . '/includes/before-after.php';
 
 // The commands themselves load only under WP-CLI, so a normal page load never
 // parses them. They exist for fleet work: this plugin is already on every site,
@@ -271,6 +272,21 @@ function ppm_ppc_columns() {
 
     if (is_array($generated)) {
         $columns = array_merge($columns, $generated);
+    }
+
+    // Which media section this page shows. The plugin turns it into a body
+    // class and the other section is hidden, so one CSV cell decides it.
+    $columns[] = [
+        'name'         => 'media_style',
+        'label'        => 'Media Style',
+        'instructions' => 'gallery, before_after, or both. Defaults to gallery.',
+    ];
+
+    // The comparison images and labels are read by the shortcode that renders
+    // them, so they are declared here rather than found in a template slot.
+    for ($i = 1; $i <= 2; $i++) {
+        $columns[] = ['name' => "beforeafter_{$i}_before", 'field_type' => 'image', 'attachment' => 'one', 'label' => "Before/After {$i} - Before Image", 'instructions' => 'Image URL.'];
+        $columns[] = ['name' => "beforeafter_{$i}_after",  'field_type' => 'image', 'attachment' => 'one', 'label' => "Before/After {$i} - After Image",  'instructions' => 'Image URL.'];
     }
 
     $columns[] = ['name' => 'ppc_featured_image', 'image' => true, 'featured_image' => true, 'label' => 'Featured Image'];
@@ -815,6 +831,56 @@ function ppm_build_acf_group($profile_key, $profile, $post_type) {
         'show_in_rest'          => 0,
     ];
 }
+
+/* -------------------------------------------------------------------------- */
+/* MEDIA SECTION CHOICE                                                       */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Carry the page's media choice onto the body, so CSS can show one section.
+ *
+ * The template ships the gallery and the before/after comparisons both, and one
+ * CSV cell decides which a page shows. Doing it in CSS rather than by deleting a
+ * section keeps the choice re-importable: change the cell, import again, and the
+ * page follows without anyone opening the editor.
+ */
+add_filter('body_class', function ($classes) {
+    if (!is_singular()) {
+        return $classes;
+    }
+
+    $style = get_post_meta(get_the_ID(), 'media_style', true);
+
+    if (!is_string($style) || $style === '') {
+        return $classes;
+    }
+
+    $classes[] = 'ppm-media-' . sanitize_html_class($style);
+
+    return $classes;
+});
+
+add_action('wp_enqueue_scripts', function () {
+    if (!is_singular()) {
+        return;
+    }
+
+    $style = get_post_meta(get_the_ID(), 'media_style', true);
+
+    if (!is_string($style) || $style === '') {
+        return;
+    }
+
+    // Only the hiding rule is emitted, and only on a page that asked for it.
+    // A page with no choice recorded shows whatever the template ships, which
+    // is the safer failure: a page with too much on it rather than an empty one.
+    wp_register_style('ppm-media-style', false, [], PPM_BULK_IMPORTER_VERSION);
+    wp_enqueue_style('ppm-media-style');
+    wp_add_inline_style('ppm-media-style',
+        '.ppm-media-gallery .ppm-section-beforeafter{display:none!important}' .
+        '.ppm-media-before_after .ppm-section-gallery{display:none!important}'
+    );
+});
 
 /* -------------------------------------------------------------------------- */
 /* NOINDEX ENFORCEMENT                                                        */

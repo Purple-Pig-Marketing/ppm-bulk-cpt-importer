@@ -26,6 +26,8 @@ return [
     ['name' => 'gallery_heading', 'label' => 'Gallery Heading', 'instructions' => 'See our work'],
     ['name' => 'gallery_text', 'field_type' => 'wysiwyg', 'label' => 'Gallery Text', 'instructions' => 'Real [[BUSINESS NAME]] installations across the OKC metro.'],
     ['name' => 'gallery_gallery', 'field_type' => 'gallery', 'attachment' => 'list', 'label' => 'Gallery Gallery', 'instructions' => 'Image URL. Several, one per line, for a gallery.'],
+    ['name' => 'beforeafter_heading', 'label' => 'Beforeafter Heading', 'instructions' => 'Before and after'],
+    ['name' => 'beforeafter_text', 'field_type' => 'wysiwyg', 'label' => 'Beforeafter Text', 'instructions' => 'Real repairs, photographed before we started and after we finished.'],
     ['name' => 'body4_heading', 'label' => 'Body4 Heading', 'instructions' => 'How it works'],
     ['name' => 'body4_text', 'field_type' => 'wysiwyg', 'label' => 'Body4 Text', 'instructions' => 'Most homes are finished in three to five days.'],
     ['name' => 'body4_card_1_heading', 'label' => 'Body4 Card 1 Heading', 'instructions' => 'Free estimate'],
