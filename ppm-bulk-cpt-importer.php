@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.10.1
+ * Version: 1.11.0
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -1698,6 +1698,10 @@ function ppm_template_tokens() {
         // [[MARKERS]] for a human.
         '{{PPM_SITE_NAME}}'    => esc_html(get_bloginfo('name')),
         '{{PPM_SITE_TAGLINE}}' => esc_html(get_bloginfo('description')),
+
+        // The form redirects to /thank-you on every site, so it resolves
+        // from the site's own address rather than being typed in per page.
+        '{{PPM_SITE_URL}}'     => esc_url_raw(untrailingslashit(home_url())),
 
         // Falls back to the gray placeholder rather than an empty src, because
         // Elementor renders an image with no URL as nothing at all — a missing

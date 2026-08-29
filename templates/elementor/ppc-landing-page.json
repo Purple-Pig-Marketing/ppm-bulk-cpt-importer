@@ -242,7 +242,7 @@
          "isLinked": false
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"7c631ad\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_51ad38f4e2a0d%3Ahero_heading_1%22%7D\"]"
+         "title": "[elementor-tag id=\"12c501c\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_ab7ce4a4fb355%3Ahero_heading%22%7D\"]"
         }
        },
        "elements": [],
@@ -269,7 +269,7 @@
          "size": 1.55
         },
         "__dynamic__": {
-         "editor": "[elementor-tag id=\"214fce9\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_fdc821642f42f%3Ahero_text_1%22%7D\"]"
+         "editor": "[elementor-tag id=\"e32a460\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_abced2833b427%3Ahero_text%22%7D\"]"
         }
        },
        "elements": [],
@@ -285,7 +285,7 @@
           "text": "Free in-home estimate and written quote",
           "_id": "1a0aef",
           "__dynamic__": {
-           "text": "[elementor-tag id=\"bcd4a73\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_77c057e4073b6%3Ahero_bullet_1%22%7D\"]"
+           "text": "[elementor-tag id=\"3f20bee\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_f6a5d3bf588b9%3Ahero_bullet%22%7D\"]"
           }
          },
          {
@@ -352,7 +352,7 @@
         "typography_font_weight": "600",
         "title_color": "#FFFFFF",
         "__dynamic__": {
-         "title": "[elementor-tag id=\"e44c0a8\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_4d766d18d3f1b%3Ahero_rating_caption_1%22%7D\"]"
+         "title": "[elementor-tag id=\"6af34d5\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_b2c0afaf4adca%3Ahero_rating_caption%22%7D\"]"
         }
        },
        "elements": [],
@@ -510,10 +510,7 @@
           "field_options": "New hardwood floors\nRefinish my existing floors\nRepair a damaged floor",
           "required": "true",
           "css_classes": "ud-cards ud-cards--service ud-autoadvance",
-          "_id": "1a1715",
-          "__dynamic__": {
-           "field_options": "[elementor-tag id=\"0d9c6f3\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_68e455187f79e%3Ahero_options_1%22%7D\"]"
-          }
+          "_id": "1a1715"
          },
          {
           "custom_id": "step_two",
@@ -530,10 +527,7 @@
           "field_options": "Under 500 sq ft\n500-1,000 sq ft\n1,000-2,000 sq ft\nOver 2,000 sq ft\nNot sure",
           "required": "true",
           "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
-          "_id": "1a1983",
-          "__dynamic__": {
-           "field_options": "[elementor-tag id=\"4051255\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_34efe02a62756%3Ahero_options_2%22%7D\"]"
-          }
+          "_id": "1a1983"
          },
          {
           "custom_id": "timeline",
@@ -542,10 +536,7 @@
           "field_options": "As soon as possible\nWithin a month\n1-3 months\nJust planning",
           "required": "true",
           "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
-          "_id": "1a1aba",
-          "__dynamic__": {
-           "field_options": "[elementor-tag id=\"35af8c2\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_4003537c53ed6%3Ahero_options_3%22%7D\"]"
-          }
+          "_id": "1a1aba"
          },
          {
           "custom_id": "property",
@@ -554,10 +545,7 @@
           "field_options": "Home\nRental\nBusiness",
           "required": "true",
           "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
-          "_id": "1a1bf1",
-          "__dynamic__": {
-           "field_options": "[elementor-tag id=\"dacf9f4\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_fd76bfed3e11f%3Ahero_options_4%22%7D\"]"
-          }
+          "_id": "1a1bf1"
          },
          {
           "custom_id": "step_three",
@@ -679,7 +667,11 @@
         "__globals__": {
          "button_background_color": "globals/colors?id=accent",
          "button_background_hover_color": "globals/colors?id=primary"
-        }
+        },
+        "email_to": "weblead@bringinghomebacon.com",
+        "email_subject": "New lead from {{PPM_SITE_NAME}}",
+        "email_from_name": "{{PPM_SITE_NAME}}",
+        "redirect_to": "{{PPM_SITE_URL}}/thank-you"
        },
        "elements": [],
        "isInner": false,
@@ -824,7 +816,7 @@
          "isLinked": false
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"955f5fb\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_df898f5dc8f45%3Agallery_heading_1%22%7D\"]"
+         "title": "[elementor-tag id=\"e8ddcac\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_b2b88a63ccc79%3Agallery_heading%22%7D\"]"
         }
        },
        "elements": [],
@@ -851,7 +843,7 @@
          "size": 1.65
         },
         "__dynamic__": {
-         "editor": "[elementor-tag id=\"20732f7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_8884cfe1a5cc4%3Agallery_text_1%22%7D\"]"
+         "editor": "[elementor-tag id=\"87b368a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_547643aef081d%3Agallery_text%22%7D\"]"
         }
        },
        "elements": [],
@@ -1013,7 +1005,7 @@
          "isLinked": false
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"94c851e\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_3cfa40712e4ae%3Abody4_heading_1%22%7D\"]"
+         "title": "[elementor-tag id=\"f1c2cfc\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_b293ffdf6d1e8%3Abody4_heading%22%7D\"]"
         }
        },
        "elements": [],
@@ -1040,7 +1032,7 @@
          "size": 1.65
         },
         "__dynamic__": {
-         "editor": "[elementor-tag id=\"b762e9c\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_77f97d97177ae%3Abody4_text_1%22%7D\"]"
+         "editor": "[elementor-tag id=\"492aa6d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_1c63a446edf8d%3Abody4_text%22%7D\"]"
         }
        },
        "elements": [],
@@ -1159,7 +1151,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"a8882ce\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c010c60948343%3Abody4_heading_2%22%7D\"]"
+             "title": "[elementor-tag id=\"6ec1a13\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_38e7864651193%3Abody4_card_1_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -1186,7 +1178,7 @@
              "size": 1.65
             },
             "__dynamic__": {
-             "editor": "[elementor-tag id=\"2d00f28\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_300b41d6f9b4a%3Abody4_text_2%22%7D\"]"
+             "editor": "[elementor-tag id=\"4b883a2\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_54937934070ec%3Abody4_card_1_text%22%7D\"]"
             }
            },
            "elements": [],
@@ -1280,7 +1272,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"b9807d7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_e88e80e5c692c%3Abody4_heading_3%22%7D\"]"
+             "title": "[elementor-tag id=\"16a6303\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_ca9c59560b3e4%3Abody4_card_2_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -1307,7 +1299,7 @@
              "size": 1.65
             },
             "__dynamic__": {
-             "editor": "[elementor-tag id=\"5b89ae7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6c1dbd2899954%3Abody4_text_3%22%7D\"]"
+             "editor": "[elementor-tag id=\"92ba1ed\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_51e5387043933%3Abody4_card_2_text%22%7D\"]"
             }
            },
            "elements": [],
@@ -1401,7 +1393,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"fd66b00\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_9991ef9eee714%3Abody4_heading_4%22%7D\"]"
+             "title": "[elementor-tag id=\"20dd7c0\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_abc0f6c9fe2cb%3Abody4_card_3_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -1428,7 +1420,7 @@
              "size": 1.65
             },
             "__dynamic__": {
-             "editor": "[elementor-tag id=\"fc45140\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_3d5e51eb98cae%3Abody4_text_4%22%7D\"]"
+             "editor": "[elementor-tag id=\"838a7fc\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_15afecaf53da9%3Abody4_card_3_text%22%7D\"]"
             }
            },
            "elements": [],
@@ -1614,7 +1606,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"3ee3001\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_7133eba2a38e6%3Apoints_heading_1%22%7D\"]"
+             "title": "[elementor-tag id=\"baf1221\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_3b64274344627%3Apoints_card_1_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -1641,7 +1633,7 @@
              "size": 1.65
             },
             "__dynamic__": {
-             "editor": "[elementor-tag id=\"9b0b109\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_4b1b6c4fc9ef4%3Apoints_text_1%22%7D\"]"
+             "editor": "[elementor-tag id=\"9127c9b\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_bb740ce2f88fc%3Apoints_card_1_text%22%7D\"]"
             }
            },
            "elements": [],
@@ -1757,7 +1749,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"b749846\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_ee8b47732df57%3Apoints_heading_2%22%7D\"]"
+             "title": "[elementor-tag id=\"b4b0737\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_03ec913bf6655%3Apoints_card_2_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -1773,42 +1765,42 @@
               "text": "Subfloor preparation and levelling",
               "_id": "1a53d3",
               "__dynamic__": {
-               "text": "[elementor-tag id=\"a0963f1\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_cd9d82db11fe4%3Apoints_bullet_1%22%7D\"]"
+               "text": "[elementor-tag id=\"8678461\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_22a8dc46c89bc%3Apoints_card_1_bullet%22%7D\"]"
               }
              },
              {
               "text": "Moisture testing before install",
               "_id": "1a550a",
               "__dynamic__": {
-               "text": "[elementor-tag id=\"bc452a7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_0e8357886dc77%3Apoints_bullet_2%22%7D\"]"
+               "text": "[elementor-tag id=\"e34584d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_9c5ad3294cdf5%3Apoints_card_2_bullet%22%7D\"]"
               }
              },
              {
               "text": "Moving your furniture",
               "_id": "1a5641",
               "__dynamic__": {
-               "text": "[elementor-tag id=\"d03add7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_3a03fc6f6374f%3Apoints_bullet_3%22%7D\"]"
+               "text": "[elementor-tag id=\"77906a3\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_715a49d34af88%3Apoints_card_3_bullet%22%7D\"]"
               }
              },
              {
               "text": "Removal and disposal of old flooring",
               "_id": "1a5778",
               "__dynamic__": {
-               "text": "[elementor-tag id=\"890f31d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_f2e2854397aa1%3Apoints_bullet_4%22%7D\"]"
+               "text": "[elementor-tag id=\"3d34e14\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_b202cec72289c%3Apoints_card_4_bullet%22%7D\"]"
               }
              },
              {
               "text": "Trim, transitions and thresholds",
               "_id": "1a58af",
               "__dynamic__": {
-               "text": "[elementor-tag id=\"69f1e07\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_acf7c6b49b935%3Apoints_bullet_5%22%7D\"]"
+               "text": "[elementor-tag id=\"3c4308b\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_d93d845656a30%3Apoints_card_5_bullet%22%7D\"]"
               }
              },
              {
               "text": "Full clean-up when we leave",
               "_id": "1a59e6",
               "__dynamic__": {
-               "text": "[elementor-tag id=\"0145428\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6051145c50e62%3Apoints_bullet_6%22%7D\"]"
+               "text": "[elementor-tag id=\"0456a40\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_4a0a8adbf8fe9%3Apoints_card_6_bullet%22%7D\"]"
               }
              }
             ],
@@ -1918,7 +1910,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"6b93556\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c875e2864bfb6%3Apoints_heading_3%22%7D\"]"
+             "title": "[elementor-tag id=\"4645f46\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_f25629b5cb61d%3Apoints_card_3_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -1938,7 +1930,7 @@
               },
               "_id": "1a5ec2",
               "__dynamic__": {
-               "text": "[elementor-tag id=\"3071ab7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6ea69cc098a3b%3Apoints_bullet_7%22%7D\"]"
+               "text": "[elementor-tag id=\"9184910\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_4bfdf7a08420b%3Apoints_card_7_bullet%22%7D\"]"
               }
              },
              {
@@ -1949,7 +1941,7 @@
               },
               "_id": "1a5ff9",
               "__dynamic__": {
-               "text": "[elementor-tag id=\"88a9054\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_5d3672b98a8b5%3Apoints_bullet_8%22%7D\"]"
+               "text": "[elementor-tag id=\"b1f5f72\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_ec3d49a8f2c82%3Apoints_card_8_bullet%22%7D\"]"
               }
              },
              {
@@ -1960,7 +1952,7 @@
               },
               "_id": "1a6130",
               "__dynamic__": {
-               "text": "[elementor-tag id=\"b543aa5\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_1a17e0dfe76a6%3Apoints_bullet_9%22%7D\"]"
+               "text": "[elementor-tag id=\"5822797\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_7d4b997cb135d%3Apoints_card_9_bullet%22%7D\"]"
               }
              },
              {
@@ -1971,7 +1963,7 @@
               },
               "_id": "1a6267",
               "__dynamic__": {
-               "text": "[elementor-tag id=\"bed1e9d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_327a4ec5a70c1%3Apoints_bullet_10%22%7D\"]"
+               "text": "[elementor-tag id=\"6e7b04d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c14c88e6b113e%3Apoints_card_10_bullet%22%7D\"]"
               }
              },
              {
@@ -1982,7 +1974,7 @@
               },
               "_id": "1a639e",
               "__dynamic__": {
-               "text": "[elementor-tag id=\"d7b97c7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_1f0da4edcba97%3Apoints_bullet_11%22%7D\"]"
+               "text": "[elementor-tag id=\"ca30262\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_1655e45938c75%3Apoints_card_11_bullet%22%7D\"]"
               }
              }
             ],
@@ -2105,7 +2097,7 @@
          "isLinked": false
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"3b2fcd2\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_e9dd6e2f60a1e%3Abody5_heading_1%22%7D\"]"
+         "title": "[elementor-tag id=\"3cc6801\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_71d59941609c7%3Abody5_heading%22%7D\"]"
         }
        },
        "elements": [],
@@ -2132,7 +2124,7 @@
          "size": 1.65
         },
         "__dynamic__": {
-         "editor": "[elementor-tag id=\"26246fb\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6c4e7fa7640c6%3Abody5_text_1%22%7D\"]"
+         "editor": "[elementor-tag id=\"7ac7a89\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_e99a2cfe6b177%3Abody5_text%22%7D\"]"
         }
        },
        "elements": [],
@@ -2251,7 +2243,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"6a74889\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_7753800daa6de%3Abody5_heading_2%22%7D\"]"
+             "title": "[elementor-tag id=\"b3351dd\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_688c05e0042ab%3Abody5_card_1_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -2278,7 +2270,7 @@
              "size": 1.65
             },
             "__dynamic__": {
-             "editor": "[elementor-tag id=\"8ca7b8f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_90d821fba383b%3Abody5_text_2%22%7D\"]"
+             "editor": "[elementor-tag id=\"1fae06f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_ad30134fbf253%3Abody5_card_1_text%22%7D\"]"
             }
            },
            "elements": [],
@@ -2372,7 +2364,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"ed55d0a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6764ed12587ac%3Abody5_heading_3%22%7D\"]"
+             "title": "[elementor-tag id=\"ad34d4a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_29120cde8480c%3Abody5_card_2_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -2399,7 +2391,7 @@
              "size": 1.65
             },
             "__dynamic__": {
-             "editor": "[elementor-tag id=\"eb7ad01\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_da636d0338690%3Abody5_text_3%22%7D\"]"
+             "editor": "[elementor-tag id=\"4164796\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_ea3fc5d113cbc%3Abody5_card_2_text%22%7D\"]"
             }
            },
            "elements": [],
@@ -2493,7 +2485,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"e0d61a8\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c9dcaf3341025%3Abody5_heading_4%22%7D\"]"
+             "title": "[elementor-tag id=\"63c252b\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_2a7958bc6deff%3Abody5_card_3_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -2520,7 +2512,7 @@
              "size": 1.65
             },
             "__dynamic__": {
-             "editor": "[elementor-tag id=\"34bf40d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_f7b89b2025b18%3Abody5_text_4%22%7D\"]"
+             "editor": "[elementor-tag id=\"51d497a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_514592ce7aef9%3Abody5_card_3_text%22%7D\"]"
             }
            },
            "elements": [],
@@ -2647,7 +2639,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"e8a89c2\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_850fba9209751%3Abody5_heading_5%22%7D\"]"
+             "title": "[elementor-tag id=\"f37f6fe\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_dc04e44cd0213%3Abody5_card_4_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -2674,7 +2666,7 @@
              "size": 1.65
             },
             "__dynamic__": {
-             "editor": "[elementor-tag id=\"4dec72a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_8711722f8ae5e%3Abody5_text_5%22%7D\"]"
+             "editor": "[elementor-tag id=\"d78ad48\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_41f9d6ca2eaea%3Abody5_card_4_text%22%7D\"]"
             }
            },
            "elements": [],
@@ -2768,7 +2760,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"a806dbf\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_810215d54cddf%3Abody5_heading_6%22%7D\"]"
+             "title": "[elementor-tag id=\"67a6307\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_cdb351ea04c6c%3Abody5_card_5_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -2795,7 +2787,7 @@
              "size": 1.65
             },
             "__dynamic__": {
-             "editor": "[elementor-tag id=\"1f70c2f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_86a1f5e089615%3Abody5_text_6%22%7D\"]"
+             "editor": "[elementor-tag id=\"2808614\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_5c46359e264c0%3Abody5_card_5_text%22%7D\"]"
             }
            },
            "elements": [],
@@ -2889,7 +2881,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"7daaca5\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c7f867e8b9d62%3Abody5_heading_7%22%7D\"]"
+             "title": "[elementor-tag id=\"d14ec50\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_5152ded963e5a%3Abody5_card_6_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -2916,7 +2908,7 @@
              "size": 1.65
             },
             "__dynamic__": {
-             "editor": "[elementor-tag id=\"99f13af\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_2e73b137c10f0%3Abody5_text_7%22%7D\"]"
+             "editor": "[elementor-tag id=\"a969a34\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_3c3d74dfc22f8%3Abody5_card_6_text%22%7D\"]"
             }
            },
            "elements": [],
@@ -3013,7 +3005,7 @@
          "isLinked": false
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"348dbf7\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_64320de4ec933%3Atestimonials_heading_1%22%7D\"]"
+         "title": "[elementor-tag id=\"b75b03e\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_3cf2eb6e59e8d%3Atestimonials_heading%22%7D\"]"
         }
        },
        "elements": [],
@@ -3118,9 +3110,9 @@
             },
             "content_name_typography_font_weight": "700",
             "__dynamic__": {
-             "testimonial_content": "[elementor-tag id=\"7446552\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_f8daf57a35eed%3Atestimonials_quote_1%22%7D\"]",
-             "testimonial_name": "[elementor-tag id=\"f1de2fb\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_534e412aa0bd6%3Atestimonials_name_1%22%7D\"]",
-             "testimonial_job": "[elementor-tag id=\"b37012a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_ae508b9b9754e%3Atestimonials_role_1%22%7D\"]"
+             "testimonial_content": "[elementor-tag id=\"95efbad\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_063064c1df23c%3Atestimonials_card_1_quote%22%7D\"]",
+             "testimonial_name": "[elementor-tag id=\"d76e74f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_d816bdb99fed5%3Atestimonials_card_1_name%22%7D\"]",
+             "testimonial_job": "[elementor-tag id=\"fa91f61\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_bf95fc5b7fc0b%3Atestimonials_card_1_role%22%7D\"]"
             }
            },
            "elements": [],
@@ -3201,9 +3193,9 @@
             },
             "content_name_typography_font_weight": "700",
             "__dynamic__": {
-             "testimonial_content": "[elementor-tag id=\"9683de3\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6c44954eaf336%3Atestimonials_quote_2%22%7D\"]",
-             "testimonial_name": "[elementor-tag id=\"2279cc2\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_de076a9378309%3Atestimonials_name_2%22%7D\"]",
-             "testimonial_job": "[elementor-tag id=\"beb1168\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_39c8dfa22bcff%3Atestimonials_role_2%22%7D\"]"
+             "testimonial_content": "[elementor-tag id=\"d9fa180\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6ada7fe4c8ff9%3Atestimonials_card_2_quote%22%7D\"]",
+             "testimonial_name": "[elementor-tag id=\"1ad5f5d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_486cbd139c403%3Atestimonials_card_2_name%22%7D\"]",
+             "testimonial_job": "[elementor-tag id=\"8889888\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_acef95a5a8a98%3Atestimonials_card_2_role%22%7D\"]"
             }
            },
            "elements": [],
@@ -3284,9 +3276,9 @@
             },
             "content_name_typography_font_weight": "700",
             "__dynamic__": {
-             "testimonial_content": "[elementor-tag id=\"8c463b0\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_dbee026cde7e1%3Atestimonials_quote_3%22%7D\"]",
-             "testimonial_name": "[elementor-tag id=\"28ac09f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c2a3d65ca13b2%3Atestimonials_name_3%22%7D\"]",
-             "testimonial_job": "[elementor-tag id=\"78e7c45\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6375ac6324332%3Atestimonials_role_3%22%7D\"]"
+             "testimonial_content": "[elementor-tag id=\"08239dd\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_a43025bfc6a26%3Atestimonials_card_3_quote%22%7D\"]",
+             "testimonial_name": "[elementor-tag id=\"81736ad\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_882e4458813eb%3Atestimonials_card_3_name%22%7D\"]",
+             "testimonial_job": "[elementor-tag id=\"7aa1735\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_471eaadb10c24%3Atestimonials_card_3_role%22%7D\"]"
             }
            },
            "elements": [],
@@ -3383,7 +3375,7 @@
          "isLinked": false
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"4c37ec2\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_c450d7c4e7e49%3Abody6_heading_1%22%7D\"]"
+         "title": "[elementor-tag id=\"01c3ebf\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_31492c59b3267%3Abody6_heading%22%7D\"]"
         }
        },
        "elements": [],
@@ -3482,7 +3474,7 @@
          "isLinked": false
         },
         "__dynamic__": {
-         "title": "[elementor-tag id=\"6ffb996\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_18cfa98d3db21%3Afaq_heading_1%22%7D\"]"
+         "title": "[elementor-tag id=\"896f28a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_6429b71f739ed%3Afaq_heading%22%7D\"]"
         }
        },
        "elements": [],
@@ -3499,8 +3491,8 @@
           "tab_content": "<p>Most OKC homes are finished in three to five days from the day we start, depending on square footage and whether the subfloor needs work. We give you a firm schedule with your written quote.</p>",
           "_id": "1aa193",
           "__dynamic__": {
-           "tab_title": "[elementor-tag id=\"03f4690\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_f68ac97c3f0c0%3Afaq_question_1%22%7D\"]",
-           "tab_content": "[elementor-tag id=\"66951e4\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_54d1262f790bf%3Afaq_answer_1%22%7D\"]"
+           "tab_title": "[elementor-tag id=\"75f82dd\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_42f06259a71f2%3Afaq_question%22%7D\"]",
+           "tab_content": "[elementor-tag id=\"c6155f5\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_fc352560cefb9%3Afaq_answer%22%7D\"]"
           }
          },
          {
@@ -3700,7 +3692,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"0b10b0e\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_bfa3690a9cc38%3Aclosing_heading_1%22%7D\"]"
+             "title": "[elementor-tag id=\"4deb90a\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_0de56816ab5fe%3Aclosing_card_1_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -3826,7 +3818,7 @@
              "isLinked": false
             },
             "__dynamic__": {
-             "title": "[elementor-tag id=\"c8fec0d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_ed3b9b4aecb62%3Aclosing_heading_2%22%7D\"]"
+             "title": "[elementor-tag id=\"2f7f1ba\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_ce43f88ef19bd%3Aclosing_card_2_heading%22%7D\"]"
             }
            },
            "elements": [],
@@ -3854,7 +3846,7 @@
             },
             "_css_classes": "ud-form-sub",
             "__dynamic__": {
-             "editor": "[elementor-tag id=\"b6cd3ff\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_9f1b48c1bd3ed%3Aclosing_text_1%22%7D\"]"
+             "editor": "[elementor-tag id=\"332015d\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_df1bdfed3d1c0%3Aclosing_card_1_text%22%7D\"]"
             }
            },
            "elements": [],
@@ -3882,10 +3874,7 @@
               "field_options": "New hardwood floors\nRefinish my existing floors\nRepair a damaged floor",
               "required": "true",
               "css_classes": "ud-cards ud-cards--service ud-autoadvance",
-              "_id": "1ab503",
-              "__dynamic__": {
-               "field_options": "[elementor-tag id=\"c2f3065\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_dc67f89a04783%3Aclosing_options_1%22%7D\"]"
-              }
+              "_id": "1ab503"
              },
              {
               "custom_id": "step_two",
@@ -3902,10 +3891,7 @@
               "field_options": "Under 500 sq ft\n500-1,000 sq ft\n1,000-2,000 sq ft\nOver 2,000 sq ft\nNot sure",
               "required": "true",
               "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
-              "_id": "1ab771",
-              "__dynamic__": {
-               "field_options": "[elementor-tag id=\"3a5180e\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_90049b5761f28%3Aclosing_options_2%22%7D\"]"
-              }
+              "_id": "1ab771"
              },
              {
               "custom_id": "timeline",
@@ -3914,10 +3900,7 @@
               "field_options": "As soon as possible\nWithin a month\n1-3 months\nJust planning",
               "required": "true",
               "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
-              "_id": "1ab8a8",
-              "__dynamic__": {
-               "field_options": "[elementor-tag id=\"1dde20b\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_801308dc7a0e1%3Aclosing_options_3%22%7D\"]"
-              }
+              "_id": "1ab8a8"
              },
              {
               "custom_id": "property",
@@ -3926,10 +3909,7 @@
               "field_options": "Home\nRental\nBusiness",
               "required": "true",
               "css_classes": "ud-cards ud-cards--compact ud-cards--inline",
-              "_id": "1ab9df",
-              "__dynamic__": {
-               "field_options": "[elementor-tag id=\"eef8a8f\" name=\"acf-text\" settings=\"%7B%22key%22%3A%22field_0ee5ae7bff3b2%3Aclosing_options_4%22%7D\"]"
-              }
+              "_id": "1ab9df"
              },
              {
               "custom_id": "step_three",
@@ -4051,7 +4031,11 @@
             "__globals__": {
              "button_background_color": "globals/colors?id=accent",
              "button_background_hover_color": "globals/colors?id=primary"
-            }
+            },
+            "email_to": "weblead@bringinghomebacon.com",
+            "email_subject": "New lead from {{PPM_SITE_NAME}}",
+            "email_from_name": "{{PPM_SITE_NAME}}",
+            "redirect_to": "{{PPM_SITE_URL}}/thank-you"
            },
            "elements": [],
            "isInner": false,
@@ -4116,7 +4100,7 @@
       {
        "id": "5b8806fc",
        "settings": {
-        "html": "<div class=\"ud-foot\"><img src=\"{{PPM_PLACEHOLDER_IMAGE}}\" alt=\"[[BUSINESS NAME]]\" class=\"ud-foot__logo\"><p><a href=\"tel:+1[[PHONE]]\" class=\"ud-tel\" data-ud-tel=\"footer\">[[PHONE]]</a></p><p>[[ADDRESS]]</p><p class=\"ud-foot__area\">[[SERVING: list the cities]]</p><p class=\"ud-foot__legal\"><a href=\"/privacy-policy/\">Privacy Policy</a></p></div>"
+        "html": "<div class=\"ud-foot\"><img src=\"{{PPM_SITE_LOGO}}\" alt=\"[[BUSINESS NAME]]\" class=\"ud-foot__logo\"><p><a href=\"tel:+1[[PHONE]]\" class=\"ud-tel\" data-ud-tel=\"footer\">[[PHONE]]</a></p><p>[[ADDRESS]]</p><p class=\"ud-foot__area\">[[SERVING: list the cities]]</p><p class=\"ud-foot__legal\"><a href=\"/privacy-policy/\">Privacy Policy</a></p></div>"
        },
        "elements": [],
        "isInner": false,
