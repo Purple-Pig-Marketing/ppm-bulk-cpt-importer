@@ -186,7 +186,10 @@
     "reverse_order_mobile": "reverse-mobile",
     "css_classes": "ud-hero",
     "_element_id": "ud-form",
-    "jet_parallax_layout_list": []
+    "jet_parallax_layout_list": [],
+    "__dynamic__": {
+     "background_image": "[elementor-tag id=\"f21f8d6\" name=\"acf-image\" settings=\"%7B%22key%22%3A%22field_b886da3f5f7d8%3Ahero_background%22%7D\"]"
+    }
    },
    "elements": [
     {
@@ -906,7 +909,10 @@
         },
         "_css_classes": "ud-gallery",
         "thumbnail_size": "medium",
-        "gallery_display_caption": "none"
+        "gallery_display_caption": "none",
+        "__dynamic__": {
+         "wp_gallery": "[elementor-tag id=\"1a06348\" name=\"acf-gallery\" settings=\"%7B%22key%22%3A%22field_dc7007aba7648%3Agallery_gallery%22%7D\"]"
+        }
        },
        "elements": [],
        "isInner": false,
@@ -1542,6 +1548,9 @@
              "bottom": "10",
              "left": "10",
              "isLinked": true
+            },
+            "__dynamic__": {
+             "image": "[elementor-tag id=\"5a25d84\" name=\"acf-image\" settings=\"%7B%22key%22%3A%22field_f1302db21136d%3Apoints_image%22%7D\"]"
             }
            },
            "elements": [],

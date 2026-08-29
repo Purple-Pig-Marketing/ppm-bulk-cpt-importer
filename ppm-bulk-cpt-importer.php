@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.11.0
+ * Version: 1.12.0
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -316,6 +316,10 @@ function ppm_normalize_columns($columns) {
             'legacy'         => '',
             'image'          => false,
             'featured_image' => false,
+            // 'one' or 'list': the CSV carries URLs, the field stores the
+            // attachments they resolve to, so Elementor's own image widget can
+            // render them with its styling and srcset intact.
+            'attachment'     => '',
             // ACF presentation. Blank means derive it: 'url' for images and
             // 'text' otherwise, with the label built from the column name.
             'field_key'      => '',
@@ -448,6 +452,53 @@ function ppm_get_all_featured_image_columns() {
     }
 
     return $columns;
+}
+
+/**
+ * Columns whose CSV value is one or more image URLs, mapped to 'one' or 'list'.
+ */
+function ppm_get_all_attachment_columns() {
+    $columns = [];
+
+    foreach (ppm_get_content_profiles() as $profile) {
+        foreach ($profile['columns'] as $column) {
+            if ($column['attachment'] !== '') {
+                $columns[$column['name']] = $column['attachment'];
+            }
+        }
+    }
+
+    return $columns;
+}
+
+/**
+ * Resolve a cell of image URLs to attachment ids.
+ *
+ * One URL per line is the documented form, but a single line of comma separated
+ * URLs is what a spreadsheet produces when someone types them into one cell, so
+ * both are accepted.
+ *
+ * @return array Attachment ids, in the order given, skipping any that failed.
+ */
+function ppm_resolve_attachment_list($value, $post_id) {
+    $urls = preg_split('/[\r\n,]+/', (string) $value);
+    $ids = [];
+
+    foreach ($urls as $url) {
+        $url = trim($url);
+
+        if ($url === '') {
+            continue;
+        }
+
+        $id = ppm_resolve_attachment_id($url, $post_id);
+
+        if ($id) {
+            $ids[] = $id;
+        }
+    }
+
+    return $ids;
 }
 
 /**
@@ -676,6 +727,23 @@ function ppm_build_acf_field($profile_key, $column) {
         'wrapper'           => ['width' => '', 'class' => '', 'id' => ''],
         'default_value'     => '',
     ];
+
+    if ($type === 'image') {
+        return $field + [
+            'return_format' => 'array',
+            'preview_size'  => 'medium',
+            'library'       => 'all',
+        ];
+    }
+
+    if ($type === 'gallery') {
+        return $field + [
+            'return_format' => 'array',
+            'preview_size'  => 'medium',
+            'library'       => 'all',
+            'insert'        => 'append',
+        ];
+    }
 
     if ($type === 'wysiwyg') {
         return $field + [
@@ -2348,7 +2416,11 @@ function ppm_get_acf_field_key_map($post_id, $cpt_slug) {
 }
 
 function ppm_update_acf_or_meta($post_id, $cpt_slug, $key, $value) {
-    $value = ppm_prepare_csv_value($value);
+    // Attachment ids arrive as an int or an array of them; only text needs the
+    // CSV cleaner, which would flatten an array to the string "Array".
+    if (is_string($value)) {
+        $value = ppm_prepare_csv_value($value);
+    }
     $field_key = '';
 
     if (function_exists('get_field_object')) {
@@ -2550,6 +2622,30 @@ function ppm_export_column_value($post, $column, $field_profile) {
         return get_post_meta($post->ID, $column['meta_key'], true);
     }
 
+    // An image column carries URLs in the sheet and attachments in the field,
+    // so it reads back as URLs rather than as ids nobody can act on.
+    if ($column['attachment'] !== '') {
+        $stored = ppm_export_get_field_value($post->ID, $column['name']);
+
+        if ($column['attachment'] === 'list') {
+            $urls = [];
+
+            foreach ((array) $stored as $item) {
+                $url = ppm_export_image_url($item);
+
+                if ($url !== '') {
+                    $urls[] = $url;
+                }
+            }
+
+            // One per line, which is what the importer reads back.
+            return implode("
+", $urls);
+        }
+
+        return ppm_export_image_url($stored);
+    }
+
     if ($column['legacy'] !== '') {
         return ppm_export_pick_field(
             $post->ID,
@@ -2668,7 +2764,8 @@ function ppm_run_import($token, $cpt_slug, $profile_key = '') {
     // Unioned across every registered profile rather than taken from the
     // selected one alone, so a sheet exported under one profile and imported
     // under another still routes each column to the right destination.
-    $meta_columns     = ppm_get_all_meta_columns();
+    $meta_columns       = ppm_get_all_meta_columns();
+    $attachment_columns = ppm_get_all_attachment_columns();
     $featured_columns = array_merge(
         ppm_get_featured_image_aliases(),
         ppm_get_all_featured_image_columns()
@@ -2762,6 +2859,28 @@ function ppm_run_import($token, $cpt_slug, $profile_key = '') {
 
             if (isset($meta_columns[$key])) {
                 update_post_meta($post_id, $meta_columns[$key], $value);
+                continue;
+            }
+
+            if (isset($attachment_columns[$key])) {
+                // ACF image and gallery fields hold attachment ids, so the URLs
+                // in the sheet are sideloaded into the media library first. This
+                // is the same path the featured image already takes, and it
+                // caches per URL, so a photo reused across rows uploads once.
+                if ($attachment_columns[$key] === 'list') {
+                    $ids = ppm_resolve_attachment_list($value, $post_id);
+
+                    if ($ids) {
+                        ppm_update_acf_or_meta($post_id, $cpt_slug, $key, $ids);
+                    }
+                } else {
+                    $id = ppm_resolve_attachment_id($value, $post_id);
+
+                    if ($id) {
+                        ppm_update_acf_or_meta($post_id, $cpt_slug, $key, $id);
+                    }
+                }
+
                 continue;
             }
 
