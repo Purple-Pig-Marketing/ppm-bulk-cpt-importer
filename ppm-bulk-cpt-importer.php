@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.9.1
+ * Version: 1.9.2
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -1615,7 +1615,9 @@ function ppm_install_bundled_template($profile_key, $profile, $file, $reinstall 
         return 'no-elementor';
     }
 
-    if (!$reinstall && ppm_installed_template_id($profile_key, $file)) {
+    $previous_id = ppm_installed_template_id($profile_key, $file);
+
+    if (!$reinstall && $previous_id) {
         return 'exists';
     }
 
@@ -1658,6 +1660,20 @@ function ppm_install_bundled_template($profile_key, $profile, $file, $reinstall 
     }
 
     ppm_remember_installed_template($profile_key, $file, (int) $item['template_id']);
+
+    // Replace rather than accumulate. Two library entries carrying the same name
+    // and the same date cannot be told apart, so leaving both is a trap.
+    //
+    // Safe because inserting a saved template copies its sections into the page:
+    // nothing stays linked to the template afterwards, so pages already built
+    // from the old copy are unaffected. The exception is Elementor's Template
+    // widget, which references a template by id at render time — trashing rather
+    // than deleting leaves that recoverable.
+    if ($previous_id && $previous_id !== (int) $item['template_id']) {
+        wp_trash_post($previous_id);
+
+        return 'replaced';
+    }
 
     return 'installed';
 }
@@ -1746,7 +1762,8 @@ function ppm_render_template_status_notice() {
     }
 
     $messages = [
-        'installed'    => ['ok', 'Template installed. It is now under Templates &rsaquo; Saved Templates, where its display conditions can be set. Installing again adds a second copy rather than replacing the first, so remove the older one once nothing needs it.'],
+        'installed'    => ['ok', 'Template installed. It is now under Templates &rsaquo; Saved Templates.'],
+        'replaced'     => ['ok', 'Template replaced. The previous copy was moved to the trash; pages already built from it are unaffected, because inserting a template copies its sections into the page.'],
         'exists'       => ['ok', 'That template is already installed on this site.'],
         'missing'      => ['warn', 'That template is not bundled in this release of the plugin.'],
         'no-elementor' => ['warn', 'Elementor is not active, so there is nothing to install the template into.'],
@@ -1809,7 +1826,12 @@ function ppm_render_template_library($profile_key, $profile) {
                                 <input type="hidden" name="ppm_profile" value="<?php echo esc_attr($profile_key); ?>">
                                 <input type="hidden" name="template_file" value="<?php echo esc_attr($template['file']); ?>">
                                 <input type="hidden" name="reinstall" value="1">
-                                <input type="submit" class="button ppm-btn" value="Install Again">
+                                <input
+                                    type="submit"
+                                    class="button ppm-btn"
+                                    value="Replace With Bundled Version"
+                                    onclick="return confirm('Replace the installed template with the version bundled in this plugin?\n\nThe current copy moves to the trash. Pages already built from it keep working, because inserting a template copies its sections into the page.');"
+                                >
                             </form>
                         <?php else : ?>
                             <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
