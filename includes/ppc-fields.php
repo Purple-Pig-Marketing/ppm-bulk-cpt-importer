@@ -14,6 +14,7 @@ if (!defined('ABSPATH')) {
 }
 
 return [
+    ['name' => 'hero_background', 'field_type' => 'image', 'attachment' => 'one', 'label' => 'Hero Background', 'instructions' => 'Image URL.'],
     ['name' => 'hero_heading', 'label' => 'Hero Heading', 'instructions' => 'New Hardwood Floors, Installed Right in Oklahoma City'],
     ['name' => 'hero_text', 'field_type' => 'wysiwyg', 'label' => 'Hero Text', 'instructions' => 'Premium hardwood, engineered and custom installs by OKC s flooring specialists. Free in-home estimate, honest pricing, no surprises.'],
     ['name' => 'hero_bullet', 'label' => 'Hero Bullet', 'instructions' => 'Free in-home estimate and written quote'],
@@ -24,6 +25,7 @@ return [
     ['name' => 'hero_text_2', 'field_type' => 'wysiwyg', 'label' => 'Hero Text 2', 'instructions' => 'Takes 30 seconds · No obligation'],
     ['name' => 'gallery_heading', 'label' => 'Gallery Heading', 'instructions' => 'See our work'],
     ['name' => 'gallery_text', 'field_type' => 'wysiwyg', 'label' => 'Gallery Text', 'instructions' => 'Real [[BUSINESS NAME]] installations across the OKC metro.'],
+    ['name' => 'gallery_gallery', 'field_type' => 'gallery', 'attachment' => 'list', 'label' => 'Gallery Gallery', 'instructions' => 'Image URL. Several, one per line, for a gallery.'],
     ['name' => 'body4_heading', 'label' => 'Body4 Heading', 'instructions' => 'How it works'],
     ['name' => 'body4_text', 'field_type' => 'wysiwyg', 'label' => 'Body4 Text', 'instructions' => 'Most homes are finished in three to five days.'],
     ['name' => 'body4_card_1_heading', 'label' => 'Body4 Card 1 Heading', 'instructions' => 'Free estimate'],
@@ -32,6 +34,7 @@ return [
     ['name' => 'body4_card_2_text', 'field_type' => 'wysiwyg', 'label' => 'Body4 Card 2 Text', 'instructions' => 'We bring samples to you, so you see the wood in your own light.'],
     ['name' => 'body4_card_3_heading', 'label' => 'Body4 Card 3 Heading', 'instructions' => 'Installed and finished'],
     ['name' => 'body4_card_3_text', 'field_type' => 'wysiwyg', 'label' => 'Body4 Card 3 Text', 'instructions' => 'Most homes are done in 3 5 days, cleaned up and ready to walk on.'],
+    ['name' => 'points_image', 'field_type' => 'image', 'attachment' => 'one', 'label' => 'Points Image', 'instructions' => 'Image URL.'],
     ['name' => 'points_card_1_heading', 'label' => 'Points Card 1 Heading', 'instructions' => 'What s included'],
     ['name' => 'points_card_1_text', 'field_type' => 'wysiwyg', 'label' => 'Points Card 1 Text', 'instructions' => 'Every quote we write covers the whole job, not just the boards. The list below is what is included as standard, and what we price separately so you are never surprised by a second '],
     ['name' => 'points_card_2_heading', 'label' => 'Points Card 2 Heading', 'instructions' => 'Included in your quote'],
