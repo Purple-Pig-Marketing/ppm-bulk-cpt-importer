@@ -195,6 +195,13 @@ function ppm_collect_elementor_text($nodes, &$parts) {
             continue;
         }
 
+        // An element hidden on every device, and everything inside it, is not
+        // page copy. Counting it inflates the word count of a page that may
+        // actually be thin, and thin is the thing an audit exists to find.
+        if (ppm_element_is_hidden_everywhere($node)) {
+            continue;
+        }
+
         if (!empty($node['settings']) && is_array($node['settings'])) {
             ppm_collect_setting_text($node['settings'], $parts);
         }
@@ -203,6 +210,34 @@ function ppm_collect_elementor_text($nodes, &$parts) {
             ppm_collect_elementor_text($node['elements'], $parts);
         }
     }
+}
+
+/**
+ * Whether Elementor hides this element on every standard device.
+ *
+ * Elementor stores each "Hide On" switch as hide_<breakpoint> holding
+ * 'hidden-<breakpoint>' (element-base.php:1420). All three of desktop, tablet
+ * and mobile set means no ordinary viewport ever shows it.
+ *
+ * Deliberately narrow. An element hidden on one device only is still real copy
+ * for the people who see it, and text hidden by custom CSS is not visible from
+ * the stored tree at all — a widget that renders content and hides it with its
+ * own stylesheet will still be counted here. That is a known gap rather than a
+ * solved problem, and it is the one that inflated a crawl elsewhere by 2,800
+ * words of review markup on a page carrying 700 words of copy.
+ */
+function ppm_element_is_hidden_everywhere($node) {
+    if (empty($node['settings']) || !is_array($node['settings'])) {
+        return false;
+    }
+
+    foreach (['desktop', 'tablet', 'mobile'] as $device) {
+        if (empty($node['settings']['hide_' . $device])) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 /**
