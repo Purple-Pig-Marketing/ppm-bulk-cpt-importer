@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.14.0
+ * Version: 1.15.0
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -105,6 +105,7 @@ function ppm_get_content_profiles() {
             'post_template'     => '',
             'force_noindex'     => false,
             'columns'           => ppm_assign_city_field_keys(array_merge(
+                ppm_identity_columns(),
                 [
                     ['name' => 'post_title',  'source' => 'post', 'post_field' => 'post_title'],
                     ['name' => 'post_slug',   'source' => 'post', 'post_field' => 'post_name'],
@@ -200,6 +201,21 @@ function ppm_get_content_profiles() {
 }
 
 /**
+ * The columns that identify an existing post, ahead of everything else.
+ *
+ * Exported so a round trip carries them: an edited sheet then names its target
+ * by id, which cannot be mistyped into a match on the wrong post the way a slug
+ * can. Blank on a sheet written to create new pages, where there is no id yet
+ * and the slug is the only identifier there can be.
+ */
+function ppm_identity_columns() {
+    return [
+        ['name' => 'post_id',   'source' => 'post', 'post_field' => 'ID', 'label' => 'Post ID'],
+        ['name' => 'post_path', 'source' => 'path', 'label' => 'Post Path'],
+    ];
+}
+
+/**
  * The repeating four-section body shared by every city page.
  */
 function ppm_city_section_columns() {
@@ -262,11 +278,11 @@ function ppm_assign_city_field_keys($columns) {
  * so they are declared here.
  */
 function ppm_ppc_columns() {
-    $columns = [
+    $columns = array_merge(ppm_identity_columns(), [
         ['name' => 'post_title',  'source' => 'post', 'post_field' => 'post_title'],
         ['name' => 'post_slug',   'source' => 'post', 'post_field' => 'post_name'],
         ['name' => 'post_status', 'source' => 'post', 'post_field' => 'post_status'],
-    ];
+    ]);
 
     $generated = require __DIR__ . '/includes/ppc-fields.php';
 
@@ -2686,6 +2702,10 @@ function ppm_export_column_value($post, $column, $field_profile) {
 
     if ($column['source'] === 'meta') {
         return get_post_meta($post->ID, $column['meta_key'], true);
+    }
+
+    if ($column['source'] === 'path') {
+        return ppm_post_path($post);
     }
 
     // An image column carries URLs in the sheet and attachments in the field,
