@@ -3,7 +3,7 @@
  * Plugin Name: PPM Bulk CPT Importer
  * Plugin URI: https://bringinghomebacon.com
  * Description: Internal PPM tool for bulk creating and updating CPT pages via CSV (URL-based images only).
- * Version: 1.13.0
+ * Version: 1.14.0
  * Author: Purple Pig Marketing
  * Author URI: https://bringinghomebacon.com
  * License: Proprietary
@@ -2814,6 +2814,67 @@ function ppm_export_cpt_csv() {
 /* IMPORT                                                                     */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * Find the post a row is meant to update.
+ *
+ * Three ways, most specific first.
+ *
+ * post_id and post_path are explicit: a row naming one that does not resolve is
+ * an error and is skipped, never turned into a new post. The whole risk in a
+ * bulk update is a near-miss quietly creating a duplicate, and on a fleet of
+ * sites that means every page doubled before anyone notices.
+ *
+ * post_slug keeps its original behavior, where no match means create — that is
+ * what builds a new set of city pages from a sheet.
+ *
+ * @return array{post: ?WP_Post, error: string}
+ */
+function ppm_resolve_import_target($row, $cpt_slug) {
+    $post_id = isset($row['post_id']) ? (int) ppm_prepare_csv_value($row['post_id']) : 0;
+
+    if ($post_id > 0) {
+        $post = get_post($post_id);
+
+        if (!$post || $post->post_type !== $cpt_slug) {
+            return [
+                'post'  => null,
+                'error' => sprintf('post_id %d is not a %s on this site', $post_id, $cpt_slug),
+            ];
+        }
+
+        return ['post' => $post, 'error' => ''];
+    }
+
+    $path = isset($row['post_path'])
+        ? trim(ppm_prepare_csv_value($row['post_path']), '/')
+        : '';
+
+    if ($path !== '') {
+        $post = get_page_by_path($path, OBJECT, $cpt_slug);
+
+        if (!$post) {
+            return [
+                'post'  => null,
+                'error' => sprintf('post_path "%s" matched nothing', $path),
+            ];
+        }
+
+        return ['post' => $post, 'error' => ''];
+    }
+
+    $slug = isset($row['post_slug']) ? ppm_prepare_csv_value($row['post_slug']) : '';
+
+    if ($slug === '') {
+        return ['post' => null, 'error' => 'row has no post_id, post_path or post_slug'];
+    }
+
+    // On a hierarchical post type a bare slug only ever matches a top-level
+    // post, which is the right outcome: a nested page needs its full path to be
+    // identified unambiguously, and quietly matching the wrong branch would be
+    // worse than not matching at all. Supply post_path for those.
+    return ['post' => get_page_by_path($slug, OBJECT, $cpt_slug), 'error' => ''];
+}
+
 function ppm_run_import($token, $cpt_slug, $profile_key = '') {
 
     if (!ppm_validate_cpt_slug($cpt_slug)) {
@@ -2845,9 +2906,10 @@ function ppm_run_import($token, $cpt_slug, $profile_key = '') {
         return;
     }
 
-    $created = 0;
-    $updated = 0;
-    $skipped = 0;
+    $created  = 0;
+    $updated  = 0;
+    $skipped  = 0;
+    $problems = [];
 
     foreach ($payload['rows'] as $row) {
         if (!is_array($row)) {
@@ -2861,8 +2923,16 @@ function ppm_run_import($token, $cpt_slug, $profile_key = '') {
 
         $row = array_combine($payload['header'], $row);
 
-        if ($row === false || empty($row['post_slug'])) {
+        if ($row === false) {
             $skipped++;
+            continue;
+        }
+
+        $target = ppm_resolve_import_target($row, $cpt_slug);
+
+        if ($target['error'] !== '') {
+            $skipped++;
+            $problems[] = $target['error'];
             continue;
         }
 
@@ -2870,7 +2940,12 @@ function ppm_run_import($token, $cpt_slug, $profile_key = '') {
         $post_title = isset($row['post_title']) ? ppm_prepare_csv_value($row['post_title']) : '';
         $post_status = !empty($row['post_status']) ? ppm_prepare_csv_value($row['post_status']) : 'publish';
 
-        $existing = get_page_by_path($post_slug, OBJECT, $cpt_slug);
+        $existing = $target['post'];
+
+        // An update keeps the slug it already has unless the sheet gives one.
+        if ($existing && $post_slug === '') {
+            $post_slug = $existing->post_name;
+        }
 
         $post_args = [
             'post_type'   => $cpt_slug,
@@ -2913,7 +2988,7 @@ function ppm_run_import($token, $cpt_slug, $profile_key = '') {
         }
 
         foreach ($row as $key => $value) {
-            if (in_array($key, ['post_title', 'post_slug', 'post_status'], true)) {
+            if (in_array($key, ['post_id', 'post_path', 'post_title', 'post_slug', 'post_status'], true)) {
                 continue;
             }
 
@@ -2976,4 +3051,20 @@ function ppm_run_import($token, $cpt_slug, $profile_key = '') {
     }
 
     echo "<div class='updated'><p><strong>Import complete.</strong> Created: {$created} | Updated: {$updated} | Skipped: {$skipped}</p></div>";
+
+    // A silent skip count says something went wrong without saying what, which
+    // on a run of hundreds of rows is the same as saying nothing.
+    if ($problems) {
+        echo "<div class='error'><p><strong>Rows skipped:</strong></p><ul>";
+
+        foreach (array_slice($problems, 0, 25) as $problem) {
+            echo '<li>' . esc_html($problem) . '</li>';
+        }
+
+        if (count($problems) > 25) {
+            printf('<li>&hellip; and %d more</li>', count($problems) - 25);
+        }
+
+        echo '</ul></div>';
+    }
 }
